@@ -16,9 +16,8 @@ import "../theme"
 // Settings is a window rather than an island panel, so the bar and island stay
 // visible and react live while their own settings change.
 //
-// It is an xdg-shell toplevel, not a layer surface: Hyprland moves, resizes,
-// focuses and closes it like any other window, and draws its rounding and
-// shadow. `windowrules.lua` floats and sizes it, matched on the title.
+// It is an xdg-shell toplevel, not a layer surface. Niri manages it like any
+// other client; the starter KDL config has a title rule to open it floating.
 FloatingWindow {
     id: root
     CornerGuard {}
@@ -34,7 +33,7 @@ FloatingWindow {
     // Island panels are opened by the shell, not by this window.
     signal panelRequested(string panel)
 
-    // Matched by the window rule in `windowrules.lua`.
+    // Matched by the Niri window rule in config.kdl.
     title: "Settings"
 
     implicitWidth: 980
