@@ -62,11 +62,22 @@ ColumnLayout {
 
     spacing: 10
 
-    Component.onCompleted: {
-        if (root.workspaces.length && !root.workspaces.some(w => w.id === root.selectedWorkspaceId)) {
-            const focused = root.workspaces.find(w => w.is_active) ?? root.workspaces[0]
+    function keepSelectionValid(): void {
+        if (root.workspaces.length === 0) {
+            root.selectedWorkspaceId = null
+            return
+        }
+        if (!root.workspaces.some(workspace => workspace.id === root.selectedWorkspaceId)) {
+            const focused = root.workspaces.find(workspace => workspace.is_active)
+                ?? root.workspaces[0]
             root.selectedWorkspaceId = focused.id
         }
+    }
+
+    onWorkspacesChanged: root.keepSelectionValid()
+
+    Component.onCompleted: {
+        root.keepSelectionValid()
         root.forceActiveFocus()
     }
 
