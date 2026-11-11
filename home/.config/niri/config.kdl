@@ -3,6 +3,7 @@
 // manually if you already have ~/.config/niri/config.kdl.
 
 spawn-at-startup "qs" "-d"
+spawn-at-startup "kanshi"
 
 layout {
     gaps 14
