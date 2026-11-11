@@ -16,7 +16,6 @@
 
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
 import Quickshell.Io
 
 import "./bar"
@@ -42,12 +41,8 @@ ShellRoot {
         void LauncherService.applications
         // Keeps history, so the graph has data before the panel opens.
         void StatsService.ready
-        // Re-applies the animation preset and every other overridden
-        // Hyprland option.
-        void CompositorService.animationPreset
-        // Re-applies the monitor arrangement kept for this set of screens.
-        void MonitorService.loaded
-        // Writes the profile's keys to keys.tsv for keybinds.lua.
+        // Starts Niri output discovery and the read-only shortcut catalogue.
+        void MonitorService.monitors
         void ShortcutService.catalogue
         // Reads the user's name and face ahead of the first lock.
         void AccountService.user
@@ -92,7 +87,7 @@ ShellRoot {
     property string islandName: MonitorService.effectivePrimaryName
 
     readonly property string wantedIslandName: {
-        const focused = HyprlandService.focusedMonitor
+        const focused = NiriService.focusedOutput
         for (const screen of Quickshell.screens)
             if (screen.name === focused)
                 return focused
