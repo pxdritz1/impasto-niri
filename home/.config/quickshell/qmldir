@@ -11,7 +11,6 @@ singleton ThemeService       1.0 services/ThemeService.qml
 singleton WallpaperService   1.0 services/WallpaperService.qml
 singleton LauncherService    1.0 services/LauncherService.qml
 singleton SystemService      1.0 services/SystemService.qml
-singleton HyprlandService    1.0 services/HyprlandService.qml
 singleton NiriService        1.0 services/NiriService.qml
 singleton MonitorService     1.0 services/MonitorService.qml
 singleton AudioService       1.0 services/AudioService.qml
