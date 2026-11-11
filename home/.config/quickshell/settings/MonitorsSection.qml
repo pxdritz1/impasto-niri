@@ -24,8 +24,7 @@ SettingsSection {
                 required property var modelData
                 label: modelData.name
                 reading: {
-                    const mode = modelData.width && modelData.height
-                        ? modelData.width + " × " + modelData.height : modelData.mode
+                    const mode = modelData.mode || "unknown"
                     const refresh = modelData.refreshRate > 0
                         ? " @ " + modelData.refreshRate + " Hz" : ""
                     return mode + refresh + " · " + modelData.scale + "×"
