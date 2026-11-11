@@ -1,5 +1,4 @@
-// Niri keybinding status. Editing is deliberately disabled until the
-// user's KDL can be parsed and changed without losing comments or includes.
+// Niri keybinding status. NiriMod provides the external KDL editing workflow.
 import QtQuick
 import QtQuick.Layouts
 
@@ -29,14 +28,14 @@ SettingsSection {
     SettingGroup {
         title: Tr.t("Niri keybindings")
         note: Tr.t("Niri reads keybindings from the binds {} node in its KDL configuration.")
-        hint: Tr.t("NiriMod reads and edits the actual KDL configuration, including included files, while preserving comments and unrelated nodes.")
+        hint: Tr.t("NiriMod edits the actual Niri KDL configuration and provides a searchable keybinding editor. The shell itself does not parse or rewrite KDL.")
         SettingRow {
             label: Tr.t("Configuration")
             reading: ShortcutService.configPath
         }
         SettingRow {
             label: Tr.t("Editing")
-            reading: Tr.t("Use NiriMod to edit bindings safely")
+            reading: Tr.t("Edited externally with NiriMod")
         }
         NiriModButton {
             page: "bindings"
