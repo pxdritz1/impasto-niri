@@ -13,7 +13,7 @@ SettingsSection {
     SettingGroup {
         title: Tr.t("Keyboard and pointer")
         note: Tr.t("Input settings are owned by Niri and stored in KDL.")
-        hint: Tr.t("This page is intentionally read-only until the port has a KDL parser that can preserve comments, includes and unrelated configuration nodes.")
+        hint: Tr.t("Use NiriMod for validated KDL edits. It preserves includes, comments and unrelated configuration nodes.")
 
         SettingRow {
             label: Tr.t("Configuration")
@@ -30,6 +30,10 @@ SettingsSection {
         SettingRow {
             label: Tr.t("Pointer and touchpad")
             reading: Tr.t("input {} · accel-profile, sensitivity and natural-scroll")
+        }
+        NiriModButton {
+            page: "input"
+            label: Tr.t("Edit input settings")
         }
     }
 
