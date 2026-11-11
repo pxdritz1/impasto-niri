@@ -65,7 +65,7 @@ Singleton {
     readonly property Connections focus: Connections {
         target: NiriService
         function onFocusedClassChanged(): void {
-            root.send(`focus ${HyprlandService.focusedClass}`)
+            root.send(`focus ${NiriService.focusedWindow?.app_id ?? ""}`)
         }
     }
 
