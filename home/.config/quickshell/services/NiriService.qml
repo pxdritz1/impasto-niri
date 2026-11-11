@@ -78,6 +78,10 @@ Singleton {
     }
 
     function isOccupied(index: int): bool {
+        return root.occupiedIds.indexOf(index) >= 0
+    }
+
+    function isOccupied(index: int): bool {
         return root.workspaces.some(workspace => workspace.idx === index
             && root.windows.some(window => window.workspace_id === workspace.id))
     }
