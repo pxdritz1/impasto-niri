@@ -10,6 +10,12 @@ import subprocess
 import sys
 
 
+def refresh_hz(value):
+    if value is None:
+        return 0.0
+    return round(float(value) / 1000.0, 3)
+
+
 def read_outputs():
     try:
         result = subprocess.run(
@@ -31,9 +37,16 @@ def read_outputs():
     for name, output in payload.items():
         if not isinstance(output, dict):
             continue
+
+        modes = output.get("modes") or []
+        current_index = output.get("current_mode")
+        current_mode = None
+        if isinstance(current_index, int) and 0 <= current_index < len(modes):
+            current_mode = modes[current_index]
+        elif isinstance(current_index, dict):
+            current_mode = current_index
+
         logical = output.get("logical") or {}
-        mode = output.get("current_mode") or output.get("currentMode") or {}
-        modes = output.get("modes") or output.get("available_modes") or []
         make = output.get("make") or ""
         model = output.get("model") or ""
         serial = output.get("serial") or ""
@@ -41,42 +54,50 @@ def read_outputs():
         if not description:
             description = name
 
-        width = int(logical.get("width") or mode.get("width") or 0)
-        height = int(logical.get("height") or mode.get("height") or 0)
-        refresh = float(mode.get("refresh_rate") or mode.get("refreshRate") or 0)
+        physical_width = int((current_mode or {}).get("width") or 0)
+        physical_height = int((current_mode or {}).get("height") or 0)
+        width = int(logical.get("width") or 0)
+        height = int(logical.get("height") or 0)
+        refresh = refresh_hz((current_mode or {}).get("refresh_rate"))
+
         resolutions = {}
         for candidate in modes:
             if not isinstance(candidate, dict):
                 continue
             w = int(candidate.get("width") or 0)
             h = int(candidate.get("height") or 0)
-            rate = float(candidate.get("refresh_rate") or candidate.get("refreshRate") or 0)
+            rate = refresh_hz(candidate.get("refresh_rate"))
             if not w or not h:
                 continue
             key = f"{w}x{h}"
             resolutions.setdefault(key, {"width": w, "height": h, "refreshes": []})
             if rate:
-                resolutions[key]["refreshes"].append(round(rate / 1_000_000, 3)
-                    if rate > 100000 else round(rate, 3))
+                resolutions[key]["refreshes"].append(rate)
+
+        mode_label = f"{physical_width}x{physical_height}" if physical_width and physical_height else "off"
+        if refresh:
+            mode_label += f"@{refresh:.3f}"
 
         rows.append({
             "name": name,
             "description": description,
             "make": make,
             "model": model,
-            "serial": serial,
+            "serial": serial or "",
             "x": int(logical.get("x") or 0),
             "y": int(logical.get("y") or 0),
             "width": width,
             "height": height,
-            "refreshRate": round(refresh / 1_000_000, 3) if refresh > 100000 else round(refresh, 3),
-            "mode": f"{width}x{height}" if width and height else "unknown",
-            "scale": float(output.get("scale") or 1),
-            "transform": str(output.get("transform") or "Normal"),
-            "disabled": False,
-            "dpms": True,
-            "focused": bool(output.get("is_focused") or output.get("focused")),
+            "refreshRate": refresh,
+            "mode": mode_label,
+            "scale": float(logical.get("scale") or 1),
+            "transform": str(logical.get("transform") or "Normal"),
+            "disabled": output.get("logical") is None,
+            "dpms": output.get("logical") is not None,
+            "focused": False,
             "mirror": "none",
+            "vrr": bool(output.get("vrr_enabled", False)),
+            "vrrSupported": bool(output.get("vrr_supported", False)),
             "resolutions": list(resolutions.values()),
         })
     return rows
