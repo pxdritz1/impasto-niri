@@ -13,8 +13,8 @@ Singleton {
 
     property var workspaces: []
     property var windows: []
-    property int focusedWorkspaceId: 0
-    property int activeWorkspaceId: 0
+    property var focusedWorkspaceId: null
+    property var activeWorkspaceId: null
     property var focusedWindow: null
     property bool connected: false
     property string lastError: ""
@@ -76,10 +76,6 @@ Singleton {
 
     function numberOn(index: int, output: string): int {
         return index
-    }
-
-    function isOccupied(index: int): bool {
-        return root.occupiedIds.indexOf(index) >= 0
     }
 
     function isOccupiedOn(index: int, output: string): bool {
@@ -224,8 +220,9 @@ Singleton {
         return root.windows.filter(window => window.workspace_id === workspaceId)
     }
 
-    function clientsOn(workspaceIndex: var): var {
-        return root.clients.filter(client => client.workspace?.id === workspaceIndex)
+    function clientsOn(workspaceIndex: var, output: string = ""): var {
+        return root.clients.filter(client => client.workspace?.id === workspaceIndex
+            && (output === "" || client.workspace.output === output))
     }
 
     function runAction(args: var): void {
