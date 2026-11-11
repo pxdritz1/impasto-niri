@@ -37,7 +37,7 @@ Singleton {
         stdinEnabled: true
         running: true
         onStarted: {
-            root.send(`focus ${(NiriService.focusedWindow?.app_id ?? "")}`)
+            root.send(`focus ${NiriService.focusedWindow?.app_id ?? ""}`)
             if (root.away)
                 root.send("away")
         }
@@ -64,7 +64,7 @@ Singleton {
 
     readonly property Connections focus: Connections {
         target: NiriService
-        function onFocusedClassChanged(): void {
+        function onFocusedWindowChanged(): void {
             root.send(`focus ${NiriService.focusedWindow?.app_id ?? ""}`)
         }
     }
