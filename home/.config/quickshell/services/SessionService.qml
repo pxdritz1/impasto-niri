@@ -122,7 +122,7 @@ Singleton {
             LockService.lock()
             break
         case "logout":
-            NiriService.runAction(["quit"])
+            NiriService.runAction(["quit", "--skip-confirmation"])
             break
         case "reboot":
             root.exec(["systemctl", "reboot"])
