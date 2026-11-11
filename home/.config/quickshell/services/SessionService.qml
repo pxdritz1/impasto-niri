@@ -12,7 +12,6 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import Quickshell.Io
-import Quickshell.Hyprland
 
 // Session actions as data, rendered from one list. `destructive` marks the
 // ones that end the session; the session block (`ButtonsBlock`) and the top
@@ -123,7 +122,7 @@ Singleton {
             LockService.lock()
             break
         case "logout":
-            Hyprland.dispatch("hl.dsp.exit()")
+            NiriService.runAction(["quit"])
             break
         case "reboot":
             root.exec(["systemctl", "reboot"])
