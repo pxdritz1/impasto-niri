@@ -305,30 +305,6 @@ ShellRoot {
         onPressed: root.island?.toggle("launcher")
     }
 
-    // ── LID ─────────────────────────────────────────────────────────────────
-    //
-    // Handled here rather than with `switch:` binds in Lua. MonitorService's
-    // display profile is the one owner of whether the panel is lit, and it is
-    // re-applied on hotplug and after config reloads. A `switch:` bind in the
-    // same file as `hl.monitor()` calls is also silently not registered, and
-    // a runtime monitor rule does not survive a reload.
-    GlobalShortcut {
-        name: "lidClosed"
-        description: "The laptop lid was closed"
-        onPressed: MonitorService.lid(true)
-    }
-
-    // Opening the lid is somebody sitting down: it wakes the lock, which
-    // looks for them.
-    GlobalShortcut {
-        name: "lidOpened"
-        description: "The laptop lid was opened"
-        onPressed: {
-            MonitorService.lid(false)
-            LockService.rouse()
-        }
-    }
-
     GlobalShortcut {
         name: "controls"
         description: "Open the island quick controls"
@@ -451,12 +427,6 @@ ShellRoot {
             SettingsService.set("gameMode", on)
             OsdService.requested("󰺵", Tr.t(on ? "Game mode on" : "Game mode off"), -1)
         }
-    }
-
-    GlobalShortcut {
-        name: "layout"
-        description: "Cycle the layout"
-        onPressed: CompositorService.cycleLayout()
     }
 
     GlobalShortcut {
