@@ -70,20 +70,36 @@ Singleton {
     }
 
     // Niri's event stream has no dedicated output-change event. Workspace
-    // topology changes and Qt screen hotplug notifications cover output
-    // connect/disconnect without a polling loop.
+    // topology changes plus Quickshell hotplug/geometry signals cover output
+    // connect, disconnect, resolution, scale and position without polling.
+    readonly property Timer refreshDebounce: Timer {
+        interval: 120
+        onTriggered: root.load()
+    }
+
     readonly property Connections workspaceEvents: Connections {
         target: NiriService
         function onEventReceived(kind, data) {
             if (kind === "WorkspacesChanged")
-                Qt.callLater(root.load)
+                root.refreshDebounce.restart()
         }
     }
 
     readonly property Connections screenEvents: Connections {
         target: Quickshell
         function onScreensChanged() {
-            Qt.callLater(root.load)
+            root.refreshDebounce.restart()
+        }
+    }
+
+    Instantiator {
+        model: Quickshell.screens
+        delegate: Connections {
+            required property var modelData
+            target: modelData
+            function onGeometryChanged() {
+                root.refreshDebounce.restart()
+            }
         }
     }
 
