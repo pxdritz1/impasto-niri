@@ -826,7 +826,7 @@ omz() {
     say ok
 }
 
-// Niri integrations are external tools or native compositor features.
+# Niri integrations are external tools or native compositor features.
 verb_plugins() {
     section 'Niri integrations'
     say 'Hyprland plugins are not loaded by Niri; no hyprpm build or compositor mutation is attempted.'
