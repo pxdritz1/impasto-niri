@@ -43,20 +43,16 @@ Singleton {
 
     readonly property int count: root.decks.reduce((sum, deck) => sum + deck.notes.length, 0)
 
-    // Hidden under a fullscreen window, as the dock is, and with
-    // `deckOnEmpty` also on any workspace that has windows. Both are asked of
-    // the workspace the screen is showing, not of the focused one: the edges
-    // on one screen have no opinion about what is open on the other.
+    // Niri's IPC does not expose fullscreen state. Layer-shell visibility
+    // is left to the compositor; this predicate only implements deckOnEmpty.
+    // Each screen is evaluated against its own active workspace.
     readonly property bool onEmptyOnly: SettingsService.deckOnEmpty
 
     function awayOn(name: string): bool {
-        const workspace = HyprlandService.activeOn(name)
+        const workspace = NiriService.activeOn(name)
         if (workspace <= 0)
             return false
-        if (HyprlandService.clients.some(client => (client.fullscreen ?? 0) >= 2
-                && client.workspace && client.workspace.id === workspace))
-            return true
-        return root.onEmptyOnly && HyprlandService.occupiedIds.indexOf(workspace) >= 0
+        return root.onEmptyOnly && NiriService.isOccupiedOn(workspace, name)
     }
 
     // ── GEOMETRY ────────────────────────────────────────────────────────────
