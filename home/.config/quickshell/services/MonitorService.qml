@@ -45,8 +45,9 @@ Singleton {
     }
 
     readonly property string primaryName: {
-        const focused = root.monitors.find(monitor => monitor.focused)
-        return focused?.name ?? root.monitors[0]?.name ?? ""
+        const focused = NiriService.focusedOutput
+        return root.monitors.some(monitor => monitor.name === focused)
+            ? focused : (root.monitors.find(monitor => !monitor.disabled)?.name ?? "")
     }
 
     readonly property string effectivePrimaryName: root.primaryName
