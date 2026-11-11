@@ -402,6 +402,9 @@ deploy() {
     read_manifest "$manifest"
     AFTER=()
     while IFS= read -r rel; do
+        # Hyprland configuration from the upstream shell is not part of the Niri port.
+        # Skip it so existing tracked files are retired by the manifest below.
+        [[ $tree == home && $rel == .config/hypr/* ]] && continue
         src=$REPO/$tree/$rel
         dst=$target/$rel
         if [[ $tree == home ]]; then unstow "$rel"; fi
