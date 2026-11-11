@@ -125,7 +125,7 @@ kconfig                      # kreadconfig6, for the KDE half of the palette
 
 
 
-base-devel                   # the compiler hyprpm builds with
+base-devel                   # compiler toolchain for optional AUR builds
 cmake
 meson
 cpio
