@@ -239,7 +239,7 @@ debounced to one frame.
 - [diegoMalagrida/dotfiles](https://github.com/diegoMalagrida/dotfiles) — an
   Arch Linux desk ready to install on a fresh system
 
-Built on [Quickshell](https://quickshell.org) and [Niri](https://github.com/niri-wm/niri).
+Built on [Quickshell](https://quickshell.org) and [Niri](https://github.com/niri-wm/niri). Niri configuration editing is delegated to [NiriMod](https://github.com/srinivasr/nirimod). See [Niri compatibility and plugin alternatives](docs/niri-compatibility.md).
 The pointer is [Bibata](https://github.com/ful1e5/Bibata_Cursor), repainted;
 the folders are [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme),
 re-pointed; the type is [Inter](https://rsms.me/inter/) and
