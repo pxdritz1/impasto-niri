@@ -15,7 +15,7 @@
 
 # ── DESKTOP ─────────────────────────────────────────────────────────────────
 
-hyprland                     # the compositor and hyprctl
+niri                         # the compositor and its IPC
 quickshell                   # the shell: the bar, the island, the lock, notifications
 awww                         # the wallpaper
 imagemagick                  # the palette board
@@ -30,7 +30,7 @@ fontconfig                   # fc-list, in fonts.py
 pipewire                     # the volume, through Quickshell's Pipewire service
 wireplumber                  # wpctl, which the media keys call
 playerctl                    # the play, pause, next and previous keys
-xdg-desktop-portal-hyprland  # screen sharing
+xdg-desktop-portal-gnome     # screen sharing under Niri
 xdg-desktop-portal-gtk       # every Open dialog
 xdg-user-dirs                # the folders a capture lands in
 xdg-utils                    # xdg-open, which yazi hands the rest to
@@ -58,6 +58,7 @@ less                         # kitty's scrollback pager, which base does not bri
 
 
 # ── QUICK CONTROLS ──────────────────────────────────────────────────────────
+kanshi                       # automatic Niri output profiles
 
 brightnessctl                # the laptop panel's brightness
 ddcutil                      # an external monitor's, over DDC/CI
@@ -66,10 +67,8 @@ bluez                        # the bluetooth tile
 bluez-utils                  # bluetoothctl, which switches it
 power-profiles-daemon        # the power profile
 upower                       # the battery
-hyprsunset                   # the night light
-hyprpicker                   # the colour under the pointer
+wlsunset                     # the night light under Wayland
 pacman-contrib               # checkupdates, which counts the updates
-hyprshutdown                 # SUPER + SHIFT + E exits through it, if installed
 
 
 # ── CAPTURE ─────────────────────────────────────────────────────────────────
@@ -129,9 +128,6 @@ kconfig                      # kreadconfig6, for the KDE half of the palette
 hyprcursor                   # hyprcursor-util, which ./setup cursors compiles with
 
 
-# ── HYPRLAND PLUGINS ────────────────────────────────────────────────────────
-
-hyprpm                       # builds both plugins in ./setup plugins
 base-devel                   # the compiler hyprpm builds with
 cmake
 meson
