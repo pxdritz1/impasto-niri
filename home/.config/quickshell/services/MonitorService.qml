@@ -11,6 +11,7 @@ Singleton {
     readonly property string script: Quickshell.shellPath("scripts/monitors.py")
     property var monitors: []
     property bool loaded: false
+    property bool refreshPending: false
     property string lastError: ""
 
     readonly property Process reader: Process {
@@ -38,11 +39,22 @@ Singleton {
                 }
             }
         }
+        onExited: (exitCode, exitStatus) => {
+            if (root.refreshPending) {
+                root.refreshPending = false
+                Qt.callLater(root.load)
+            } else if (exitCode !== 0 && root.lastError === "") {
+                root.lastError = "niri msg outputs exited (" + exitCode + ")"
+            }
+        }
     }
 
     function load(): void {
-        if (!root.reader.running)
-            root.reader.running = true
+        if (root.reader.running) {
+            root.refreshPending = true
+            return
+        }
+        root.reader.running = true
     }
 
     readonly property string primaryName: {
