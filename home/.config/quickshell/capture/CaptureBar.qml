@@ -54,7 +54,6 @@ Rectangle {
             iconSize: root.glyphSize
             options: [
                 { id: "region", label: "Region", icon: "󰩭" },
-                { id: "window", label: "Window", icon: "󰣆" },
                 { id: "screen", label: "Screen", icon: "󰍹" }
             ]
             current: CaptureService.shape
