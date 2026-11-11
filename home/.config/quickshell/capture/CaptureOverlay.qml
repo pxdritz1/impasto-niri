@@ -65,7 +65,6 @@ PanelWindow {
         function onOpened(): void {
             root.selection = Qt.rect(0, 0, 0, 0)
             root.dragging = false
-            HyprlandService.loadClients()
             keys.forceActiveFocus()
         }
     }
@@ -291,39 +290,12 @@ PanelWindow {
         }
     }
 
-    // ── WINDOW LOOKUP ───────────────────────────────────────────────────────
-
-    // Topmost window containing the point. The surface covers one screen, so
-    // its coordinates start at that screen's corner and hyprctl's start at the
-    // compositor's; the corner is added to ask and taken off to answer.
-    // hyprctl lists windows bottom to top, so the last match is the visible one.
-    function windowUnder(x: real, y: real): rect {
-        const clients = HyprlandService.clientsOn(HyprlandService.activeId)
-        const left = root.screen?.x ?? 0
-        const top = root.screen?.y ?? 0
-        let found = Qt.rect(0, 0, 0, 0)
-        for (const client of clients) {
-            const at = client.at ?? [0, 0]
-            const size = client.size ?? [0, 0]
-            if (x + left >= at[0] && x + left <= at[0] + size[0]
-                && y + top >= at[1] && y + top <= at[1] + size[1])
-                found = Qt.rect(at[0] - left, at[1] - top, size[0], size[1])
-        }
-        return found
-    }
-
     // Takes the capture. Screen mode passes no rectangle, so nothing is
     // cropped.
     function take(): void {
         if (root.whole) {
             CaptureService.fire(0, 0, 0, 0)
             return
-        }
-        if (CaptureService.shape === "window" && root.selection.width < 4) {
-            const under = root.windowUnder(pointer.mouseX, pointer.mouseY)
-            if (under.width < 4)
-                return
-            root.selection = under
         }
         if (root.selection.width < 4 || root.selection.height < 4)
             return
