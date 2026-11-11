@@ -9,6 +9,8 @@ import Quickshell.Io
 Singleton {
     id: root
 
+    signal eventReceived(string kind, var data)
+
     property var workspaces: []
     property var windows: []
     property int focusedWorkspaceId: 0
@@ -23,7 +25,6 @@ Singleton {
             address: String(window.id),
             class: window.app_id ?? "",
             mapped: true,
-            fullscreen: 0,
             workspace: workspace ? {
                 id: workspace.idx,
                 name: workspace.name ?? "",
@@ -184,6 +185,7 @@ Singleton {
             break
         }
         root.connected = true
+        root.eventReceived(kind, data)
     }
 
     function updateWorkspaceFocus(): void {
@@ -198,15 +200,15 @@ Singleton {
         root.focusedWindow = root.windows.find(window => window.is_focused) ?? null
     }
 
-    function workspaceById(id: int): var {
+    function workspaceById(id: var): var {
         return root.workspaces.find(workspace => workspace.id === id) ?? null
     }
 
-    function windowsOn(workspaceId: int): var {
+    function windowsOn(workspaceId: var): var {
         return root.windows.filter(window => window.workspace_id === workspaceId)
     }
 
-    function clientsOn(workspaceIndex: int): var {
+    function clientsOn(workspaceIndex: var): var {
         return root.clients.filter(client => client.workspace?.id === workspaceIndex)
     }
 
@@ -222,18 +224,18 @@ Singleton {
             root.runAction(["focus-workspace", String(index)])
     }
 
-    function focusWindow(id: int): void {
-        if (id > 0)
+    function focusWindow(id: var): void {
+        if (String(id) !== "")
             root.runAction(["focus-window", "--id", String(id)])
     }
 
-    function closeWindow(id: int): void {
-        if (id > 0)
+    function closeWindow(id: var): void {
+        if (String(id) !== "")
             root.runAction(["close-window", "--id", String(id)])
     }
 
-    function toggleFloating(id: int): void {
-        if (id > 0)
+    function toggleFloating(id: var): void {
+        if (String(id) !== "")
             root.runAction(["toggle-window-floating", "--id", String(id)])
     }
 
