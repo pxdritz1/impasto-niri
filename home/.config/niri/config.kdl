@@ -25,6 +25,13 @@ binds {
     Mod+Shift+Space { spawn "qs" "ipc" "call" "panel" "open" "controls"; }
     Mod+Shift+Tab { spawn "qs" "ipc" "call" "panel" "open" "overview"; }
     Mod+Comma { spawn "qs" "ipc" "call" "panel" "open" "keys"; }
+    Mod+Shift+A { spawn "qs" "ipc" "call" "panel" "open" "appearance"; }
+    Mod+Shift+N { spawn "qs" "ipc" "call" "panel" "open" "notes"; }
+    Mod+Shift+B { spawn "qs" "ipc" "call" "panel" "open" "board"; }
+    Mod+Shift+G { spawn "qs" "ipc" "call" "panel" "open" "games"; }
+    Mod+Shift+S { spawn "qs" "ipc" "call" "panel" "open" "session"; }
+    Mod+Shift+W { spawn "qs" "ipc" "call" "widgets" "toggle"; }
+    Mod+Shift+P { power-off-monitors; }
 
     Mod+Q { close-window; }
     Mod+Shift+E { quit; }
