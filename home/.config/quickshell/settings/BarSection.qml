@@ -175,7 +175,7 @@ SettingsSection {
     SettingGroup {
         visible: root.tab === "workspaces"
         title: Tr.t("Workspaces")
-        note: Tr.t("The shown workspaces are always drawn; the rest, up to the available count, appear only while they have windows.")
+        note: Tr.t("Niri creates workspaces dynamically on each output. The first few slots stay visible; additional workspaces appear when they are active or occupied.")
 
         SettingBlock {
             WorkspaceStyles {
@@ -187,41 +187,17 @@ SettingsSection {
             label: Tr.t("Workspaces shown")
             value: HyprlandService.slots
             from: 1
-            to: HyprlandService.maximum
+            to: NiriService.span
             onMoved: value => SettingsService.set("workspaceCount", Math.round(value))
         }
 
-        SettingSlider {
-            label: Tr.t("Workspaces available")
-            // Per screen, each screen has ten.
-            value: HyprlandService.maximum
-            from: 4
-            to: HyprlandService.perScreen ? 10 : 20
-            onMoved: value => {
-                const max = Math.round(value)
-                SettingsService.set("workspaceMax", max)
-                // The ceiling cannot end up below the floor.
-                if (SettingsService.workspaceCount > max)
-                    SettingsService.set("workspaceCount", max)
-            }
-        }
-
-        SettingRow {
-            label: Tr.t("With more screens")
-            reading: HyprlandService.perScreen
-                ? Tr.t("Ten for each screen: the main one 1–10, the next 11–20")
-                : Tr.t("Every screen shares the same ten")
-            locked: Quickshell.screens.length < 2
-            reason: Tr.t("Only one screen is on")
-
-            SegmentedControl {
-                options: [
-                    { id: "shared", label: Tr.t("Shared") },
-                    { id: "screen", label: Tr.t("Per screen") }
-                ]
-                current: SettingsService.workspaceMode
-                onSelected: id => SettingsService.set("workspaceMode", id)
-            }
+        Text {
+            Layout.fillWidth: true
+            text: Tr.t("Workspace indices are local to each output; Niri does not use one global numbering scheme across monitors.")
+            color: Theme.textMuted
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSizeSmall
+            wrapMode: Text.Wrap
         }
     }
 }
