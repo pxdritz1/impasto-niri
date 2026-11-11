@@ -31,6 +31,40 @@ Singleton {
         workspace => workspace.is_focused) ?? null
 
     readonly property var focusedOutput: root.focusedWorkspace?.output ?? ""
+    readonly property int activeId: root.focusedWorkspace?.idx ?? 1
+    readonly property int maximum: SettingsService.workspaceMax
+    readonly property int span: {
+        let highest = root.maximum
+        for (const workspace of root.workspaces)
+            highest = Math.max(highest, workspace.idx ?? 0)
+        return highest
+    }
+
+    function activeOn(output: string): int {
+        const workspace = root.workspaces.find(item => item.output === output && item.is_active)
+        return workspace?.idx ?? 0
+    }
+
+    function numberOn(index: int, output: string): int {
+        return index
+    }
+
+    function isOccupied(index: int): bool {
+        return root.workspaces.some(workspace => workspace.idx === index
+            && root.windows.some(window => window.workspace_id === workspace.id))
+    }
+
+    function isVisibleOn(index: int, output: string): bool {
+        if (index <= SettingsService.workspaceCount)
+            return true
+        return root.workspaces.some(workspace => workspace.output === output
+            && workspace.idx === index
+            && (workspace.is_active || root.windows.some(window => window.workspace_id === workspace.id)))
+    }
+
+    function focus(index: int): void {
+        root.focusWorkspace(index)
+    }
 
     function parseEvent(line: string): void {
         if (!line || !line.trim())
@@ -94,9 +128,12 @@ Singleton {
             }))
             root.updateFocusedWindow()
             break
-        case "WorkspaceActivated":
+        case "WorkspaceActivated": {
+            const activated = root.workspaces.find(workspace => workspace.id === data.id)
+            if (!activated)
+                break
             root.workspaces = root.workspaces.map(workspace => {
-                if (workspace.output !== root.workspaces.find(item => item.id === data.id)?.output)
+                if (workspace.output !== activated.output)
                     return workspace
                 return Object.assign({}, workspace, {
                     is_active: workspace.id === data.id,
@@ -105,6 +142,7 @@ Singleton {
             })
             root.updateWorkspaceFocus()
             break
+        }
         case "WindowUrgencyChanged":
             root.windows = root.windows.map(window => window.id === data.id
                 ? Object.assign({}, window, { is_urgent: data.urgent }) : window)
@@ -112,6 +150,10 @@ Singleton {
         case "WorkspaceUrgencyChanged":
             root.workspaces = root.workspaces.map(workspace => workspace.id === data.id
                 ? Object.assign({}, workspace, { is_urgent: data.urgent }) : workspace)
+            break
+        case "WorkspaceActiveWindowChanged":
+            root.workspaces = root.workspaces.map(workspace => workspace.id === data.workspace_id
+                ? Object.assign({}, workspace, { active_window_id: data.active_window_id }) : workspace)
             break
         }
         root.connected = true
