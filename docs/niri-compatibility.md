@@ -22,6 +22,6 @@ The curated [awesome-niri list](https://github.com/niri-wm/awesome-niri) tracks 
 ## Important limitations
 
 - Niri IPC reports window identity, workspace membership, focus and layout metadata, but not Hyprland-style global rectangles for every window. The shell must not recreate drag/drop or pixel-perfect thumbnails from guessed geometry.
-- Niri does not expose configured keybinds through IPC. Bindings live in KDL. The current shell page is read-only; a future editor must parse the user's real config and preserve includes, comments and unrelated nodes before changing a bind.
-- Niri automatically handles the internal laptop output on lid close/open. Output changes made through compositor IPC are temporary; persistent profiles belong in Niri KDL or a profile manager such as Kanshi. The shell's monitor page currently reads output state and delegates profile editing to those tools.
+- Niri does not expose configured keybinds through IPC. Bindings live in KDL. The shell does not parse or rewrite that file; its settings pages launch the optional NiriMod editor for binding inspection and editing.
+- Niri's event stream includes `OutputsChanged`, which the monitor service uses to refresh live output state without polling. Niri automatically handles the internal laptop output on lid close/open. Output changes made through compositor IPC are temporary; persistent profiles belong in Niri KDL or a profile manager such as Kanshi. The shell's monitor page reads output state and launches NiriMod for interactive KDL editing.
 - Refraction and shake-to-find are not claimed as supported. Native blur and ordinary cursor themes are not equivalent to those effects.
