@@ -297,57 +297,15 @@ ShellRoot {
         value: !root.island || (!root.island.expanded && root.island.settled)
     }
 
-    // Global shortcuts: keybinds.lua binds a key to the name, and the action
-    // lives here, so a new panel needs no compositor config.
-    GlobalShortcut {
-        name: "launcher"
-        description: "Open the island launcher"
-        onPressed: root.island?.toggle("launcher")
-    }
 
-    GlobalShortcut {
-        name: "controls"
-        description: "Open the island quick controls"
-        onPressed: root.island?.toggle("controls")
-    }
 
     // The brightness keys act on the focused screen, which only the shell
     // knows how to dim. A held key repeats the press.
-    GlobalShortcut {
-        name: "brightnessUp"
-        description: "Raise the focused screen's brightness"
-        onPressed: BrightnessService.step(5)
-    }
 
-    GlobalShortcut {
-        name: "brightnessDown"
-        description: "Lower the focused screen's brightness"
-        onPressed: BrightnessService.step(-5)
-    }
 
-    GlobalShortcut {
-        name: "overview"
-        description: "Open the workspace overview"
-        onPressed: root.island?.toggle("overview")
-    }
 
-    GlobalShortcut {
-        name: "stats"
-        description: "Open the system statistics"
-        onPressed: root.island?.toggle("stats")
-    }
 
-    GlobalShortcut {
-        name: "session"
-        description: "Open the session menu"
-        onPressed: root.island?.toggle("session")
-    }
 
-    GlobalShortcut {
-        name: "lock"
-        description: "Lock the screen"
-        onPressed: LockService.lock()
-    }
 
     // An open panel holds the keyboard exclusively, which beats a normal
     // window, so the island closes first or the window cannot be typed in.
@@ -357,107 +315,23 @@ ShellRoot {
         settingsWindow.toggle()
     }
 
-    GlobalShortcut {
-        name: "settings"
-        description: "Open the settings window"
-        onPressed: root.toggleSettings()
-    }
 
-    GlobalShortcut {
-        name: "appearance"
-        description: "Open the island appearance panel"
-        onPressed: root.island?.toggle("appearance")
-    }
 
     // Same panel, on the palette strip. Each name only closes from its own
     // strip.
-    GlobalShortcut {
-        name: "palette"
-        description: "Open the island appearance panel on the palettes"
-        onPressed: root.island?.toggle("palette")
-    }
 
-    GlobalShortcut {
-        name: "pet"
-        description: "Open the pet"
-        onPressed: root.island?.toggle("pet")
-    }
 
-    GlobalShortcut {
-        name: "games"
-        description: "Open the games"
-        onPressed: root.island?.toggle("games")
-    }
 
-    GlobalShortcut {
-        name: "notes"
-        description: "Open the notes"
-        onPressed: root.island?.toggle("notes")
-    }
 
-    GlobalShortcut {
-        name: "board"
-        description: "Open the task board"
-        onPressed: root.island?.toggle("board")
-    }
 
-    GlobalShortcut {
-        name: "keys"
-        description: "Show every key"
-        onPressed: root.island?.toggle("keys")
-    }
 
-    GlobalShortcut {
-        name: "zen"
-        description: "Hide or show the bar"
-        onPressed: SettingsService.set("barHidden", !SettingsService.barHidden)
-    }
 
-    GlobalShortcut {
-        name: "widgets"
-        description: "Hide or show the desktop widgets"
-        onPressed: SettingsService.set("desktopHidden", !SettingsService.desktopHidden)
-    }
 
-    GlobalShortcut {
-        name: "game"
-        description: "Turn game mode on or off"
-        onPressed: {
-            const on = !SettingsService.gameMode
-            SettingsService.set("gameMode", on)
-            OsdService.requested("󰺵", Tr.t(on ? "Game mode on" : "Game mode off"), -1)
-        }
-    }
 
-    GlobalShortcut {
-        name: "packages"
-        description: "Open the packages"
-        onPressed: root.island?.toggle("packages")
-    }
 
-    GlobalShortcut {
-        name: "machines"
-        description: "Open the virtual machines"
-        onPressed: root.island?.toggle("machines")
-    }
 
-    GlobalShortcut {
-        name: "servers"
-        description: "Open the development servers"
-        onPressed: root.island?.toggle("servers")
-    }
 
-    GlobalShortcut {
-        name: "screentime"
-        description: "Open the screen time"
-        onPressed: root.island?.toggle("screentime")
-    }
 
-    GlobalShortcut {
-        name: "camera"
-        description: "Open the camera effects"
-        onPressed: root.island?.toggle("camera")
-    }
 
     // The clipboard and the emoji are launcher modes: pressed again on that
     // mode it closes, pressed on another mode it switches. The query is set
@@ -474,29 +348,10 @@ ShellRoot {
         root.island?.open("launcher")
     }
 
-    GlobalShortcut {
-        name: "clipboard"
-        description: "Open the launcher on the clipboard"
-        onPressed: root.openLauncherOn("clipboard")
-    }
 
-    GlobalShortcut {
-        name: "emoji"
-        description: "Open the launcher on the emoji"
-        onPressed: root.openLauncherOn("emoji")
-    }
 
     // hyprpicker freezes a screenshot of the screen, so an open panel has to
     // finish closing before it starts.
-    GlobalShortcut {
-        name: "picker"
-        description: "Pick a colour off the screen"
-        onPressed: {
-            const wasOpen = root.island?.expanded ?? false
-            root.island?.close()
-            PickerService.pick(wasOpen ? PickerService.settle : 0)
-        }
-    }
 
     // ── CAPTURE ─────────────────────────────────────────────────────────────
     //
@@ -507,50 +362,12 @@ ShellRoot {
         CaptureService.open(shape, "photo", to, 0)
     }
 
-    GlobalShortcut {
-        name: "capture"
-        description: "Open the capture surface"
-        onPressed: CaptureService.open("", "", "", 0)
-    }
 
-    GlobalShortcut {
-        name: "captureRegion"
-        description: "Capture a region"
-        onPressed: root.capture("region", "file")
-    }
 
-    GlobalShortcut {
-        name: "captureWindow"
-        description: "Capture a window"
-        onPressed: root.capture("window", "file")
-    }
 
-    GlobalShortcut {
-        name: "captureScreen"
-        description: "Capture the whole screen"
-        onPressed: root.capture("screen", "file")
-    }
 
-    GlobalShortcut {
-        name: "captureEdit"
-        description: "Capture a region and annotate it"
-        onPressed: root.capture("region", "editor")
-    }
 
-    GlobalShortcut {
-        name: "captureText"
-        description: "Read a region as text"
-        onPressed: root.capture("region", "text")
-    }
 
-    GlobalShortcut {
-        name: "record"
-        description: "Start or stop recording the screen"
-        onPressed: {
-            root.island?.close()
-            RecorderService.toggle()
-        }
-    }
 
     // Always built rather than behind a Loader: creating a layer surface at
     // capture time flashes a black frame over the screen being captured.
