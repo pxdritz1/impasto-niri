@@ -92,17 +92,17 @@ Singleton {
         return !!screen && screen.name === root.primaryName
     }
 
-    // OutputsChanged is emitted by Niri for hotplug and output configuration
-    // changes. Quickshell screen signals remain a fallback for surface changes.
+    // Niri 26.04's event stream has no output-change event. Workspace topology
+    // changes plus Quickshell hotplug/geometry signals trigger read-only refreshes.
     readonly property Timer refreshDebounce: Timer {
         interval: 120
         onTriggered: root.load()
     }
 
-    readonly property Connections outputEvents: Connections {
+    readonly property Connections workspaceEvents: Connections {
         target: NiriService
         function onEventReceived(kind, data) {
-            if (kind === "OutputsChanged")
+            if (kind === "WorkspacesChanged")
                 root.refreshDebounce.restart()
         }
     }
