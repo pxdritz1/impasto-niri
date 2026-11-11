@@ -181,7 +181,7 @@ Singleton {
 
     // ── RUNNING ─────────────────────────────────────────────────────────────
     //
-    // Keeps `HyprlandService.clients` live while the dock or any note deck
+    // Keeps `NiriService.clients` live while the dock or any note deck
     // needs it (both test for fullscreen windows). Decks are read from the
     // settings, not `DesktopService`, which depends on this service's zone.
     readonly property bool decksExist: {
@@ -202,12 +202,12 @@ Singleton {
 
     onEnabledChanged: {
         if (root.enabled)
-            HyprlandService.loadClients()
+            NiriService.loadClients()
     }
 
     Component.onCompleted: {
         if (root.enabled)
-            HyprlandService.loadClients()
+            NiriService.loadClients()
     }
 
     // One group per application in first-opened order. Windows without a
@@ -215,7 +215,7 @@ Singleton {
     readonly property var groups: {
         const order = []
         const seen = ({})
-        for (const client of HyprlandService.clients) {
+        for (const client of NiriService.clients) {
             const cls = (client.class ?? "").trim()
             if (cls === "")
                 continue
@@ -238,8 +238,8 @@ Singleton {
     // reports maximised as 1 and fullscreen as 2; only the latter hides the
     // dock — and only on its own screen.
     function coveredOn(name: string): bool {
-        const workspace = HyprlandService.activeOn(name)
-        return workspace > 0 && HyprlandService.clients.some(
+        const workspace = NiriService.activeOn(name)
+        return workspace > 0 && NiriService.clients.some(
             client => (client.fullscreen ?? 0) >= 2
                 && client.workspace && client.workspace.id === workspace)
     }
@@ -293,10 +293,10 @@ Singleton {
                 // The focused window, so a repeat click can cycle to the next
                 // one. Uses the focused address rather than `focusHistoryID`,
                 // which is stale after focusing an empty workspace.
-                front: client.address === HyprlandService.focusedAddress
+                front: client.address === NiriService.focusedAddress
             })),
             running: windows.length > 0,
-            active: windows.some(client => client.address === HyprlandService.focusedAddress)
+            active: windows.some(client => client.address === NiriService.focusedAddress)
         }
     }
 
@@ -405,13 +405,13 @@ Singleton {
             return
         }
         if (!item.active) {
-            HyprlandService.focusWindow(item.windows[0].address)
+            NiriService.focusWindow(item.windows[0].address)
             return
         }
         if (item.windows.length < 2)
             return
         const at = item.windows.findIndex(window => window.front)
-        HyprlandService.focusWindow(
+        NiriService.focusWindow(
             item.windows[(at + 1) % item.windows.length].address)
     }
 
@@ -426,6 +426,6 @@ Singleton {
         if (!item)
             return
         for (const window of item.windows)
-            HyprlandService.closeWindow(window.address)
+            NiriService.closeWindow(window.address)
     }
 }
