@@ -393,17 +393,17 @@ QtObject {
     // the launcher opens.
     function windows(term: string): var {
         const found = []
-        for (const client of HyprlandService.clients) {
+        for (const client of NiriService.windows) {
             if (found.length >= root.maxResults)
                 break
             const title = (client.title ?? "").toLowerCase()
-            const cls = (client.class ?? "").toLowerCase()
+            const cls = (client.app_id ?? "").toLowerCase()
             if (term !== "" && !title.includes(term) && !cls.includes(term))
                 continue
             found.push({
-                kind: "window", id: client.address, icon: "󰖯",
-                name: client.title || client.class,
-                subtitle: `${client.class}  ·  workspace ${client.workspace.id}`
+                kind: "window", id: client.id, icon: "󰖯",
+                name: client.title || client.app_id,
+                subtitle: `${client.app_id}  ·  workspace ${NiriService.workspaceById(client.workspace_id)?.idx ?? "?"}`
             })
         }
         return found
@@ -447,7 +447,7 @@ QtObject {
         else if (entry.kind === "timer")
             TimerService.start(entry.milliseconds, entry.subtitle ?? "")
         else if (entry.kind === "window")
-            HyprlandService.focusWindow(entry.id)
+            NiriService.focusWindow(entry.id)
         else if (entry.kind === "calculation")
             root.copy(entry.name)
         else if (entry.kind === "clip")
