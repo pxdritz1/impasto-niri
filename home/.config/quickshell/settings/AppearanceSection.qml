@@ -15,7 +15,7 @@ import "../services"
 import "../components"
 
 // The wallpaper and its palette, the terminal, type and the shell's motion.
-// What Hyprland does to windows is `WindowsSection`.
+// Niri owns window rendering; this page controls Impasto's own appearance.
 SettingsSection {
     id: root
 
@@ -188,8 +188,7 @@ SettingsSection {
 
     // ── MOTION ──────────────────────────────────────────────────────────────
     //
-    // The shell's own pace; the windows' animation is Hyprland's, on the
-    // Windows page, and neither can use the other's curves.
+    // The shell's motion is independent from Niri's compositor animations.
 
     ColumnLayout {
         Layout.fillWidth: true
@@ -199,11 +198,11 @@ SettingsSection {
         SettingGroup {
             title: Tr.t("Game mode")
             note: Tr.t("Everything still, for a game or a slow machine.")
-            hint: Tr.t("Stops the shell's animations, the spectrum and the pet, makes the island, the dock and the widgets solid without shadows, and turns off Hyprland's animations, blur, shadow and glass. The settings below are kept and come back when it is turned off.")
+            hint: Tr.t("Stops Impasto's animations, spectrum and pet, and makes its surfaces solid. Niri's own animations and window effects are left unchanged.")
 
             SettingRow {
                 label: Tr.t("Game mode")
-                reading: ShortcutService.current("Shell · Turn game mode on or off")
+                reading: Tr.t("Shell-only; bind it in Niri KDL if desired")
 
                 ToggleSwitch {
                     checked: SettingsService.gameMode
