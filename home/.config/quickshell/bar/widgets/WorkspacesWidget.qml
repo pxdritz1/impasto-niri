@@ -261,7 +261,7 @@ Rectangle {
                     enabled: !root.preview
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: NiriService.focus(slot.workspaceId)
+                    onClicked: NiriService.focusWorkspaceOn(slot.workspaceId, root.screenName)
                 }
             }
         }
