@@ -176,7 +176,6 @@ Singleton {
         root.active = id
         root.save()
 
-        CompositorService.reassert()
 
         // Palette before wallpaper. With the adaptive palette the wallpaper's
         // `applied` repaints, so it is only set here if not already active.
