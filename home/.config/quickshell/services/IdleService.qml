@@ -11,7 +11,6 @@ pragma Singleton
 
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
 import Quickshell.Wayland
 
 // Idle lock, screen off and suspend, in place of hypridle.
@@ -59,16 +58,8 @@ Singleton {
         }
     }
 
-    // The dpms dispatcher toggles and ignores the state it is given, so this
-    // sends a Lua chunk that reads the monitor and toggles only on mismatch,
-    // making both directions idempotent.
-    //
-    // Waking matters: `key_press_enables_dpms` and `mouse_move_enables_dpms`
-    // are off, so only this and `SUPER + SHIFT + D` turn the panel back on.
-    // Only the first monitor is handled.
+    // Niri exposes explicit, idempotent DPMS actions through its IPC.
     function screen(on: bool): void {
-        const disagrees = on ? "not m.dpms_status" : "m.dpms_status"
-        Hyprland.dispatch(`function() local m = hl.get_monitors()[1]`
-            + ` if m and ${disagrees} then hl.dispatch(hl.dsp.dpms()) end end`)
+        NiriService.runAction([on ? "power-on-monitors" : "power-off-monitors"])
     }
 }
