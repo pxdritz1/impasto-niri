@@ -9,7 +9,6 @@
 
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
 import Quickshell.Wayland
 import Quickshell.Widgets
 
@@ -84,18 +83,14 @@ PanelWindow {
     // Raised above the windows while arranging, and only then.
     WlrLayershell.layer: root.editing ? WlrLayer.Top : WlrLayer.Bottom
 
-    // While arranging. The grab keeps the keyboard here while the pointer is
-    // elsewhere, and a click on any surface but this one and the edges' clears
-    // it, which ends the mode; the compositor hands the keyboard back.
+    // While arranging, request layer-shell keyboard focus. Losing activation
+    // ends editing; Niri restores normal window focus without a compositor grab.
     WlrLayershell.keyboardFocus: root.editing && root.hosting
         ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
 
-    HyprlandFocusGrab {
-        active: root.editing && root.hosting
-        // Defensive: both lists are read while the singletons are still
-        // being built, and one of them is briefly undefined.
-        windows: (DesktopService.windows ?? []).concat(DeckService.windows ?? [])
-        onCleared: DesktopService.edit(false)
+    onActiveChanged: {
+        if (!active && root.editing && root.hosting)
+            DesktopService.edit(false)
     }
 
     Component.onCompleted: DesktopService.publish(root.screenName, root)
