@@ -14,8 +14,9 @@ layout {
     }
 }
 
-animations {
-    // Niri owns compositor animations. Tune individual animation nodes here.
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 24
 }
 
 binds {
