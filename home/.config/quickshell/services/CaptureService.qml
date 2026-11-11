@@ -75,15 +75,23 @@ Singleton {
 
     // ── OPTIONS ─────────────────────────────────────────────────────────────
 
-    readonly property var shapes: ["region", "window", "screen"]
+    // Niri IPC does not expose global window rectangles. Window capture
+    // needs a separate native screenshot-window flow; until that is wired,
+    // offer only shapes this overlay can implement accurately.
+    readonly property var shapes: ["region", "screen"]
     readonly property var kinds: ["photo", "video"]
     readonly property var destinations: ["file", "clipboard", "editor", "text"]
 
-    readonly property string shape: SettingsService.captureShape
+    readonly property string shape: SettingsService.captureShape === "window"
+        ? "region" : SettingsService.captureShape
     readonly property string kind: SettingsService.captureKind
     property string to: "file"
 
     function setShape(id: string): void {
+        if (root.shapes.indexOf(id) < 0) {
+            console.warn("Unsupported capture shape:", id)
+            return
+        }
         SettingsService.set("captureShape", id)
     }
 
