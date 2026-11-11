@@ -15,7 +15,7 @@ import Quickshell
 import Quickshell.Services.Polkit
 
 // The shell is the session's polkit agent: a program asking for root asks
-// here, and the island opens on it. One agent per session, so Hyprland
+// here, and the island opens on it. One agent per session, so Niri
 // starts none.
 //
 // Quickshell registers once per process and a reload inherits that
