@@ -10,7 +10,6 @@
 import QtQuick
 import QtQuick.Effects
 import Quickshell
-import Quickshell.Hyprland
 import Quickshell.Wayland
 
 import "../theme"
@@ -264,24 +263,19 @@ PanelWindow {
 
     // ── FOCUS ───────────────────────────────────────────────────────────────
     //
-    // On-demand keyboard focus plus a Hyprland focus grab while the island is
-    // open. The grab keeps the keyboard here when the pointer crosses a window
-    // (with `follow_mouse`, on-demand focus alone loses it), and a click on any
-    // other surface clears it, which closes the island. The compositor
-    // restores focus when the grab ends. Both stand down while the capture
-    // surface is up, so an open panel waits under it instead of closing, and
-    // while the session is locked, where a grab would keep the keyboard from
-    // the other screens' lock.
+    // On-demand layer-shell keyboard focus while the island is open. Niri
+    // arbitrates focus through the standard layer-shell protocol; when this
+    // surface loses activation, close the panel instead of emulating a
+    // compositor-specific focus grab.
     readonly property bool holdsKeyboard: root.live && island.expanded
         && !CaptureService.active && !LockService.locked
 
     WlrLayershell.keyboardFocus: root.holdsKeyboard
         ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
 
-    HyprlandFocusGrab {
-        active: root.holdsKeyboard
-        windows: [root]
-        onCleared: root.dismiss()
+    onActiveChanged: {
+        if (!active && root.holdsKeyboard)
+            root.dismiss()
     }
 
     HoverHandler {
