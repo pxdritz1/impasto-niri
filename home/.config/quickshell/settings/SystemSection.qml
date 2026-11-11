@@ -137,7 +137,7 @@ SettingsSection {
         SettingGroup {
             title: Tr.t("Reset")
             note: Tr.t("Only the profile in use. The others are left as they were.")
-            hint: Tr.t("Reset returns every setting in this profile to its default, clears the compositor overrides and reloads Hyprland. Machine settings such as screens, name, picture and language are kept, and there is no undo.")
+            hint: Tr.t("Reset returns Impasto preferences in this profile to their defaults. Niri's separate KDL configuration is left untouched. Machine settings such as screens, name, picture and language are kept, and there is no undo.")
 
             SettingRow {
                 label: Tr.t("Where the settings live")
@@ -161,7 +161,6 @@ SettingsSection {
                     implicitHeight: 30
                     onClicked: {
                         SettingsService.reset()
-                        CompositorService.restoreDefaults()
                     }
                 }
             }
@@ -267,7 +266,7 @@ SettingsSection {
 
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    text: Tr.t("A Hyprland shell, and the desk around it")
+                    text: Tr.t("A Niri shell, and the desk around it")
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeLabel
                     color: Theme.textMuted
