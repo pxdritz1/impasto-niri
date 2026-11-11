@@ -288,6 +288,17 @@ Singleton {
         }
     }
 
+    // Reconnect only after the IPC process exits; this is recovery, not a
+    // periodic state poll.
+    readonly property Timer reconnect: Timer {
+        interval: 3000
+        repeat: false
+        onTriggered: {
+            if (!root.eventStream.running)
+                root.eventStream.running = true
+        }
+    }
+
     readonly property Process eventStream: Process {
         command: ["niri", "msg", "--json", "event-stream"]
         running: true
@@ -303,8 +314,10 @@ Singleton {
         }
         onExited: (exitCode, exitStatus) => {
             root.connected = false
-            if (exitCode !== 0)
+            if (exitCode !== 0) {
                 root.lastError = "Niri event stream exited (" + exitCode + ")"
+                root.reconnect.start()
+            }
         }
     }
 }
