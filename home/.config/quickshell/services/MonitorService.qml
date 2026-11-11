@@ -65,6 +65,16 @@ Singleton {
         return found?.name ?? ""
     }
 
+    function monitorFor(description: string): var {
+        return root.monitors.find(monitor =>
+            monitor.description === description || monitor.name === description) ?? null
+    }
+
+    function descriptionFor(name: string): string {
+        const monitor = root.monitors.find(item => item.name === name)
+        return monitor?.description ?? ""
+    }
+
     function isPrimary(screen: var): bool {
         return !!screen && screen.name === root.primaryName
     }
