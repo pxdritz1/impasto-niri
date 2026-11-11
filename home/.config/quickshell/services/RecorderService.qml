@@ -123,7 +123,7 @@ Singleton {
         if (geometry !== "")
             command.push("--geometry", geometry)
         else if (NiriService.focusedOutput !== "")
-            command.push("--output", HyprlandService.focusedMonitor)
+            command.push("--output", NiriService.focusedOutput)
         if (SettingsService.recorderAudio && root.canAudio)
             command.push("--audio")
         root.action.command = command
