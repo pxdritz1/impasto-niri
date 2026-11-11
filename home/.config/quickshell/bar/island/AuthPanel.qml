@@ -9,7 +9,6 @@
 
 import QtQuick
 import Quickshell
-import Quickshell.Io
 
 import "../../theme"
 import "../../services"
@@ -27,25 +26,9 @@ Item {
     readonly property int pillHeight: 56
     readonly property int face: 40
 
-    // Caps Lock, from the compositor: Qt does not report it. Read on open
-    // and on each press of the key, while the panel is up.
+    // Qt reports the lock modifier with keyboard events, so this stays
+    // compositor-independent and does not need a separate IPC command.
     property bool capsLock: false
-
-    Process {
-        id: capsReader
-
-        command: ["hyprctl", "devices", "-j"]
-        running: true
-        stdout: StdioCollector {
-            onStreamFinished: {
-                try {
-                    root.capsLock = (JSON.parse(text).keyboards ?? []).some(board => board.capsLock)
-                } catch (error) {
-                    root.capsLock = false
-                }
-            }
-        }
-    }
 
     Component.onCompleted: field.forceActiveFocus()
     Component.onDestruction: PolkitService.cancel()
@@ -185,9 +168,11 @@ Item {
             clip: true
 
             onAccepted: root.answer()
+            Keys.onPressed: event => {
+                root.capsLock = (event.modifiers & Qt.CapsLockModifier) !== 0
+            }
             Keys.onReleased: event => {
-                if (event.key === Qt.Key_CapsLock)
-                    capsReader.running = true
+                root.capsLock = (event.modifiers & Qt.CapsLockModifier) !== 0
             }
             onTextChanged: if (text !== "") PolkitService.failed = false
 
