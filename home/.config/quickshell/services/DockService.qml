@@ -179,36 +179,8 @@ Singleton {
         return found ? found.id : ""
     }
 
-    // ── RUNNING ─────────────────────────────────────────────────────────────
-    //
-    // Keeps `NiriService.clients` live while the dock or any note deck
-    // needs it (both test for fullscreen windows). Decks are read from the
-    // settings, not `DesktopService`, which depends on this service's zone.
-    readonly property bool decksExist: {
-        const list = SettingsService.desktopWidgets
-        const length = list && typeof list.length === "number" ? list.length : 0
-        for (let index = 0; index < length; index++) {
-            if (list[index] && list[index].edge)
-                return true
-        }
-        return false
-    }
-
-    readonly property Binding watching: Binding {
-        target: HyprlandService
-        property: "watchClients"
-        value: root.enabled || root.decksExist
-    }
-
-    onEnabledChanged: {
-        if (root.enabled)
-            NiriService.loadClients()
-    }
-
-    Component.onCompleted: {
-        if (root.enabled)
-            NiriService.loadClients()
-    }
+    // Niri's event stream owns the toplevel list and keeps it current even
+    // while the dock is hidden. No separate client watcher is needed.
 
     // One group per application in first-opened order. Windows without a
     // class are skipped.
@@ -234,9 +206,10 @@ Singleton {
         return root.groups.find(group => group.key === key) ?? null
     }
 
-    // A fullscreen window on the workspace a screen is showing. Hyprland
-    // reports maximised as 1 and fullscreen as 2; only the latter hides the
-    // dock — and only on its own screen.
+    // Niri does not currently expose fullscreen state in its public IPC
+    // window model. Do not infer it from geometry: fullscreen and maximized
+    // windows are distinct in Niri. Its layer-shell policy handles top-layer
+    // surfaces when a focused fullscreen window covers the output.
     function coveredOn(name: string): bool {
         const workspace = NiriService.activeOn(name)
         return workspace > 0 && NiriService.clients.some(
