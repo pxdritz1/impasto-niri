@@ -71,6 +71,8 @@ Singleton {
         target: MediaService.active
 
         function onPositionChanged(): void {
+            if (root.watchers === 0)
+                return
             root.anchorPosition = MediaService.position
             root.anchorTime = Date.now()
             root.place()
@@ -83,15 +85,15 @@ Singleton {
 
         // Asking the player again re-reads the position, which re-anchors.
         function onPlayingChanged(): void {
-            if (MediaService.available)
+            if (root.watchers > 0 && MediaService.available)
                 MediaService.active.positionChanged()
         }
     }
 
+    // Lyrics change at line boundaries, not every animation frame. Schedule
+    // one wake-up for the next line instead of polling 8 times per second.
     readonly property Timer ticker: Timer {
-        interval: 120
-        repeat: true
-        running: root.watchers > 0 && root.available && root.synced && MediaService.playing
+        repeat: false
         onTriggered: root.place()
     }
 
@@ -101,33 +103,59 @@ Singleton {
     function place(): void {
         if (!root.available || !root.synced) {
             root.current = -1
+            root.ticker.stop()
             return
         }
+
         const elapsed = MediaService.playing ? (Date.now() - root.anchorTime) / 1000 : 0
         const now = root.anchorPosition + elapsed + root.lead
-        let index = -1
-        for (let i = 0; i < root.lines.length; i++) {
-            if (root.lines[i].t > now)
-                break
-            index = i
+
+        // Timestamps are sorted by lyrics.py. Binary search avoids walking
+        // every line on each MPRIS position update.
+        let low = 0
+        let high = root.lines.length
+        while (low < high) {
+            const middle = (low + high) >> 1
+            if (root.lines[middle].t <= now)
+                low = middle + 1
+            else
+                high = middle
         }
-        root.current = index
+
+        const nextIndex = low - 1
+        if (root.current !== nextIndex)
+            root.current = nextIndex
+
+        root.ticker.stop()
+        if (root.watchers > 0 && MediaService.playing && low < root.lines.length) {
+            const untilNext = root.lines[low].t - now
+            root.ticker.interval = Math.max(20, Math.ceil(untilNext * 1000))
+            root.ticker.start()
+        }
     }
 
     function subscribe(): void {
         root.watchers += 1
         MediaService.subscribe()
+        if (root.watchers === 1) {
+            root.anchorPosition = MediaService.position
+            root.anchorTime = Date.now()
+            root.place()
+        }
     }
 
     function release(): void {
         root.watchers = Math.max(0, root.watchers - 1)
         MediaService.release()
+        if (root.watchers === 0)
+            root.ticker.stop()
     }
 
     onWantedChanged: root.fetch()
     onTrackChanged: {
         root.patience = 0
         root.retry.stop()
+        root.ticker.stop()
         root.current = -1
         root.anchorPosition = 0
         root.anchorTime = Date.now()

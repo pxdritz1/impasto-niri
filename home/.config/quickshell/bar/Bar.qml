@@ -388,8 +388,21 @@ PanelWindow {
         // a black rim. `layer.effect` rather than a hidden `source` item, which
         // does not work inside a Repeater.
         Loader {
-            anchors.fill: parent
-            active: Theme.barShadowShown
+            anchors.left: parent.left
+            anchors.top: parent.top
+            width: parent.width
+            // The bar shadow only occupies the top strip. Keeping this loader
+            // full-screen forced three offscreen layers to allocate a texture
+            // as tall as the monitor, even though the shadow never reaches it.
+            // The bezel is the exception: its silhouette spans the screen.
+            height: root.edgeToEdge ? parent.height : Math.ceil(Math.max(
+                band.y + band.height,
+                island.y + island.height,
+                notchLeft.y + notchLeft.height,
+                notchRight.y + notchRight.height
+            ) + Theme.shadowBarRange + Theme.shadowBarSpread
+                + (SettingsService.notched ? Theme.shadowBarRange : 0))
+            active: root.painted && Theme.barShadowShown
             sourceComponent: shadowBody
         }
 
