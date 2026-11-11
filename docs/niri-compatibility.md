@@ -21,7 +21,7 @@ The curated [awesome-niri list](https://github.com/niri-wm/awesome-niri) tracks 
 
 ## Important limitations
 
-- Niri IPC reports window identity, workspace membership, focus and layout metadata, but not Hyprland-style global rectangles for every window. The shell must not recreate drag/drop or pixel-perfect thumbnails from guessed geometry.
+- Niri IPC reports window identity, workspace membership, focus and layout metadata, but not Hyprland-style global rectangles for every window. The shell must not recreate drag/drop or pixel-perfect thumbnails from guessed geometry. The capture overlay therefore offers region and screen selection only; native Niri window screenshots exist but are not yet wired into Impasto's capture destinations.
 - Niri does not expose configured keybinds through IPC. Bindings live in KDL. The shell does not parse or rewrite that file; its settings pages launch the optional NiriMod editor for binding inspection and editing.
 - Niri 26.04's event stream has no dedicated output-change event. The monitor service refreshes output state from Quickshell screen hotplug/geometry signals and workspace topology changes, with a debounced read of `niri msg --json outputs`. Niri automatically handles the internal laptop output on lid close/open. Output changes made through compositor IPC are temporary; persistent profiles belong in Niri KDL or a profile manager such as Kanshi. The shell's monitor page reads output state and launches NiriMod for interactive KDL editing.
 - Refraction and shake-to-find are not claimed as supported. Native blur and ordinary cursor themes are not equivalent to those effects.
