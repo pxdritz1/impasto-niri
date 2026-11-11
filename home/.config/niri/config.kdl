@@ -31,6 +31,15 @@ binds {
     Mod+Shift+G { spawn "qs" "ipc" "call" "panel" "open" "games"; }
     Mod+Shift+S { spawn "qs" "ipc" "call" "panel" "open" "session"; }
     Mod+Shift+W { spawn "qs" "ipc" "call" "widgets" "toggle"; }
+    Mod+Shift+O { spawn "qs" "ipc" "call" "settings" "toggle"; }
+    Mod+Shift+X { spawn "qs" "ipc" "call" "picker" "pick"; }
+    Mod+Shift+R { spawn "qs" "ipc" "call" "capture" "open" "region" "editor"; }
+    Mod+Shift+C { spawn "qs" "ipc" "call" "launcher" "mode" "clipboard"; }
+    Mod+Shift+Alt+E { spawn "qs" "ipc" "call" "launcher" "mode" "emoji"; }
+    Mod+Shift+M { spawn "qs" "ipc" "call" "nightlight" "set" "toggle"; }
+    Mod+Shift+Up { spawn "qs" "ipc" "call" "brightness" "step" "5"; }
+    Mod+Shift+Down { spawn "qs" "ipc" "call" "brightness" "step" "-5"; }
+    Mod+Shift+F12 { spawn "qs" "ipc" "call" "recorder" "toggle"; }
     Mod+Shift+P { power-off-monitors; }
 
     Mod+Q { close-window; }
