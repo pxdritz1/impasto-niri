@@ -14,7 +14,7 @@
 
 # ── CURSOR ──────────────────────────────────────────────────────────────────
 
-bibata-cursor-theme-bin      # the XCursor env.lua names, for clients with no hyprcursor
+bibata-cursor-theme-bin      # standard XCursor theme used by Niri and GTK
 
 
 # ── ICONS ───────────────────────────────────────────────────────────────────
