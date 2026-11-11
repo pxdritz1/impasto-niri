@@ -46,6 +46,23 @@ SettingsSection {
     }
 
     SettingGroup {
+        title: Tr.t("Edit Niri compositor settings")
+        note: Tr.t("NiriMod edits the real KDL configuration, including layout, animations and window rules.")
+        NiriModButton {
+            page: "layout"
+            label: Tr.t("Edit layout")
+        }
+        NiriModButton {
+            page: "animations"
+            label: Tr.t("Edit animations")
+        }
+        NiriModButton {
+            page: "window_rules"
+            label: Tr.t("Edit window rules")
+        }
+    }
+
+    SettingGroup {
         title: Tr.t("Not available as a Niri plugin")
         note: Tr.t("No fake controls are shown for effects that Niri cannot provide.")
         SettingRow {
