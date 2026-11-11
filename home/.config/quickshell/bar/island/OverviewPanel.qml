@@ -75,7 +75,7 @@ ColumnLayout {
         text: Tr.t("Workspaces")
         color: Theme.text
         font.family: Theme.fontFamily
-        font.pixelSize: Theme.fontSizeHeading
+        font.pixelSize: Theme.fontSizeLarge
         font.weight: Font.DemiBold
     }
 
@@ -157,7 +157,7 @@ ColumnLayout {
                                 color: modelData.is_focused
                                     ? Theme.accent : Theme.islandSurface
                                 border.width: modelData.is_urgent ? 1 : 0
-                                border.color: Theme.warning
+                                border.color: Theme.accent
 
                                 RowLayout {
                                     anchors.fill: parent
@@ -203,8 +203,10 @@ ColumnLayout {
                 }
 
                 MouseArea {
-                    anchors.fill: parent
-                    z: -1
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    height: 32
                     cursorShape: Qt.PointingHandCursor
                     onClicked: root.selectWorkspace(workspaceCard.modelData)
                     onDoubleClicked: root.activateWorkspace(workspaceCard.modelData)
