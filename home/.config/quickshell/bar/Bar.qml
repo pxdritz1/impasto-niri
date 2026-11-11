@@ -217,14 +217,13 @@ PanelWindow {
 
     // Input region: the bar's band, plus the island's shape (the band's, in
     // one capsule) with 12 px below it so the bottom edge still counts. The
-    // whole screen only while the control centre is being arranged, since
-    // blocks are dragged out of the tray card, which moves. Outside clicks are
-    // left to the focus grab, so windows under an open panel stay usable.
+    // whole screen while a panel is open, so a click outside it reaches
+    // `dismiss` below instead of the window underneath.
     readonly property real shapeLeft: root.unified && !root.edgeToEdge
         ? Math.min(root.bandX, root.islandLeft) : root.islandLeft
     readonly property real shapeRight: root.unified && !root.edgeToEdge
         ? Math.max(root.bandX + root.bandWidth, root.islandRight) : root.islandRight
-    readonly property bool wholeScreen: root.holding && ControlsService.editing
+    readonly property bool wholeScreen: root.holding
 
     // No input at all while desktop widgets are being arranged: dragging one
     // over the bar would move the pointer to this surface, and the desktop
@@ -263,20 +262,16 @@ PanelWindow {
 
     // ── FOCUS ───────────────────────────────────────────────────────────────
     //
-    // On-demand layer-shell keyboard focus while the island is open. Niri
-    // arbitrates focus through the standard layer-shell protocol; when this
-    // surface loses activation, close the panel instead of emulating a
-    // compositor-specific focus grab.
+    // Exclusive layer-shell keyboard focus while the island is open: niri
+    // only hands on-demand surfaces the keyboard after a click, so the
+    // search field would not receive keys until then. There is no focus grab
+    // to lose; the island closes on a click outside it (the input region
+    // covers the screen while it is open) and when the pointer leaves it.
     readonly property bool holdsKeyboard: root.live && island.expanded
         && !CaptureService.active && !LockService.locked
 
     WlrLayershell.keyboardFocus: root.holdsKeyboard
-        ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
-
-    onActiveChanged: {
-        if (!active && root.holdsKeyboard)
-            root.dismiss()
-    }
+        ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
     HoverHandler {
         onHoveredChanged: if (hovered) root.claimed()
@@ -346,12 +341,13 @@ PanelWindow {
         }
     }
 
-    // Clicks on the bar outside the open island close it. The bar is inside
-    // the focus grab, so the grab never sees them.
+    // Clicks outside the open island close it. The input region covers the
+    // screen while it is open, so this is where they land.
     MouseArea {
         anchors.fill: parent
         enabled: root.holding
-        onClicked: root.dismiss()
+        acceptedButtons: Qt.AllButtons
+        onPressed: root.dismiss()
     }
 
     // ── THE FACE ────────────────────────────────────────────────────────────
@@ -770,6 +766,8 @@ PanelWindow {
 
                 x: (parent.width - width) / 2
                 y: root.islandTopMargin + island.height + Theme.desktopGutter
+                width: item ? item.implicitWidth : 0
+                height: item ? item.implicitHeight : 0
                 active: root.live && ControlsService.editing && !overlay.aside
                 sourceComponent: GridSize {}
             }

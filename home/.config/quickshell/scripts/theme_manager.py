@@ -26,6 +26,7 @@ import json
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import textwrap
@@ -39,9 +40,33 @@ XDG_DATA_HOME = os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/
 XDG_STATE_HOME = os.environ.get("XDG_STATE_HOME") or os.path.expanduser("~/.local/state")
 XDG_CACHE_HOME = os.environ.get("XDG_CACHE_HOME") or os.path.expanduser("~/.cache")
 
-WALLPAPERS_DIR = os.path.join(XDG_DATA_HOME, "wallpapers")
-# Animated wallpapers: videos, played by mpvpaper over the still awww shows.
-ANIMATED_DIR = os.path.join(WALLPAPERS_DIR, "animated")
+DEFAULT_WALLPAPERS_DIR = os.path.join(XDG_DATA_HOME, "wallpapers")
+
+
+def wallpapers_dir():
+    """The folder the stills are listed from.
+
+    `IMPASTO_WALLPAPERS` (set by the shell from its settings) wins, then the
+    settings file, so the command line agrees with the shell, then the data
+    directory.
+    """
+    chosen = os.environ.get("IMPASTO_WALLPAPERS", "")
+    if not chosen:
+        try:
+            with open(os.path.join(XDG_STATE_HOME, "quickshell", "settings.json"),
+                      encoding="utf-8") as handle:
+                chosen = json.load(handle).get("wallpaperDir", "") or ""
+        except (OSError, ValueError, AttributeError):
+            chosen = ""
+    chosen = os.path.expanduser(chosen.strip())
+    return chosen if chosen and os.path.isdir(chosen) else DEFAULT_WALLPAPERS_DIR
+
+
+# Animated wallpapers: videos, played by mpvpaper over the still awww shows,
+# in an `animated` folder beside the stills.
+def animated_dir():
+    return os.path.join(wallpapers_dir(), "animated")
+
 # One frame of each video, for the palette and for everything that draws the
 # wallpaper as a picture (the lock, the overview, the arranging desk).
 POSTERS_DIR = os.path.join(XDG_CACHE_HOME, "impasto", "posters")
@@ -475,13 +500,14 @@ def get_current_wallpaper():
 
 
 def list_wallpapers():
-    if not os.path.isdir(WALLPAPERS_DIR):
+    folder = wallpapers_dir()
+    if not os.path.isdir(folder):
         return []
     entries = []
-    for name in sorted(os.listdir(WALLPAPERS_DIR)):
+    for name in sorted(os.listdir(folder)):
         if name.startswith("."):
             continue
-        path = os.path.join(WALLPAPERS_DIR, name)
+        path = os.path.join(folder, name)
         if os.path.isfile(path) and name.lower().endswith(IMAGE_EXTENSIONS):
             entries.append({"name": pretty_name(name), "path": path})
     return entries
@@ -489,13 +515,14 @@ def list_wallpapers():
 
 def list_animated():
     # Made here so there is a folder to drop the first video into.
+    folder = animated_dir()
     try:
-        os.makedirs(ANIMATED_DIR, exist_ok=True)
+        os.makedirs(folder, exist_ok=True)
     except OSError:
         return []
     entries = []
-    for name in sorted(os.listdir(ANIMATED_DIR)):
-        path = os.path.join(ANIMATED_DIR, name)
+    for name in sorted(os.listdir(folder)):
+        path = os.path.join(folder, name)
         if name.startswith(".") or not os.path.isfile(path):
             continue
         if not name.lower().endswith(MOTION_EXTENSIONS):
@@ -3933,6 +3960,65 @@ def link_current_wallpaper(image_path):
         sys.stderr.write(f"Cannot update the current-wallpaper link: {error}\n")
 
 
+# ── MATUGEN ─────────────────────────────────────────────────────────────────
+#
+# With awww showing the wallpaper, matugen's templates (the niri include, the
+# GTK/Qt/terminal files in ~/.config/matugen) are regenerated from the same
+# picture. It runs detached so applying the wallpaper never waits on it, a
+# newer wallpaper replaces a run still going, and an unchanged picture is
+# not generated twice.
+MATUGEN_CONFIG = os.path.join(XDG_CONFIG_HOME, "matugen", "config.toml")
+MATUGEN_STAMP = os.path.join(STATE_DIR, "matugen.stamp")
+MATUGEN_PID = os.path.join(STATE_DIR, "matugen.pid")
+
+
+def matugen_stamp(image_path):
+    try:
+        picture = os.stat(image_path)
+        config = os.stat(MATUGEN_CONFIG)
+    except OSError:
+        return ""
+    return f"{image_path}|{picture.st_mtime_ns}|{picture.st_size}|{config.st_mtime_ns}"
+
+
+def stop_matugen():
+    try:
+        with open(MATUGEN_PID, encoding="utf-8") as handle:
+            pid = int(handle.read().strip())
+        with open(f"/proc/{pid}/comm", encoding="utf-8") as handle:
+            if handle.read().strip() == "matugen":
+                os.kill(pid, signal.SIGTERM)
+    except (OSError, ValueError):
+        pass
+
+
+def sync_matugen(image_path):
+    if not (shutil.which("matugen") and shutil.which("awww") and os.path.isfile(MATUGEN_CONFIG)):
+        return
+    stamp = matugen_stamp(image_path)
+    if not stamp:
+        return
+    try:
+        with open(MATUGEN_STAMP, encoding="utf-8") as handle:
+            if handle.read() == stamp:
+                return
+    except OSError:
+        pass
+    ensure_state_dir()
+    stop_matugen()
+    try:
+        process = subprocess.Popen(
+            ["matugen", "image", image_path, "--mode", "dark", "--quiet"],
+            stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            start_new_session=True)
+        with open(MATUGEN_PID, "w", encoding="utf-8") as handle:
+            handle.write(str(process.pid))
+        with open(MATUGEN_STAMP, "w", encoding="utf-8") as handle:
+            handle.write(stamp)
+    except OSError as error:
+        sys.stderr.write(f"matugen failed: {error}\n")
+
+
 # awww transition types accepted from the shell; anything else becomes a wipe.
 WALLPAPER_TRANSITIONS = ("none", "simple", "fade", "left", "right", "top", "bottom",
                          "wipe", "wave", "grow", "center", "any", "outer")
@@ -3983,6 +4069,7 @@ def set_wallpaper(chosen, transition="wipe"):
     save_state(state)
     link_current_wallpaper(image_path)
     extract_colors(image_path)
+    sync_matugen(image_path)
     return True
 
 

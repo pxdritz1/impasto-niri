@@ -33,10 +33,19 @@ ColumnLayout {
 
     spacing: 14
 
-    Component.onCompleted: VmService.subscribe()
+    Component.onCompleted: {
+        VmService.subscribe()
+        if (root.view === "new")
+            search.forceActiveFocus()
+    }
     Component.onDestruction: VmService.release()
 
-    onViewChanged: if (root.view === "new") VmService.loadCatalog()
+    onViewChanged: {
+        if (root.view !== "new")
+            return
+        VmService.loadCatalog()
+        search.forceActiveFocus()
+    }
 
     readonly property int rowHeight: 76
 

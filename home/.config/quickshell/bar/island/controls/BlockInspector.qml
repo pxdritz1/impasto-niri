@@ -57,7 +57,7 @@ Item {
                 ? root.box.y : root.box.y + root.box.height + root.gap))
 
         width: root.cardWidth
-        height: column.implicitHeight + 2 * root.pad
+        height: Math.min(column.implicitHeight + 2 * root.pad, root.board.height)
         radius: Theme.radiusLarge
         color: Theme.island
         border.color: Theme.borderIn(QsWindow.window)
@@ -73,248 +73,259 @@ Item {
             gesturePolicy: TapHandler.ReleaseWithinBounds
         }
 
-        Column {
-            id: column
+        // Scrolls when the card is taller than the grid it sits on, instead
+        // of running past the island and being cut off.
+        Flickable {
+            anchors.fill: parent
+            contentWidth: width
+            contentHeight: column.implicitHeight + 2 * root.pad
+            interactive: contentHeight > height
+            boundsBehavior: Flickable.StopAtBounds
+            clip: true
 
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.margins: root.pad
-            spacing: 12
+            Column {
+                id: column
 
-            // ── NAME ────────────────────────────────────────────────────────
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: parent.top
+                anchors.margins: root.pad
+                spacing: 12
 
-            Item {
-                width: parent.width
-                height: 28
+                // ── NAME ────────────────────────────────────────────────────────
+
+                Item {
+                    width: parent.width
+                    height: 28
+
+                    Text {
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: root.entry ? Tr.t(root.entry.name) : ""
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.weight: Font.DemiBold
+                        color: Theme.text
+                    }
+
+                    PillButton {
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: Tr.t("Remove")
+                        implicitHeight: 26
+                        onClicked: ControlsService.remove(root.key)
+                    }
+                }
+
+                Rectangle { width: parent.width; height: 1; color: Theme.hairline }
+
+                // ── SIZE ────────────────────────────────────────────────────────
+                //
+                // Every size the block offers, as its footprint in cells. The
+                // corner handle and the wheel do the same.
 
                 Text {
-                    anchors.left: parent.left
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: root.entry ? Tr.t(root.entry.name) : ""
+                    text: Tr.t("Size")
                     font.family: Theme.fontFamily
-                    font.pixelSize: Theme.fontSizeMedium
+                    font.pixelSize: Theme.fontSizeLabel
                     font.weight: Font.DemiBold
-                    color: Theme.text
+                    color: Theme.textMuted
                 }
 
-                PillButton {
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: Tr.t("Remove")
-                    implicitHeight: 26
-                    onClicked: ControlsService.remove(root.key)
-                }
-            }
+                Flow {
+                    width: parent.width
+                    spacing: 8
 
-            Rectangle { width: parent.width; height: 1; color: Theme.hairline }
-
-            // ── SIZE ────────────────────────────────────────────────────────
-            //
-            // Every size the block offers, as its footprint in cells. The
-            // corner handle and the wheel do the same.
-
-            Text {
-                text: Tr.t("Size")
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeLabel
-                font.weight: Font.DemiBold
-                color: Theme.textMuted
-            }
-
-            Flow {
-                width: parent.width
-                spacing: 8
-
-                Repeater {
-                    model: ControlsService.sizesFor(root.blockId)
-
-                    Rectangle {
-                        id: sizeTile
-
-                        required property string modelData
-
-                        readonly property var shape: ControlsService.parse(sizeTile.modelData)
-                        readonly property bool current:
-                            ControlsService.sizeOf(root.block) === sizeTile.modelData
-
-                        width: Math.max(48, sizeTile.shape.cols * 11 + 16)
-                        height: 58
-                        radius: Theme.radiusSmall
-                        color: sizeTile.current ? Theme.surfaceHoverIn(QsWindow.window) : "transparent"
-                        border.color: sizeTile.current ? Theme.accent : Theme.hairline
-                        border.width: 1
+                    Repeater {
+                        model: ControlsService.sizesFor(root.blockId)
 
                         Rectangle {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.bottom: sizeLabel.top
-                            anchors.bottomMargin: 6
-                            width: sizeTile.shape.cols * 11
-                            height: sizeTile.shape.rows * 4
-                            radius: 2
-                            color: sizeTile.current ? Theme.accent : Theme.textMuted
-                        }
+                            id: sizeTile
 
-                        Text {
-                            id: sizeLabel
+                            required property string modelData
 
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.bottom: parent.bottom
-                            anchors.bottomMargin: 6
-                            text: ControlsService.label(sizeTile.modelData)
-                            font.family: Theme.fontMono
-                            font.pixelSize: Theme.fontSizeLabel
-                            color: sizeTile.current ? Theme.text : Theme.textMuted
-                        }
+                            readonly property var shape: ControlsService.parse(sizeTile.modelData)
+                            readonly property bool current:
+                                ControlsService.sizeOf(root.block) === sizeTile.modelData
 
-                        HoverHandler { cursorShape: Qt.PointingHandCursor }
+                            width: Math.max(48, sizeTile.shape.cols * 11 + 16)
+                            height: 58
+                            radius: Theme.radiusSmall
+                            color: sizeTile.current ? Theme.surfaceHoverIn(QsWindow.window) : "transparent"
+                            border.color: sizeTile.current ? Theme.accent : Theme.hairline
+                            border.width: 1
 
-                        TapHandler {
-                            gesturePolicy: TapHandler.ReleaseWithinBounds
-                            onTapped: ControlsService.setSize(root.key, sizeTile.modelData)
+                            Rectangle {
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: sizeLabel.top
+                                anchors.bottomMargin: 6
+                                width: sizeTile.shape.cols * 11
+                                height: sizeTile.shape.rows * 4
+                                radius: 2
+                                color: sizeTile.current ? Theme.accent : Theme.textMuted
+                            }
+
+                            Text {
+                                id: sizeLabel
+
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 6
+                                text: ControlsService.label(sizeTile.modelData)
+                                font.family: Theme.fontMono
+                                font.pixelSize: Theme.fontSizeLabel
+                                color: sizeTile.current ? Theme.text : Theme.textMuted
+                            }
+
+                            HoverHandler { cursorShape: Qt.PointingHandCursor }
+
+                            TapHandler {
+                                gesturePolicy: TapHandler.ReleaseWithinBounds
+                                onTapped: ControlsService.setSize(root.key, sizeTile.modelData)
+                            }
                         }
                     }
                 }
-            }
 
-            // ── TILES ───────────────────────────────────────────────────────
-            //
-            // The toggles block's switches, or the shortcuts block's buttons:
-            // every one there is, ticked when it is on this block. A newly
-            // ticked one goes to the end; the arrows reorder.
+                // ── TILES ───────────────────────────────────────────────────────
+                //
+                // The toggles block's switches, or the shortcuts block's buttons:
+                // every one there is, ticked when it is on this block. A newly
+                // ticked one goes to the end; the arrows reorder.
 
-            Text {
-                visible: root.listed
-                text: root.onShortcuts ? Tr.t("Shortcuts") : Tr.t("Toggles")
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeLabel
-                font.weight: Font.DemiBold
-                color: Theme.textMuted
-            }
+                Text {
+                    visible: root.listed
+                    text: root.onShortcuts ? Tr.t("Shortcuts") : Tr.t("Toggles")
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSizeLabel
+                    font.weight: Font.DemiBold
+                    color: Theme.textMuted
+                }
 
-            Column {
-                visible: root.listed
-                width: parent.width
-                spacing: 2
+                Column {
+                    visible: root.listed
+                    width: parent.width
+                    spacing: 2
 
-                Repeater {
-                    model: root.listed ? ControlsService.listRowsOf(root.key) : []
+                    Repeater {
+                        model: root.listed ? ControlsService.listRowsOf(root.key) : []
 
-                    Rectangle {
-                        id: tickRow
+                        Rectangle {
+                            id: tickRow
 
-                        required property var modelData
+                            required property var modelData
 
-                        readonly property var order: ControlsService.listKeysOf(root.key)
-                        readonly property bool on: tickRow.order.indexOf(tickRow.modelData.key) >= 0
-                        readonly property int at: tickRow.order.indexOf(tickRow.modelData.key)
+                            readonly property var order: ControlsService.listKeysOf(root.key)
+                            readonly property bool on: tickRow.order.indexOf(tickRow.modelData.key) >= 0
+                            readonly property int at: tickRow.order.indexOf(tickRow.modelData.key)
 
-                        width: parent.width
-                        height: 24
-                        radius: Theme.radiusSmall
-                        color: tickHover.hovered ? Theme.surfaceHoverIn(QsWindow.window) : "transparent"
+                            width: parent.width
+                            height: 24
+                            radius: Theme.radiusSmall
+                            color: tickHover.hovered ? Theme.surfaceHoverIn(QsWindow.window) : "transparent"
 
-                        Row {
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.leftMargin: 6
-                            anchors.rightMargin: 6
-                            spacing: 8
-
-                            Rectangle {
+                            Row {
+                                anchors.left: parent.left
+                                anchors.right: parent.right
                                 anchors.verticalCenter: parent.verticalCenter
-                                width: 14
-                                height: 14
-                                radius: 4
-                                color: tickRow.on ? Theme.accent : "transparent"
-                                border.color: tickRow.on ? Theme.accent : Theme.textMuted
-                                border.width: 1.5
-
-                                Text {
-                                    anchors.centerIn: parent
-                                    visible: tickRow.on
-                                    text: "󰄬"
-                                    font.family: Theme.fontMono
-                                    font.pixelSize: 9
-                                    color: Theme.accentText
-                                }
-                            }
-
-                            Text {
-                                anchors.verticalCenter: parent.verticalCenter
-                                width: 16
-                                horizontalAlignment: Text.AlignHCenter
-                                text: tickRow.modelData.icon
-                                font.family: Theme.fontMono
-                                font.pixelSize: 12
-                                color: tickRow.on ? Theme.accent : Theme.textMuted
-                            }
-
-                            Text {
-                                anchors.verticalCenter: parent.verticalCenter
-                                width: parent.width - 46 - (tickRow.on ? 44 : 0)
-                                text: Tr.t(tickRow.modelData.label)
-                                elide: Text.ElideRight
-                                font.family: Theme.fontFamily
-                                font.pixelSize: Theme.fontSizeLabel
-                                color: tickRow.on ? Theme.text : Theme.textMuted
-                            }
-                        }
-
-                        HoverHandler { id: tickHover; cursorShape: Qt.PointingHandCursor }
-
-                        TapHandler {
-                            gesturePolicy: TapHandler.ReleaseWithinBounds
-                            onTapped: ControlsService.toggleIn(root.key, tickRow.modelData.key)
-                        }
-
-                        // Declared after the row's tap so a press on an arrow
-                        // goes to the arrow.
-                        Row {
-                            anchors.right: parent.right
-                            anchors.rightMargin: 4
-                            anchors.verticalCenter: parent.verticalCenter
-                            visible: tickRow.on
-                            spacing: 2
-
-                            Repeater {
-                                model: [{ glyph: "󰅃", delta: -1 }, { glyph: "󰅀", delta: 1 }]
+                                anchors.leftMargin: 6
+                                anchors.rightMargin: 6
+                                spacing: 8
 
                                 Rectangle {
-                                    id: arrow
-
-                                    required property var modelData
-
-                                    readonly property bool usable: arrow.modelData.delta < 0
-                                        ? tickRow.at > 0 : tickRow.at < tickRow.order.length - 1
-
-                                    width: 20
-                                    height: 20
-                                    radius: Theme.radiusSmall
-                                    color: arrowHover.hovered && arrow.usable
-                                        ? Theme.surfaceIn(QsWindow.window) : "transparent"
-                                    opacity: arrow.usable ? 1 : 0.3
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 14
+                                    height: 14
+                                    radius: 4
+                                    color: tickRow.on ? Theme.accent : "transparent"
+                                    border.color: tickRow.on ? Theme.accent : Theme.textMuted
+                                    border.width: 1.5
 
                                     Text {
                                         anchors.centerIn: parent
-                                        text: arrow.modelData.glyph
+                                        visible: tickRow.on
+                                        text: "󰄬"
                                         font.family: Theme.fontMono
-                                        font.pixelSize: 11
-                                        color: Theme.text
+                                        font.pixelSize: 9
+                                        color: Theme.accentText
                                     }
+                                }
 
-                                    HoverHandler { id: arrowHover }
+                                Text {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 16
+                                    horizontalAlignment: Text.AlignHCenter
+                                    text: tickRow.modelData.icon
+                                    font.family: Theme.fontMono
+                                    font.pixelSize: 12
+                                    color: tickRow.on ? Theme.accent : Theme.textMuted
+                                }
 
-                                    // Always takes the press, even when
-                                    // disabled, so a tap doesn't fall through
-                                    // to the row and untick the tile.
-                                    TapHandler {
-                                        gesturePolicy: TapHandler.ReleaseWithinBounds
-                                        onTapped: {
-                                            if (arrow.usable)
-                                                ControlsService.moveIn(root.key,
-                                                    tickRow.modelData.key, arrow.modelData.delta)
+                                Text {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: parent.width - 46 - (tickRow.on ? 44 : 0)
+                                    text: Tr.t(tickRow.modelData.label)
+                                    elide: Text.ElideRight
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: Theme.fontSizeLabel
+                                    color: tickRow.on ? Theme.text : Theme.textMuted
+                                }
+                            }
+
+                            HoverHandler { id: tickHover; cursorShape: Qt.PointingHandCursor }
+
+                            TapHandler {
+                                gesturePolicy: TapHandler.ReleaseWithinBounds
+                                onTapped: ControlsService.toggleIn(root.key, tickRow.modelData.key)
+                            }
+
+                            // Declared after the row's tap so a press on an arrow
+                            // goes to the arrow.
+                            Row {
+                                anchors.right: parent.right
+                                anchors.rightMargin: 4
+                                anchors.verticalCenter: parent.verticalCenter
+                                visible: tickRow.on
+                                spacing: 2
+
+                                Repeater {
+                                    model: [{ glyph: "󰅃", delta: -1 }, { glyph: "󰅀", delta: 1 }]
+
+                                    Rectangle {
+                                        id: arrow
+
+                                        required property var modelData
+
+                                        readonly property bool usable: arrow.modelData.delta < 0
+                                            ? tickRow.at > 0 : tickRow.at < tickRow.order.length - 1
+
+                                        width: 20
+                                        height: 20
+                                        radius: Theme.radiusSmall
+                                        color: arrowHover.hovered && arrow.usable
+                                            ? Theme.surfaceIn(QsWindow.window) : "transparent"
+                                        opacity: arrow.usable ? 1 : 0.3
+
+                                        Text {
+                                            anchors.centerIn: parent
+                                            text: arrow.modelData.glyph
+                                            font.family: Theme.fontMono
+                                            font.pixelSize: 11
+                                            color: Theme.text
+                                        }
+
+                                        HoverHandler { id: arrowHover }
+
+                                        // Always takes the press, even when
+                                        // disabled, so a tap doesn't fall through
+                                        // to the row and untick the tile.
+                                        TapHandler {
+                                            gesturePolicy: TapHandler.ReleaseWithinBounds
+                                            onTapped: {
+                                                if (arrow.usable)
+                                                    ControlsService.moveIn(root.key,
+                                                        tickRow.modelData.key, arrow.modelData.delta)
+                                            }
                                         }
                                     }
                                 }

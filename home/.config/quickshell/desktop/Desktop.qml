@@ -88,11 +88,6 @@ PanelWindow {
     WlrLayershell.keyboardFocus: root.editing && root.hosting
         ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
 
-    onActiveChanged: {
-        if (!active && root.editing && root.hosting)
-            DesktopService.edit(false)
-    }
-
     Component.onCompleted: DesktopService.publish(root.screenName, root)
     Component.onDestruction: DesktopService.publish(root.screenName, null)
 

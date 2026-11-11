@@ -336,34 +336,45 @@ PanelWindow {
             NumberAnimation { duration: Theme.durationMedium; easing.type: Theme.easing }
         }
 
-        // The same shadow as the bar and the windows, on its own switch: a
-        // blurred copy grown by `shadowSpread`, so the falloff's midpoint sits
-        // outside the capsule. The Loader sizes it to the capsule plus the
-        // shadow's reach, since a layer effect is clipped to its item.
-        Loader {
-            anchors.fill: parent
-            anchors.margins: -Theme.shadowBarRange
-            active: Theme.dockShadowShown
-            sourceComponent: caster
-        }
+        // The capsule's background keeps its resting size while magnifying:
+        // only the icons grow, so it follows the shelf's shift back.
+        Item {
+            id: backdrop
 
-        // Classic is the island's black, at the Background setting's opacity
-        // over the compositor's blur; glass is the terminal's ground, with
-        // its lit edge. The border keeps its own alpha, so a translucent
-        // capsule still has an edge.
-        Rectangle {
-            id: ground
+            x: root.vertical ? 0 : root.backing
+            y: root.vertical ? root.backing : 0
+            width: shelf.width - (root.vertical ? 0 : root.grown)
+            height: shelf.height - (root.vertical ? root.grown : 0)
 
-            anchors.fill: parent
-            radius: Theme.dockRadius
-            color: Theme.groundAt(Theme.dockStyle, SettingsService.dockOpacity / 100)
-            border.color: Theme.rimOf(Theme.dockStyle)
-            border.width: 1
+            // The same shadow as the bar and the windows, on its own switch: a
+            // blurred copy grown by `shadowSpread`, so the falloff's midpoint sits
+            // outside the capsule. The Loader sizes it to the capsule plus the
+            // shadow's reach, since a layer effect is clipped to its item.
+            Loader {
+                anchors.fill: parent
+                anchors.margins: -Theme.shadowBarRange
+                active: Theme.dockShadowShown
+                sourceComponent: caster
+            }
 
-            GlassSheen {
-                shape: ground
-                style: Theme.dockStyle
-                visible: Theme.dockGlass
+            // Classic is the island's black, at the Background setting's opacity
+            // over the compositor's blur; glass is the terminal's ground, with
+            // its lit edge. The border keeps its own alpha, so a translucent
+            // capsule still has an edge.
+            Rectangle {
+                id: ground
+
+                anchors.fill: parent
+                radius: Theme.dockRadius
+                color: Theme.groundAt(Theme.dockStyle, SettingsService.dockOpacity / 100)
+                border.color: Theme.rimOf(Theme.dockStyle)
+                border.width: 1
+
+                GlassSheen {
+                    shape: ground
+                    style: Theme.dockStyle
+                    visible: Theme.dockGlass
+                }
             }
         }
 

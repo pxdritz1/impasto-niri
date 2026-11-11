@@ -152,17 +152,22 @@ Item {
             ControlsService.landing = null
             // Dropped on the tray, it is removed; otherwise `place` puts it in
             // the cell under the pointer, or the nearest free one, or back
-            // where it was.
-            const pointer = root.board.mapFromItem(
-                null, drag.centroid.scenePosition.x, drag.centroid.scenePosition.y)
-            if (ControlsService.overTray(pointer.x, pointer.y)) {
+            // where it was. Read from what `aim` kept while dragging: by now
+            // the position binding has snapped `x` and `y` back, and the
+            // centroid is not reliable once the press is released.
+            if (ControlsService.overTray(root.lastPointer.x, root.lastPointer.y)) {
                 ControlsService.remove(root.key)
                 return
             }
             ControlsService.place(root.key,
-                ControlsService.cellX(root.x), ControlsService.cellY(root.y))
+                ControlsService.cellX(root.lastX), ControlsService.cellY(root.lastY))
         }
     }
+
+    // Where the block was last dragged to, and the pointer with it.
+    property real lastX: 0
+    property real lastY: 0
+    property point lastPointer: Qt.point(0, 0)
 
     // Highlights the landing cell; none while over the tray.
     function aim(): void {
@@ -170,6 +175,9 @@ Item {
             return
         const pointer = root.board.mapFromItem(
             null, drag.centroid.scenePosition.x, drag.centroid.scenePosition.y)
+        root.lastX = root.x
+        root.lastY = root.y
+        root.lastPointer = pointer
         if (ControlsService.overTray(pointer.x, pointer.y)) {
             ControlsService.landing = null
             return

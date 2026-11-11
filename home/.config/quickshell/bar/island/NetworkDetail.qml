@@ -255,6 +255,8 @@ ColumnLayout {
                             selectedTextColor: Theme.accentText
                             selectByMouse: true
 
+                            onVisibleChanged: if (visible) password.forceActiveFocus()
+
                             onAccepted: {
                                 NetworkService.connect(entry.modelData.ssid, password.text)
                                 root.expanded = ""

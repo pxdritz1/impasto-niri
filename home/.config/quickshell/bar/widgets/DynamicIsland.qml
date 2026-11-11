@@ -275,6 +275,72 @@ Rectangle {
         }
     }
 
+    // ── LEAVING ─────────────────────────────────────────────────────────────
+    //
+    // A panel the pointer has entered closes when the pointer leaves it. One
+    // opened by key with the pointer elsewhere stays until the pointer has
+    // been over it, so it does not close before it can be used. Not for panels
+    // that hold work the pointer may stray from, nor while a button is down
+    // (a slider dragged past the edge).
+    property bool pointerEntered: false
+
+    function leaveAllowed(panel: string): bool {
+        switch (panel) {
+        case "auth":
+        case "notes":
+        case "board":
+        case "camera":
+            return false
+        case "games":
+            return GamesService.playing === ""
+        case "controls":
+            return !ControlsService.editing
+        default:
+            return true
+        }
+    }
+
+    readonly property bool leaveCloses: islandState.expanded && root.active
+        && root.leaveAllowed(islandState.openPanel)
+
+    PointHandler {
+        id: press
+
+        acceptedButtons: Qt.AllButtons
+    }
+
+    Timer {
+        id: leaveClose
+
+        interval: 380
+        onTriggered: {
+            if (root.leaveCloses && root.pointerEntered && !hover.hovered && !press.active)
+                root.close()
+        }
+    }
+
+    Connections {
+        target: hover
+
+        function onHoveredChanged(): void {
+            if (hover.hovered) {
+                root.pointerEntered = true
+                leaveClose.stop()
+            } else if (root.leaveCloses && root.pointerEntered) {
+                leaveClose.restart()
+            }
+        }
+    }
+
+    Connections {
+        target: islandState
+
+        function onOpenPanelChanged(): void {
+            leaveClose.stop()
+            root.pointerEntered = hover.hovered && islandState.openPanel !== ""
+        }
+    }
+
     // Set while the island shrinks back to rest from a panel, detail,
     // notification or OSD: opening the glance mid-morph would turn the shape
     // round halfway. The glance's own close is not a landing, since re-entering

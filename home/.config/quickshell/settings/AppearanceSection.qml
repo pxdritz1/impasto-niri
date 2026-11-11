@@ -55,6 +55,20 @@ SettingsSection {
             }
         }
 
+        SettingGroup {
+            title: Tr.t("Folder")
+            note: Tr.t("Where wallpapers are listed from. Videos go in an animated folder inside it.")
+
+            SettingField {
+                label: Tr.t("Wallpapers folder")
+                reading: WallpaperService.wallpapers.length > 0
+                    ? `${WallpaperService.wallpapers.length}` : ""
+                placeholder: "~/.local/share/wallpapers"
+                value: SettingsService.wallpaperDir
+                onEdited: value => SettingsService.set("wallpaperDir", value)
+            }
+        }
+
         // Each tile loops its awww transition in miniature.
         SettingGroup {
             title: Tr.t("Transition")

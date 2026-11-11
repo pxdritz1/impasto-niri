@@ -110,6 +110,7 @@ Singleton {
     readonly property alias desktopGround: config.desktopGround
     readonly property alias barSides: config.barSides
     readonly property alias wallpaperTransition: config.wallpaperTransition
+    readonly property alias wallpaperDir: config.wallpaperDir
     readonly property alias greeting: config.greeting
     readonly property alias fontFamily: config.fontFamily
     readonly property alias fontMono: config.fontMono
@@ -559,6 +560,9 @@ Singleton {
         // Row id from `WallpaperService.transitions`; `random` picks anew on
         // each change.
         property string wallpaperTransition: "wipe"
+
+        // Folder the wallpapers are listed from; empty is the data directory.
+        property string wallpaperDir: ""
 
         // Row id from `ThemeService.greetings`; `random` is picked by `fa` on
         // each run.

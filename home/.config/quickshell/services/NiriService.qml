@@ -220,7 +220,7 @@ Singleton {
         return root.windows.filter(window => window.workspace_id === workspaceId)
     }
 
-    function clientsOn(workspaceIndex: var, output: string = ""): var {
+    function clientsOn(workspaceIndex: var, output = ""): var {
         return root.clients.filter(client => client.workspace?.id === workspaceIndex
             && (output === "" || client.workspace.output === output))
     }

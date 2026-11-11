@@ -45,8 +45,13 @@ QtObject {
         return root.motionExtensions.test(path)
     }
 
+    // Handed to the script, which also reads the settings file but may do so
+    // before it has been written.
+    readonly property var scriptEnvironment: ({ "IMPASTO_WALLPAPERS": SettingsService.wallpaperDir })
+
     readonly property Process scanProcess: Process {
         command: [root.script, "list-wallpapers"]
+        environment: root.scriptEnvironment
         running: true
         onExited: root.scanning = false
         stdout: StdioCollector {
@@ -61,6 +66,7 @@ QtObject {
     // Posters are made on the first listing, so this one can take a second.
     readonly property Process animatedProcess: Process {
         command: [root.script, "list-animated"]
+        environment: root.scriptEnvironment
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
@@ -152,6 +158,20 @@ QtObject {
             root.restoreRetry.tries = 0
             root.restoreProcess.running = true
         }
+    }
+
+    // Typing a path changes the setting on every key; list once it settles.
+    readonly property Connections folder: Connections {
+        target: SettingsService
+
+        function onWallpaperDirChanged(): void {
+            relist.restart()
+        }
+    }
+
+    readonly property Timer relist: Timer {
+        interval: 500
+        onTriggered: root.scan()
     }
 
     function parseJson(text: string): var {
