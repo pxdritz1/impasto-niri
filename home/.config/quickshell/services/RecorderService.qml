@@ -122,7 +122,7 @@ Singleton {
         const command = [root.script, "start", "--shape", shape]
         if (geometry !== "")
             command.push("--geometry", geometry)
-        else if (HyprlandService.focusedMonitor !== "")
+        else if (NiriService.focusedOutput !== "")
             command.push("--output", HyprlandService.focusedMonitor)
         if (SettingsService.recorderAudio && root.canAudio)
             command.push("--audio")
