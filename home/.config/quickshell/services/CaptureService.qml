@@ -117,7 +117,7 @@ Singleton {
         if (kind !== "")
             root.setKind(kind)
         root.to = destination !== "" && root.offers(destination) ? destination : "file"
-        root.screenName = HyprlandService.focusedMonitor
+        root.screenName = NiriService.focusedOutput
         root.busy = true
         root.launch.interval = after
         root.launch.restart()
