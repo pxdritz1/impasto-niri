@@ -18,6 +18,7 @@ Singleton {
     property var focusedWindow: null
     property bool connected: false
     property string lastError: ""
+    property var actionQueue: []
 
     readonly property var clients: root.windows.map(window => {
         const workspace = root.workspaceById(window.workspace_id)
@@ -228,15 +229,43 @@ Singleton {
     }
 
     function runAction(args: var): void {
-        if (!Array.isArray(args) || args.length === 0)
+        root.runActions([args])
+    }
+
+    function runActions(actions: var): void {
+        if (!Array.isArray(actions))
             return
-        root.actionRunner.command = ["niri", "msg", "action"].concat(args.map(String))
+        for (const args of actions) {
+            if (Array.isArray(args) && args.length > 0)
+                root.actionQueue = root.actionQueue.concat([args.map(String)])
+        }
+        root.startNextAction()
+    }
+
+    function startNextAction(): void {
+        if (root.actionRunner.running || root.actionQueue.length === 0)
+            return
+        const next = root.actionQueue[0]
+        root.actionQueue = root.actionQueue.slice(1)
+        root.actionRunner.command = ["niri", "msg", "action"].concat(next)
         root.actionRunner.running = true
     }
 
     function focusWorkspace(index: int): void {
-        if (index > 0)
-            root.runAction(["focus-workspace", String(index)])
+        root.focusWorkspaceOn(index, root.focusedOutput)
+    }
+
+    function focusWorkspaceOn(index: int, output: string): void {
+        if (index <= 0)
+            return
+        if (output && output !== root.focusedOutput) {
+            root.runActions([
+                ["focus-monitor", output],
+                ["focus-workspace", String(index)]
+            ])
+            return
+        }
+        root.runAction(["focus-workspace", String(index)])
     }
 
     function focusWindow(id: var): void {
@@ -258,6 +287,7 @@ Singleton {
         onExited: (exitCode, exitStatus) => {
             if (exitCode !== 0)
                 console.warn("Niri action failed:", exitCode, exitStatus)
+            Qt.callLater(root.startNextAction)
         }
     }
 
