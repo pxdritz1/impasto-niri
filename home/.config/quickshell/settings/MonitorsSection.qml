@@ -58,5 +58,10 @@ SettingsSection {
             label: Tr.t("Niri output settings")
             reading: "~/.config/niri/config.kdl"
         }
+
+        NiriModButton {
+            page: "outputs"
+            label: Tr.t("Edit outputs and layouts")
+        }
     }
 }
