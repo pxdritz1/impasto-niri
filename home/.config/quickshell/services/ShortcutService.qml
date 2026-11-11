@@ -73,7 +73,7 @@ Singleton {
     }
 
     function rebind(description: string, combination: string): void {
-        console.warn("Niri keybinding editing is disabled until a lossless KDL editor is implemented.")
+        console.warn("Edit Niri keybindings with the optional NiriMod application.")
     }
 
     readonly property var sheet: []
