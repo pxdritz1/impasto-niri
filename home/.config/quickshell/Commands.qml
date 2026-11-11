@@ -93,7 +93,7 @@ Scope {
                 machines: VmService.running.map(machine => machine.name),
                 palette: ThemeService.activeId,
                 wallpaper: WallpaperService.chosen,
-                layout: CompositorService.windowLayout,
+                layout: "scrolling-columns",
                 game: SettingsService.gameMode,
                 focus: SettingsService.doNotDisturb,
                 nightLight: SunsetService.on,
@@ -377,15 +377,9 @@ Scope {
         target: "layout"
 
         function set(name: string): string {
-            const ids = CompositorService.windowLayouts.map(entry => entry.id)
-            if (name === "next" || name === "") {
-                CompositorService.cycleLayout()
-                return root.ok({ layout: CompositorService.windowLayout })
-            }
-            if (ids.indexOf(name) < 0)
-                return root.fail(`not a layout: "${name}" (${ids.join(", ")} or next)`)
-            CompositorService.remember("general:layout", name)
-            return root.ok({ layout: name })
+            if (name === "" || name === "scrolling" || name === "scrolling-columns")
+                return root.ok({ layout: "scrolling-columns" })
+            return root.fail("Niri uses its native scrolling-column layout; alternate layouts require a separate Niri extension.")
         }
     }
 
