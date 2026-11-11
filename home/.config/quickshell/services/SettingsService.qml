@@ -862,22 +862,18 @@ Singleton {
         property int idleSuspend: 0
 
         // Kelvin. Persisted, unlike keep-awake, so a restart comes back
-        // warm. `SunsetService` drives hyprsunset.
+        // warm. `SunsetService` drives wlsunset through Wayland gamma-control.
         property bool nightLight: false
         property int nightTemperature: 4000
 
-        // Closing the lid with another screen connected: `off` disables the
-        // panel and moves its workspaces, `keep` leaves it on, `system`
-        // defers to logind. The result is written into the display profile
-        // so it survives hotplug. With no other screen, logind decides.
+        // Legacy Hyprland lid policy. Niri manages the internal output on lid events.
         property string lidPolicy: "off"
 
-        // "palette" follows the accent; otherwise a fixed #rrggbb. Built and
-        // applied by compositor.py.
+        // Legacy custom Hyprcursor color; Niri uses the XCursor theme in config.kdl.
         property string cursorColor: "palette"
         property int cursorSize: 24
 
-        // hypr-dynamic-cursors' shake magnification (`shake.enabled`).
+        // Legacy Hyprland shake-to-find toggle; no equivalent Niri integration is available.
         property bool shakeToFind: true
 
         // Translations live in `theme/Tr.qml`; missing strings fall back to
