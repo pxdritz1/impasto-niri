@@ -206,28 +206,10 @@ Singleton {
         return root.groups.find(group => group.key === key) ?? null
     }
 
-    // Niri does not currently expose fullscreen state in its public IPC
-    // window model. Do not infer it from geometry: fullscreen and maximized
-    // windows are distinct in Niri. Its layer-shell policy handles top-layer
-    // surfaces when a focused fullscreen window covers the output.
-    function coveredOn(name: string): bool {
-        const workspace = NiriService.activeOn(name)
-        return workspace > 0 && NiriService.clients.some(
-            client => (client.fullscreen ?? 0) >= 2
-                && client.workspace && client.workspace.id === workspace)
-    }
-
-    // The screens it is away from, as one padded string. A plain value rather
-    // than a list, so the desktop's insets are worked out again when the
-    // answer changes and not every time a window changes its title: the client
-    // list is read here, once, instead of by a board's every binding.
-    readonly property string coveredScreens: {
-        let out = " "
-        for (const screen of Quickshell.screens)
-            if (root.coveredOn(screen.name))
-                out += screen.name + " "
-        return out
-    }
+    // Niri does not expose fullscreen state in its public window model.
+    // Its layer-shell policy handles top-layer surfaces around fullscreen
+    // windows, so the shell does not guess coverage from window geometry.
+    readonly property string coveredScreens: " "
 
     // ── ITEMS ───────────────────────────────────────────────────────────────
     //
