@@ -31,7 +31,7 @@ Singleton {
     readonly property var displays: root.variants.instances
     readonly property var dimmable: root.displays.filter(display => display.available)
     readonly property var current: {
-        const focused = HyprlandService.focusedMonitor
+        const focused = NiriService.focusedOutput
         return root.dimmable.find(display => display.name === focused)
             ?? root.dimmable[0] ?? null
     }
@@ -138,7 +138,7 @@ Singleton {
     }
 
     // `--brief` prints one block per display, and only a "Display N" block
-    // answered over DDC. Its connector is "card1-DP-1" where Hyprland says
+    // answered over DDC. Its connector is "card1-DP-1" where Niri reports
     // "DP-1".
     function parse(text: string): var {
         const found = {}
