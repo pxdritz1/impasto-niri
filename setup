@@ -18,7 +18,6 @@ STATE=${XDG_STATE_HOME:-$HOME/.local/state}/impasto
 BACKUPS=$STATE/backups/$(date +%Y%m%d-%H%M%S)
 APPLIED=$STATE/applied
 THEME_MANAGER=$REPO/home/.config/quickshell/scripts/theme_manager.py
-COMPOSITOR=$REPO/home/.config/quickshell/scripts/compositor.py
 
 # Where `system/` lands. Only a test points it anywhere but `/`, and a root
 # this user can write to is written without sudo.
@@ -527,8 +526,8 @@ note_shell() {
 # An install upgrades packages first, which replaces the libraries under a
 # running shell, and the shell dies on the reload the copy asks for. Nothing
 # else starts it again before the next session. Only a desk this run took
-# down is put back, and it is started through Hyprland the way autostart
-# does, so it takes the session's environment rather than this terminal's.
+# down is put back. Niri owns session startup; setup does not inject a process
+# into a running compositor session from the installer terminal.
 restore_shell() {
     if (( DRY )) || (( ! SHELL_WAS_UP )) || shell_up; then return 0; fi
     # Do not launch a shell from the installer terminal: it lacks the session's
@@ -827,10 +826,7 @@ omz() {
     say ok
 }
 
-# hyprpm builds against the running Hyprland and keeps the .so in root's
-# /var/cache: it needs the session up, a terminal and a password. Run outside
-# the session, this leaves them to the first one: while PLUGINS_PENDING names
-# the checkout, autostart.lua opens a terminal on `./setup plugins`.
+// Niri integrations are external tools or native compositor features.
 verb_plugins() {
     section 'Niri integrations'
     say 'Hyprland plugins are not loaded by Niri; no hyprpm build or compositor mutation is attempted.'
@@ -1076,17 +1072,14 @@ verb_defaults() {
 CURSOR_SEED=$HOME/.local/share/icons/impasto-cursor
 
 verb_cursors() {
-    section 'cursor shape'
-    command -v hyprcursor-util >/dev/null \
-        || refuse 'hyprcursor-util is not installed (package: hyprcursor)' || return
-    local src=${XDG_STATE_HOME:-$HOME/.local/state}/quickshell/cursor-src
-    act rm -rf "$src"
-    act mkdir -p "$src"
-    act git clone -q --depth=1 https://github.com/javigomezo/bibata-modern-classic-hyprcursor "$src" \
-        || refuse 'clone failed' || return
-    say "fetched Bibata's SVGs into the state directory"
-    act python3 "$COMPOSITOR" cursor palette 24 --seed || refuse 'build failed' || return
-    say 'built and set impasto-cursor'
+    section 'cursor theme'
+    if ! command -v fc-list >/dev/null; then
+        refuse 'fontconfig is not installed'
+        return
+    fi
+    say 'Niri uses standard XCursor themes; Hyprcursor generation is not used.'
+    say 'Install bibata-cursor-theme-bin, then set cursor.xcursor-theme and cursor.xcursor-size in ~/.config/niri/config.kdl.'
+    say 'The starter config selects Bibata-Modern-Classic.'
 }
 
 # spicetify patches the colours into /opt/spotify, so the generated color.ini
