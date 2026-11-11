@@ -1,5 +1,5 @@
-// Shortcut catalogue for the shell. Niri keybindings are KDL-owned and
-// remain read-only until a lossless KDL editor is available.
+// Catalogue of Impasto shell actions. Niri keybindings remain KDL-owned;
+// the settings UI delegates editing to the optional NiriMod application.
 pragma Singleton
 
 import QtQuick
