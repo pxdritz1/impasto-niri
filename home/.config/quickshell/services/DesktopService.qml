@@ -1498,7 +1498,6 @@ Singleton {
             switch (kind) {
             case "WorkspacesChanged":
             case "WindowOpenedOrChanged":
-            case "WindowClosed":
                 root.edit(false)
                 break
             }
