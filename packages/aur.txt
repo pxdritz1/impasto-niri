@@ -17,6 +17,11 @@
 bibata-cursor-theme-bin      # standard XCursor theme used by Niri and GTK
 
 
+# ── NIRI CONFIGURATION ──────────────────────────────────────────────────────
+
+nirimod-git                   # GUI editor for Niri outputs, binds, input, layout and animations
+
+
 # ── ICONS ───────────────────────────────────────────────────────────────────
 
 whitesur-icon-theme          # the shell's application icons
