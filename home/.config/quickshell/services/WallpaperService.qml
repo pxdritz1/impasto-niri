@@ -11,7 +11,6 @@ pragma Singleton
 
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
 import Quickshell.Io
 
 // Lists the bundled wallpapers and the animated ones, and applies them. Emits
@@ -136,14 +135,12 @@ QtObject {
 
     // ── HOTPLUG ─────────────────────────────────────────────────────────────
     //
-    // awww does not paint outputs added after the wallpaper was set. The
-    // restore above only touches empty outputs, so rerun it.
+    // awww does not paint outputs added after the wallpaper was set. Refresh
+    // when Quickshell reports a screen hotplug.
     readonly property Connections hotplug: Connections {
-        target: Hyprland
-
-        function onRawEvent(event): void {
-            if (event.name === "monitoradded" || event.name === "monitoraddedv2")
-                root.arriving.restart()
+        target: Quickshell
+        function onScreensChanged(): void {
+            root.arriving.restart()
         }
     }
 
