@@ -136,7 +136,8 @@ Singleton {
         case "WindowOpenedOrChanged": {
             if (!data.window)
                 break
-            const next = root.windows.slice()
+            const next = root.windows.map(window => data.window.is_focused
+                ? Object.assign({}, window, { is_focused: false }) : window)
             const index = next.findIndex(window => window.id === data.window.id)
             if (index < 0)
                 next.push(data.window)
@@ -160,14 +161,12 @@ Singleton {
             const activated = root.workspaces.find(workspace => workspace.id === data.id)
             if (!activated)
                 break
-            root.workspaces = root.workspaces.map(workspace => {
-                if (workspace.output !== activated.output)
-                    return workspace
-                return Object.assign({}, workspace, {
-                    is_active: workspace.id === data.id,
-                    is_focused: data.focused ? workspace.id === data.id : workspace.is_focused
-                })
-            })
+            root.workspaces = root.workspaces.map(workspace => Object.assign({}, workspace, {
+                is_active: workspace.output === activated.output
+                    ? workspace.id === data.id : workspace.is_active,
+                is_focused: data.focused
+                    ? workspace.id === data.id : workspace.is_focused
+            }))
             root.updateWorkspaceFocus()
             break
         }
@@ -183,6 +182,12 @@ Singleton {
             root.workspaces = root.workspaces.map(workspace => workspace.id === data.workspace_id
                 ? Object.assign({}, workspace, { active_window_id: data.active_window_id }) : workspace)
             break
+        case "WindowLayoutsChanged": {
+            const changes = new Map(data.changes ?? [])
+            root.windows = root.windows.map(window => changes.has(window.id)
+                ? Object.assign({}, window, { layout: changes.get(window.id) }) : window)
+            break
+        }
         }
         root.connected = true
         root.eventReceived(kind, data)
