@@ -74,7 +74,7 @@ Rectangle {
     // default, so an island without a bar gets the size it asks for.
     property int roomForPanel: 100000
 
-    readonly property int overviewRows: Math.ceil(HyprlandService.maximum / 5)
+    readonly property int overviewRows: Math.ceil(NiriService.span / 5)
 
     // ── PANEL SIZES ─────────────────────────────────────────────────────────
     //
