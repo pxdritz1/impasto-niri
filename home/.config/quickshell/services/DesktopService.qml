@@ -1086,7 +1086,7 @@ Singleton {
         if (!SettingsService.spectrumOnEmpty)
             return false
         const workspace = NiriService.activeOn(name)
-        return workspace > 0 && NiriService.occupiedIds.indexOf(workspace) >= 0
+        return workspace > 0 && NiriService.isOccupiedOn(workspace, name)
     }
 
     // On the grid or on an edge.
