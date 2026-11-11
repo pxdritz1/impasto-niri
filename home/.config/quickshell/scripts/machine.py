@@ -46,16 +46,16 @@ def compositor():
     name = os.environ.get("XDG_CURRENT_DESKTOP", "").split(":")[0].strip()
     if not name:
         return None
-    if name.lower() == "hyprland" and shutil.which("hyprctl"):
+    if name.lower() == "niri" and shutil.which("niri"):
         try:
             result = subprocess.run(
-                ["hyprctl", "version", "-j"],
+                ["niri", "--version"],
                 capture_output=True, text=True, timeout=5, check=False,
             )
-            version = json.loads(result.stdout).get("version", "")
-            if version:
-                return f"{name} {version}"
-        except (OSError, subprocess.SubprocessError, ValueError):
+            version = result.stdout.strip()
+            if result.returncode == 0 and version:
+                return version
+        except (OSError, subprocess.SubprocessError):
             pass
     return name
 
