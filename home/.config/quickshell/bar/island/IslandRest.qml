@@ -378,13 +378,16 @@ Item {
 
                 readonly property string screenName: QsWindow.window && QsWindow.window.screen
                     ? QsWindow.window.screen.name : ""
-                readonly property int number: HyprlandService.activeOn(shown.screenName)
-                    || HyprlandService.activeId
+                readonly property int number: NiriService.activeOn(shown.screenName)
+                    || NiriService.activeId
+                readonly property var workspace: NiriService.workspaces.find(item =>
+                    item.output === shown.screenName && item.is_active)
+                    ?? NiriService.focusedWorkspace
                 readonly property string label: {
-                    const found = HyprlandService.named.find(workspace => workspace.id === shown.number)
-                    const name = found && typeof found.name === "string" ? found.name : ""
+                    const name = typeof shown.workspace?.name === "string"
+                        ? shown.workspace.name : ""
                     return name !== "" && name !== `${shown.number}` ? name
-                        : `${HyprlandService.numberOn(shown.number, shown.screenName)}`
+                        : `${NiriService.numberOn(shown.number, shown.screenName)}`
                 }
 
                 property int was: 0
