@@ -413,8 +413,8 @@ Singleton {
     }
 
     // Applies a profile in one turn so the file is written once (`saver`).
-    // Hyprland keeps the previous profile's values until reloaded; the caller
-    // handles that (`CompositorService.reassert`).
+    // Compositor-specific legacy values are retained in the profile data but
+    // are not applied by the Niri port.
     function adopt(values: var): bool {
         if (!root.arrived) {
             console.warn("Settings not read yet; refusing to adopt a profile")
@@ -532,19 +532,16 @@ Singleton {
         // Every screen's four corners rounded off in black.
         property bool screenCorners: false
 
-        // Game mode: no animations, blur, shadow or glass on the compositor,
-        // over whatever the rest of the settings say.
+        // Game mode affects Impasto's own surfaces and animations only.
         property bool gameMode: false
 
-        // Four shadows, one per layer: Hyprland's under the windows, the
-        // shell's under the bar, the dock and the desk's widgets.
+        // Shell shadows under the bar, dock and desktop widgets.
         property bool windowShadow: false
         property bool barShadow: false
         property bool dockShadow: false
         property bool widgetShadow: false
 
-        // hyprglass. Dimmed in the settings when the plugin is not built;
-        // `CompositorService` pushes it at login and after every reload.
+        // Legacy Hyprglass profile field. Retained for compatibility, unused by Niri.
         property bool windowGlass: false
 
         // The island's and the bar's ground: "classic" solid black,
@@ -687,9 +684,7 @@ Singleton {
         // Named in Theme.easingCurves.
         property string motionCurve: "OutCubic"
 
-        // Hyprland's animation preset, from Motion.presets (the two above
-        // are the shell's own). `CompositorService` pushes it at startup and
-        // after every reload; `animations.lua` deliberately has no preset.
+        // Legacy Hyprland animation preset. Retained for compatibility; Niri uses KDL.
         property string animationPreset: "macos"
 
         property string fontFamily: "Inter, Cantarell, SF Pro Text, sans-serif"
@@ -699,20 +694,15 @@ Singleton {
 
         // ── COMPOSITOR ──────────────────────────────────────────────────
         //
-        // Hyprland options changed from the settings window, keyed by
-        // option path. Absent keys are left to the Lua config. The option
-        // whitelist lives in `compositor.py`.
+        // Legacy Hyprland option map. Retained for profile migration; Niri does not consume it.
         property var compositor: ({})
 
-        // The keyboard's own options (`input:kb_*`), kept apart from
-        // `compositor` because the keyboard is the machine's, not the desk's.
+        // Legacy keyboard option map from the Hyprland port; retained only for migration.
         property var keyboard: ({})
 
         // ── DISPLAYS ────────────────────────────────────────────────────
         //
-        // Arrangements keyed by the set of connected monitors (their
-        // descriptions, sorted and joined). Without one, Hyprland's `auto`
-        // applies.
+        // Legacy Hyprland display profiles; Niri output settings are managed by KDL/Kanshi.
         //
         //   <profile> primary   description of the screen the shell's
         //                       surfaces go on; "" means Quickshell's
