@@ -67,7 +67,8 @@ bluez                        # the bluetooth tile
 bluez-utils                  # bluetoothctl, which switches it
 power-profiles-daemon        # the power profile
 upower                       # the battery
-wlsunset                     # the night light under Wayland
+wlsunset                     # the night light under Niri
+hyprpicker                   # wlroots-compatible Wayland colour picker
 pacman-contrib               # checkupdates, which counts the updates
 
 
@@ -122,10 +123,6 @@ gvfs                         # the trash, and mounting
 polkit-kde-agent             # the password dialog when the shell cannot be the agent
 kconfig                      # kreadconfig6, for the KDE half of the palette
 
-
-# ── CURSOR ──────────────────────────────────────────────────────────────────
-
-hyprcursor                   # hyprcursor-util, which ./setup cursors compiles with
 
 
 base-devel                   # the compiler hyprpm builds with
