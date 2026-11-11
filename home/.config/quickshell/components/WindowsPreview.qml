@@ -25,17 +25,17 @@ Item {
     property int gapsIn: 7
     property int gapsOut: 18
     property real inactiveOpacity: 1
-    // Hyprland's blur size; zero is off. Approximated as size × 2^passes,
+    // Niri's blur settings; zero is off. Approximated as size × 2^passes,
     // with look.lua's two passes.
     property int blur: 6
-    // hyprglass, which replaces Hyprland's blur on the windows it draws.
+    // The old hyprglass refraction effect is not available under Niri.
     property bool glassed: false
     property bool lifted: false
     property string wallpaper: ""
 
     implicitHeight: 190
 
-    // Hyprland clamps the radius to half the window height.
+    // Niri clamps the radius to half the window height.
     readonly property real corner: Math.min(root.rounding, winHeight / 2)
 
     readonly property real winY: root.gapsOut
@@ -133,7 +133,7 @@ Item {
                 }
             }
 
-            // look.lua sets the glass blur below Hyprland's (0.7 × 12 px vs
+            // The old Hyprland theme set the glass blur below its (0.7 × 12 px vs
             // size 6 × 2 passes), so enabling glass sharpens the background.
             // Saturation 0.9 in the plugin is an offset of -0.10 here.
             MultiEffect {
@@ -146,7 +146,7 @@ Item {
             }
 
             // Fresnel rim and specular highlight, drawn under the terminal
-            // background as the plugin does, so they show only through the
+            // background as the old plugin did, so they show only through the
             // window's translucency. Refraction and chromatic aberration are
             // not simulated.
             Rectangle {
@@ -204,7 +204,7 @@ Item {
             }
         }
 
-        // Unfocused window. Item opacity matches Hyprland's inactive_opacity.
+        // Unfocused window. Item opacity matches Niri's inactive window opacity.
         ClippingRectangle {
             x: root.rightX
             y: root.winY
