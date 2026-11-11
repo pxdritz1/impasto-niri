@@ -41,7 +41,8 @@ Singleton {
     }
 
     function load(): void {
-        root.reader.running = true
+        if (!root.reader.running)
+            root.reader.running = true
     }
 
     readonly property string primaryName: {
@@ -79,18 +80,17 @@ Singleton {
         return !!screen && screen.name === root.primaryName
     }
 
-    // Niri's event stream has no dedicated output-change event. Workspace
-    // topology changes plus Quickshell hotplug/geometry signals cover output
-    // connect, disconnect, resolution, scale and position without polling.
+    // OutputsChanged is emitted by Niri for hotplug and output configuration
+    // changes. Quickshell screen signals remain a fallback for surface changes.
     readonly property Timer refreshDebounce: Timer {
         interval: 120
         onTriggered: root.load()
     }
 
-    readonly property Connections workspaceEvents: Connections {
+    readonly property Connections outputEvents: Connections {
         target: NiriService
         function onEventReceived(kind, data) {
-            if (kind === "WorkspacesChanged")
+            if (kind === "OutputsChanged")
                 root.refreshDebounce.restart()
         }
     }
