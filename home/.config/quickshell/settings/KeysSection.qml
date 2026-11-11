@@ -29,14 +29,18 @@ SettingsSection {
     SettingGroup {
         title: Tr.t("Niri keybindings")
         note: Tr.t("Niri reads keybindings from the binds {} node in its KDL configuration.")
-        hint: Tr.t("The editor is read-only for now. A safe editor must preserve nested KDL nodes, comments, includes and user-defined actions.")
+        hint: Tr.t("NiriMod reads and edits the actual KDL configuration, including included files, while preserving comments and unrelated nodes.")
         SettingRow {
             label: Tr.t("Configuration")
             reading: ShortcutService.configPath
         }
         SettingRow {
             label: Tr.t("Editing")
-            reading: Tr.t("Not yet supported — edit the KDL file directly")
+            reading: Tr.t("Use NiriMod to edit bindings safely")
+        }
+        NiriModButton {
+            page: "bindings"
+            label: Tr.t("Edit keybindings")
         }
     }
 }
