@@ -154,9 +154,8 @@ usage() {
 Usage: ./setup <command> [options]
 
   install     everything, in order: packages, the user folders, oh-my-zsh,
-              home/ into $HOME, system/ into /, the Hyprland plugins, and
-              the extras below once each — one that has to wait is tried
-              again by the next install or update
+              home/ into $HOME, system/ into /, optional Niri integrations
+              and the extras below once each
   update      git pull, then install again with the same options
   uninstall   remove every installed file that has not been edited since,
               and put back what was in the way when it was installed
