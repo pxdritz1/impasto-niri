@@ -37,7 +37,7 @@ Singleton {
         stdinEnabled: true
         running: true
         onStarted: {
-            root.send(`focus ${HyprlandService.focusedClass}`)
+            root.send(`focus ${(NiriService.focusedWindow?.app_id ?? "")}`)
             if (root.away)
                 root.send("away")
         }
@@ -63,7 +63,7 @@ Singleton {
     }
 
     readonly property Connections focus: Connections {
-        target: HyprlandService
+        target: NiriService
         function onFocusedClassChanged(): void {
             root.send(`focus ${HyprlandService.focusedClass}`)
         }
