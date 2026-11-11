@@ -454,7 +454,7 @@ Scope {
             if (on === null)
                 return root.fail("on, off or toggle")
             if (!SunsetService.available)
-                return root.fail("the night light needs hyprsunset")
+                return root.fail("the night light needs wlsunset")
             if (on !== SunsetService.on)
                 SunsetService.toggle()
             return root.ok({ nightLight: on })
