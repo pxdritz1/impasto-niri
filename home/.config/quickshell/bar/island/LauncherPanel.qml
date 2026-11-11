@@ -47,13 +47,11 @@ ColumnLayout {
     // Created on open, so this is where the field takes focus; otherwise the
     // window is focusable but nothing inside receives keys.
     //
-    // The window list and the application index are refreshed here too. The
-    // index is otherwise built once, when `LauncherService` is first touched,
-    // and would miss anything installed since. Refreshing on open is cheaper
-    // than watching the XDG directories; the new list lands about 50 ms later.
+    // The application index is refreshed here. Niri windows are already kept
+    // current by the compositor event stream, so there is no separate client
+    // list query when the launcher opens.
     Component.onCompleted: {
         searchField.forceActiveFocus()
-        HyprlandService.loadClients()
         LauncherService.refresh()
         EmojiService.fresh = false
         if (root.mode.id === "emoji")
