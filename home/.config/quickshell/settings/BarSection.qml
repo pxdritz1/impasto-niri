@@ -185,7 +185,7 @@ SettingsSection {
 
         SettingSlider {
             label: Tr.t("Workspaces shown")
-            value: HyprlandService.slots
+            value: SettingsService.workspaceCount
             from: 1
             to: NiriService.span
             onMoved: value => SettingsService.set("workspaceCount", Math.round(value))
