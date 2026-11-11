@@ -87,7 +87,7 @@ Rectangle {
     }
 
     function isOccupied(n: int): bool {
-        return root.preview ? n === 1 || n === 3 : NiriService.isOccupied(n)
+        return root.preview ? n === 1 || n === 3 : NiriService.isOccupiedOn(n, root.screenName)
     }
 
     implicitHeight: Theme.capsuleHeight
