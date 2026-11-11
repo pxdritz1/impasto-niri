@@ -21,7 +21,7 @@ import "../theme"
 // The profile in use is the settings file itself, so neither SettingsService
 // nor any other service knows profiles exist; the others wait in
 // `profiles.json`. Switching stashes the current one there, adopts the other
-// into the settings file and reloads Hyprland, as Reset does. A profile also
+// into the settings file; Niri reloads its KDL configuration itself. A profile also
 // carries its wallpaper and palette.
 //
 // Profiles are keyed by id; the name is only a label. They never carry
