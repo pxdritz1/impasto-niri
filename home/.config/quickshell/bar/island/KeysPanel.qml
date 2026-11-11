@@ -5,6 +5,7 @@ import Quickshell
 
 import "../../theme"
 import "../../services"
+import "../../components"
 
 ColumnLayout {
     id: root
@@ -49,11 +50,16 @@ ColumnLayout {
 
     Text {
         Layout.fillWidth: true
-        text: Tr.t("The shell keeps this panel read-only rather than guessing which shortcuts are active or overwriting custom KDL.")
+        text: Tr.t("Use NiriMod to inspect and edit the actual bindings, including included KDL files, without overwriting unrelated configuration.")
         color: Theme.textMuted
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSizeSmall
         wrapMode: Text.Wrap
+    }
+
+    NiriModButton {
+        page: "bindings"
+        label: Tr.t("Edit keybindings")
     }
 
     Item { Layout.fillHeight: true }
