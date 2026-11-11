@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <b>A Hyprland shell whose colours come from a painting.</b><br>
+  <b>A Quickshell desktop shell being ported to Niri, whose colours come from a painting.</b><br>
   One black island that changes shape, a desk of widgets under the windows,<br>
   and every program around it repainted by whatever wallpaper is up.
 </p>
@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://github.com/andreumassanet/impasto/actions/workflows/check.yml"><img src="https://github.com/andreumassanet/impasto/actions/workflows/check.yml/badge.svg" alt="check"></a>
   <img src="https://img.shields.io/badge/Arch_Linux-1793d1?style=flat-square&logo=archlinux&logoColor=white" alt="Arch Linux">
-  <img src="https://img.shields.io/badge/Hyprland-Lua_config-58e1ff?style=flat-square&logo=hyprland&logoColor=white" alt="Hyprland">
+  <img src="https://img.shields.io/badge/Niri-KDL_config-58e1ff?style=flat-square" alt="Hyprland">
   <img src="https://img.shields.io/badge/Quickshell-0.3-000000?style=flat-square" alt="Quickshell">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-2e509e?style=flat-square" alt="GPL-3.0"></a>
 </p>
@@ -133,7 +133,7 @@ screen and the boot splash are the same design, before there is a session.
 
 ## Installation
 
-Arch Linux and Hyprland 0.56 or newer, from a terminal or a console:
+Arch Linux with Niri and Quickshell, from a terminal or a console:
 
 ```bash
 git clone https://github.com/andreumassanet/impasto.git ~/impasto
@@ -153,7 +153,7 @@ up the login screen, the plugins and the programs around the shell. Run
 |---|---|
 | `--skip-packages` | install nothing; copy and build only |
 | `--skip-system` | leave `/` alone — no login screen, and no password for it |
-| `--skip-plugins` | no shake to find, no glass |
+| `--skip-plugins` | skip optional Niri integrations |
 | `--skip-extras` | leave Nautilus, VSCodium, Vesktop, Spotify, GTK, face unlock, the camera and the boot splash alone |
 | `--aur-helper yay\|paru` | which helper builds the AUR half — built from the AUR if you have neither |
 | `--noconfirm` | take the default at every question |
@@ -176,9 +176,9 @@ never overwrites a file you edited.
 
 | | | |
 |---|---|---|
-| 🪟 | Compositor | [Hyprland](https://hypr.land) |
-| 🖱️ | Shake to find | [hypr-dynamic-cursors](https://github.com/VirtCode/hypr-dynamic-cursors) |
-| 🫧 | Glass on the windows | [hyprglass](https://github.com/hyprnux/hyprglass) |
+| 🪟 | Compositor | [Niri](https://github.com/niri-wm/niri) |
+| 🖱️ | Shake to find | Not available in Niri; no equivalent claimed |
+| 🫧 | Glass on the windows | Niri native blur; no refraction equivalent |
 | 🐚 | Desktop shell | [Quickshell](https://quickshell.org) |
 | 🖼️ | Wallpaper daemon | [awww](https://github.com/LGFae/swww) |
 | 🖥️ | Terminal | [kitty](https://sw.kovidgoyal.net/kitty/) |
@@ -230,7 +230,7 @@ debounced to one frame.
 - [saneAspect](https://www.youtube.com/@saneAspect) — the Hyprland setups on
   YouTube that started all this
 - [Tide-island](https://github.com/enhaoswen/Tide-island) — the closest thing to
-  a complete dynamic island for Hyprland
+  a complete dynamic island for Niri
 - [ChillPill-Shell](https://github.com/LUCKYS1NGHH/ChillPill-Shell) — a dynamic
   pill bar built to stay light without a dedicated GPU
 - [k4](https://github.com/k4ditano/k4) — a dynamic island bar with a documented
@@ -238,7 +238,7 @@ debounced to one frame.
 - [diegoMalagrida/dotfiles](https://github.com/diegoMalagrida/dotfiles) — an
   Arch Linux desk ready to install on a fresh system
 
-Built on [Quickshell](https://quickshell.org) and [Hyprland](https://hypr.land).
+Built on [Quickshell](https://quickshell.org) and [Niri](https://github.com/niri-wm/niri).
 The pointer is [Bibata](https://github.com/ful1e5/Bibata_Cursor), repainted;
 the folders are [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme),
 re-pointed; the type is [Inter](https://rsms.me/inter/) and
