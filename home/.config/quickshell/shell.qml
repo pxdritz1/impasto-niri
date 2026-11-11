@@ -299,14 +299,6 @@ ShellRoot {
 
 
 
-    // The brightness keys act on the focused screen, which only the shell
-    // knows how to dim. A held key repeats the press.
-
-
-
-
-
-
     // An open panel holds the keyboard exclusively, which beats a normal
     // window, so the island closes first or the window cannot be typed in.
     function toggleSettings(): void {
@@ -314,22 +306,6 @@ ShellRoot {
             root.island?.close()
         settingsWindow.toggle()
     }
-
-
-
-    // Same panel, on the palette strip. Each name only closes from its own
-    // strip.
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -350,24 +326,12 @@ ShellRoot {
 
 
 
-    // hyprpicker freezes a screenshot of the screen, so an open panel has to
-    // finish closing before it starts.
-
-    // ── CAPTURE ─────────────────────────────────────────────────────────────
-    //
-    // `capture` opens the surface in its last mode; the others preset a shape
-    // or destination and are unbound by default. The photo is taken with
-    // whatever panel is open, so a panel can be captured.
-    function capture(shape: string, to: string): void {
-        CaptureService.open(shape, "photo", to, 0)
+    // The colour picker captures the screen, so let the island settle first.
+    function pickColor(): void {
+        const wasOpen = root.island?.expanded ?? false
+        root.island?.close()
+        PickerService.pick(wasOpen ? PickerService.settle : 0)
     }
-
-
-
-
-
-
-
 
     // Always built rather than behind a Loader: creating a layer surface at
     // capture time flashes a black frame over the screen being captured.
@@ -402,6 +366,9 @@ ShellRoot {
     //   qs ipc call wallpaper set <path>
     Commands {
         island: root.island
+        settingsToggle: root.toggleSettings
+        launcherMode: root.openLauncherOn
+        pickColor: root.pickColor
     }
 
 }
