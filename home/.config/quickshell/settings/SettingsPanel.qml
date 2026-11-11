@@ -101,7 +101,7 @@ Item {
           page: appearancePage },
 
         { id: "windows", category: "desk", icon: "󰖯", label: Tr.t("Windows"),
-          blurb: Tr.t("How Hyprland lays out, draws and animates windows."),
+          blurb: Tr.t("Niri's native window layout, appearance and compositor capabilities."),
           tabs: [],
           keywords: "windows layout dwindle master scrolling rounding border gaps inner outer opacity inactive blur refraction glass hyprglass shadow animation preset hyprland",
           page: windowsPage },
@@ -122,7 +122,7 @@ Item {
           page: inputPage },
 
         { id: "keys", category: "desk", icon: "󰌌", label: Tr.t("Keys"),
-          blurb: Tr.t("Every keybinding, the shell's and Hyprland's."),
+          blurb: Tr.t("The shell's shortcuts and Niri's KDL keybindings."),
           tabs: [{ id: "shell", label: Tr.t("The shell's own") },
                  { id: "compositor", label: Tr.t("The compositor's") }],
           keywords: "keys shortcut shortcuts binding hotkey super rebind zen hide widgets",
