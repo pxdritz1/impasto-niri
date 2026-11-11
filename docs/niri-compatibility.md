@@ -17,7 +17,7 @@ Impasto's Niri port does not load Hyprland plugins. Niri is a separate composito
 | Hyprland scratchpads | [niri-scratchpad-rs](https://github.com/argosnothing/niri-scratchpad-rs) or [niri-scratchpad](https://github.com/YaLTeR/niri-scratchpad) | External tools; verify package availability before installing |
 | Alternate layouts (master/stack) | [miri](https://github.com/YaLTeR/miri) | Optional Niri extension; Niri's native model remains scrolling columns |
 
-The curated [awesome-niri list](https://github.com/niri-wm/awesome-niri) tracks additional community tools. These are independent projects, not bundled or silently installed by Impasto.
+The curated [awesome-niri list](https://github.com/niri-wm/awesome-niri) tracks additional community tools. These are independent projects, not bundled or silently installed by Impasto. NiriMod is an optional AUR dependency and is launched on demand from the settings pages.
 
 ## Important limitations
 
