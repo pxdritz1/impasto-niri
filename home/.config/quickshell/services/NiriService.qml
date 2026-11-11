@@ -17,6 +17,33 @@ Singleton {
     property bool connected: false
     property string lastError: ""
 
+    readonly property var clients: root.windows.map(window => {
+        const workspace = root.workspaceById(window.workspace_id)
+        return Object.assign({}, window, {
+            address: String(window.id),
+            class: window.app_id ?? "",
+            mapped: true,
+            fullscreen: 0,
+            workspace: workspace ? {
+                id: workspace.idx,
+                name: workspace.name ?? "",
+                output: workspace.output ?? ""
+            } : null
+        })
+    })
+
+    readonly property string focusedAddress: root.focusedWindow
+        ? String(root.focusedWindow.id) : ""
+
+    readonly property var occupiedIds: {
+        const ids = []
+        for (const workspace of root.workspaces) {
+            if (root.windows.some(window => window.workspace_id === workspace.id))
+                ids.push(workspace.idx)
+        }
+        return ids
+    }
+
     readonly property var occupiedWorkspaceIds: {
         const ids = []
         for (const window of root.windows) {
@@ -177,6 +204,10 @@ Singleton {
 
     function windowsOn(workspaceId: int): var {
         return root.windows.filter(window => window.workspace_id === workspaceId)
+    }
+
+    function clientsOn(workspaceIndex: int): var {
+        return root.clients.filter(client => client.workspace?.id === workspaceIndex)
     }
 
     function runAction(args: var): void {
