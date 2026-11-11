@@ -25,6 +25,9 @@ Scope {
 
     // The live bar's island, for the panels.
     property var island: null
+    property var settingsToggle: null
+    property var launcherMode: null
+    property var pickColor: null
 
     function ok(extra: var): string {
         return JSON.stringify(Object.assign({ ok: true }, extra ?? ({})))
@@ -351,11 +354,58 @@ Scope {
     IpcHandler {
         target: "capture"
 
-        function open(shape: string): string {
+        function open(shape: string, destination: string): string {
+            const target = destination || "file"
             if (CaptureService.shapes.indexOf(shape) < 0)
                 return root.fail(`not a shape: "${shape}" (${CaptureService.shapes.join(", ")})`)
-            CaptureService.open(shape, "photo", "file", CaptureService.settle)
-            return root.ok({ shape: shape })
+            if (["file", "editor", "text"].indexOf(target) < 0)
+                return root.fail("destination must be file, editor or text")
+            CaptureService.open(shape, "photo", target, CaptureService.settle)
+            return root.ok({ shape: shape, destination: target })
+        }
+    }
+
+    IpcHandler {
+        target: "settings"
+
+        function toggle(): string {
+            if (!root.settingsToggle)
+                return root.fail("settings window callback is unavailable")
+            root.settingsToggle()
+            return root.ok()
+        }
+    }
+
+    IpcHandler {
+        target: "launcher"
+
+        function mode(name: string): string {
+            if (["clipboard", "emoji"].indexOf(name) < 0)
+                return root.fail("mode must be clipboard or emoji")
+            if (!root.launcherMode)
+                return root.fail("launcher callback is unavailable")
+            root.launcherMode(name)
+            return root.ok({ mode: name })
+        }
+    }
+
+    IpcHandler {
+        target: "picker"
+
+        function pick(): string {
+            if (!root.pickColor)
+                return root.fail("picker callback is unavailable")
+            root.pickColor()
+            return root.ok()
+        }
+    }
+
+    IpcHandler {
+        target: "recorder"
+
+        function toggle(): string {
+            RecorderService.toggle()
+            return root.ok()
         }
     }
 
@@ -463,6 +513,14 @@ Scope {
                 return root.fail("a brightness from 0 to 100")
             BrightnessService.setPercent(value)
             return root.ok({ brightness: value })
+        }
+
+        function step(delta: string): string {
+            const amount = parseInt(delta)
+            if (isNaN(amount) || amount === 0 || Math.abs(amount) > 50)
+                return root.fail("a brightness step between -50 and 50")
+            BrightnessService.step(amount)
+            return root.ok({ brightness: BrightnessService.percent })
         }
 
         function get(): string {
