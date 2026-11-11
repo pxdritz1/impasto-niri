@@ -103,14 +103,12 @@ Item {
         { id: "windows", category: "desk", icon: "󰖯", label: Tr.t("Windows"),
           blurb: Tr.t("Niri's native window layout, appearance and compositor capabilities."),
           tabs: [],
-          keywords: "windows layout dwindle master scrolling rounding border gaps inner outer opacity inactive blur refraction glass hyprglass shadow animation preset hyprland",
+          keywords: "windows layout scrolling rounding border gaps opacity blur shadow animation preset niri",
           page: windowsPage },
 
         { id: "monitors", category: "desk", icon: "󰍹", label: Tr.t("Displays"),
-          blurb: Tr.t("Screen layout, modes and the laptop lid."),
-          tabs: [{ id: "arrangement", label: Tr.t("Arrangement") },
-                 { id: "screen", label: Tr.t("The screen") },
-                 { id: "lid", label: Tr.t("The lid") }],
+          blurb: Tr.t("Live output status and persistent monitor profiles."),
+          tabs: [],
           keywords: "displays monitor screen resolution refresh scale rotate transform vrr mirror extend primary lid clamshell laptop close",
           page: monitorsPage },
 
