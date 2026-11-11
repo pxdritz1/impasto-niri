@@ -47,7 +47,7 @@ SettingsSection {
     SettingGroup {
         title: Tr.t("Persistent monitor profiles")
         note: Tr.t("Use Kanshi for automatic profiles when displays connect or disconnect.")
-        hint: Tr.t("Kanshi watches connected outputs and applies named profiles. It can handle laptop-lid and hotplug changes without the shell rewriting your Niri config.")
+        hint: Tr.t("Kanshi applies automatic hotplug profiles. nirilayout offers a graphical layout switcher; nirimon offers a terminal profile manager. The shell does not rewrite your Niri config.")
 
         SettingRow {
             label: Tr.t("Configuration")
