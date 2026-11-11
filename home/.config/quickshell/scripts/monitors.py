@@ -26,6 +26,8 @@ def read_outputs():
         raise RuntimeError(f"cannot query Niri outputs: {error}") from error
 
     payload = json.loads(result.stdout)
+    if isinstance(payload, dict) and "Err" in payload:
+        raise RuntimeError(str(payload["Err"]))
     if isinstance(payload, dict) and "Ok" in payload:
         payload = payload["Ok"]
     if isinstance(payload, dict) and "Outputs" in payload:
