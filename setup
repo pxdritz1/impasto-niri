@@ -1065,12 +1065,6 @@ verb_defaults() {
     stamp defaults
 }
 
-# Shake-to-find magnifies the pointer, so it has to be a vector cursor. Fetches
-# Bibata's SVGs into the state directory and has compositor.py recolour and
-# compile them into the seed env.lua names. The shell rebuilds it on wallpaper
-# changes after that.
-CURSOR_SEED=$HOME/.local/share/icons/impasto-cursor
-
 verb_cursors() {
     section 'cursor theme'
     if ! command -v fc-list >/dev/null; then
