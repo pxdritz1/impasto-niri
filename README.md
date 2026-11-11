@@ -136,13 +136,13 @@ screen and the boot splash are the same design, before there is a session.
 Arch Linux with Niri and Quickshell, from a terminal or a console:
 
 ```bash
-git clone https://github.com/andreumassanet/impasto.git ~/impasto
-cd ~/impasto
+git clone https://github.com/pxdritz1/impasto-niri.git ~/impasto-niri
+cd ~/impasto-niri
 ./setup install
 ```
 
 It installs what is missing, copies `home/` and `system/` into place, and sets
-up the login screen, the plugins and the programs around the shell. Run
+up the login screen, optional Niri integrations and the programs around the shell. Run
 `./setup` alone to pick from a menu instead.
 
 <details>
@@ -167,8 +167,9 @@ up the login screen, the plugins and the programs around the shell. Run
 ./setup help         # every verb and flag
 ```
 
-Nothing is linked: `setup` copies, keeps a backup of anything in the way, and
-never overwrites a file you edited.
+Nothing is linked: `setup` copies and keeps backups. If `~/.config/niri/config.kdl`
+already exists on first install, it is preserved and the starter is written beside
+it as `config.kdl.new`; merge the startup and keybinding examples manually.
 
 <details>
 <summary><b>Components</b></summary>
