@@ -126,8 +126,8 @@ Item {
                     anchors.rightMargin: 8
                     spacing: 8
 
-                    // Marks the focused window; hyprctl's order carries no
-                    // meaning.
+                    // Marks the focused window from the Niri IPC state; list order
+                    // is not used to infer focus.
                     Rectangle {
                         Layout.preferredWidth: Theme.dockDot
                         Layout.preferredHeight: Theme.dockDot
@@ -164,7 +164,7 @@ Item {
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
-                        HyprlandService.focusWindow(window.modelData.address)
+                        NiriService.focusWindow(Number(window.modelData.address))
                         root.closed()
                     }
                 }
