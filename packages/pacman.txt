@@ -20,7 +20,7 @@ quickshell                   # the shell: the bar, the island, the lock, notific
 awww                         # the wallpaper
 imagemagick                  # the palette board
 python                       # every backend in scripts/
-git                          # setup's own clones, ./setup cursors, lazy.nvim
+git                          # setup's own clones and lazy.nvim
 grim                         # the capture's photograph, and the lock screen's
 dbus                         # dbus-monitor, which hears logind about to sleep
 wl-clipboard                 # copying, and the clipboard's history
