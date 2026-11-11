@@ -13,8 +13,8 @@ Impasto's Niri port does not load Hyprland plugins. Niri is a separate composito
 | Hyprland animations | Niri's native `animations {}` configuration | Native; presets must be translated to Niri KDL values |
 | Hyprland gestures | Niri's native `gestures {}` configuration | Native |
 | Hyprland window rules | Niri's native `window-rule {}` configuration | Native |
-| Hyprland monitor profiles | [Kanshi](https://gitlab.com/emersion/kanshi) for automatic profiles; [nirimon](https://github.com/YaLTeR/nirimon) or [nirilayout](https://github.com/YaLTeR/nirilayout) for interactive/profile workflows | External tools; do not write a user's KDL blindly |
-| Hyprland scratchpads | [niri-scratchpad-rs](https://github.com/abenz1267/niri-scratchpad) or [niri-scratchpad](https://github.com/YaLTeR/niri-scratchpad) | External tools; verify package availability before installing |
+| Hyprland monitor profiles | [Kanshi](https://gitlab.com/emersion/kanshi) for automatic profiles; [nirimon](https://github.com/stepbrobd/nirimon) or [nirilayout](https://github.com/YaLTeR/nirilayout) for interactive/profile workflows | External tools; do not write a user's KDL blindly |
+| Hyprland scratchpads | [niri-scratchpad-rs](https://github.com/argosnothing/niri-scratchpad-rs) or [niri-scratchpad](https://github.com/YaLTeR/niri-scratchpad) | External tools; verify package availability before installing |
 | Alternate layouts (master/stack) | [miri](https://github.com/YaLTeR/miri) | Optional Niri extension; Niri's native model remains scrolling columns |
 
 The curated [awesome-niri list](https://github.com/niri-wm/awesome-niri) tracks additional community tools. These are independent projects, not bundled or silently installed by Impasto.
