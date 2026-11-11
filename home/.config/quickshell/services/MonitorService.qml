@@ -69,11 +69,21 @@ Singleton {
         return !!screen && screen.name === root.primaryName
     }
 
-    readonly property Connections outputEvents: Connections {
+    // Niri's event stream has no dedicated output-change event. Workspace
+    // topology changes and Qt screen hotplug notifications cover output
+    // connect/disconnect without a polling loop.
+    readonly property Connections workspaceEvents: Connections {
         target: NiriService
         function onEventReceived(kind, data) {
-            if (kind === "OutputsChanged")
-                root.load()
+            if (kind === "WorkspacesChanged")
+                Qt.callLater(root.load)
+        }
+    }
+
+    readonly property Connections screenEvents: Connections {
+        target: Quickshell
+        function onScreensChanged() {
+            Qt.callLater(root.load)
         }
     }
 
