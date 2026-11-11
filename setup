@@ -146,7 +146,7 @@ banner() {
     BANNERED=1
     printf '\n'
     mark
-    printf '\n  %sa desk for Arch Linux and Hyprland%s   %s%s%s\n\n' \
+    printf '\n  %sa desk for Arch Linux and Niri%s   %s%s%s\n\n' \
         "$MUTED" "$OFF" "$FAINT" "$(version)" "$OFF"
 }
 
@@ -166,7 +166,7 @@ Usage: ./setup <command> [options]
   sync        copy home/ into $HOME — how a change in the repository lands
   system      copy system/ into /, and switch the login screen on where no
               other display manager is (asks for a password)
-  plugins     build and enable the two Hyprland plugins with hyprpm
+  plugins     show Niri-native replacements for the former Hyprland plugins
 
   defaults    what opens which file, and dark GTK with the impasto icons
   cursors     fetch the vector cursor and build it in the chosen colour
@@ -192,7 +192,7 @@ Run ./setup with no command at a terminal to pick from a menu instead.
 Options:
   --skip-packages     install, update: leave the packages alone
   --skip-system       install, update: leave / alone
-  --skip-plugins      install, update: do not build the plugins
+  --skip-plugins      install, update: skip optional compositor integrations
   --skip-extras       install, update: leave the extras above alone
   --aur-helper NAME   yay or paru. The one installed is used, and when there
                       is neither, this one is built from the AUR (yay if unset)
@@ -830,74 +830,13 @@ omz() {
 # /var/cache: it needs the session up, a terminal and a password. Run outside
 # the session, this leaves them to the first one: while PLUGINS_PENDING names
 # the checkout, autostart.lua opens a terminal on `./setup plugins`.
-PLUGINS_PENDING=$STATE/plugins-pending
-
-# The repositories are the two named below, so hyprpm's "Are you sure?" gets
-# an empty line, which it takes as yes.
-plugin() {
-    if ! hyprpm list 2>/dev/null | grep -q "$1"; then
-        act hyprpm add "$2" </dev/null
-    fi
-    act hyprpm enable "$1"
-    say "$1 ok"
-}
-
-# hyprpm asks sudo before every step and forgets it after each (`sudo -k`),
-# which is a password per step. For the build, a `sudo` that ignores -k goes
-# first in PATH, the password is asked once, and a refresh every minute
-# outlasts a long compile. Undone, and the timestamp dropped as hyprpm meant,
-# when the build ends or setup exits.
-SUDO_SHIM=
-SUDO_KEEP=
-
-hold_sudo() {
-    SUDO_SHIM=$(mktemp -d)
-    printf '#!/bin/sh\n[ "$1" = -k ] && exit 0\nexec %s "$@"\n' "$(command -v sudo)" > "$SUDO_SHIM/sudo"
-    chmod +x "$SUDO_SHIM/sudo"
-    trap release_sudo EXIT
-    sudo -v
-    while kill -0 $$ && sleep 60; do sudo -n -v || break; done 2>/dev/null &
-    SUDO_KEEP=$!
-    PATH=$SUDO_SHIM:$PATH
-}
-
-release_sudo() {
-    if [[ -n $SUDO_KEEP ]]; then
-        pkill -P "$SUDO_KEEP" 2>/dev/null || true
-        kill "$SUDO_KEEP" 2>/dev/null || true
-    fi
-    if [[ -n $SUDO_SHIM ]]; then
-        PATH=${PATH#"$SUDO_SHIM":}
-        rm -rf "$SUDO_SHIM"
-        sudo -k
-    fi
-    SUDO_SHIM= SUDO_KEEP=
-}
-
 verb_plugins() {
-    section 'hyprland plugins'
-    if ! hyprctl version >/dev/null 2>&1; then
-        if (( ! DRY )); then mkdir -p "$STATE"; printf '%s\n' "$REPO" > "$PLUGINS_PENDING"; fi
-        say 'built by the first Hyprland session: a terminal asks for your password there'
-        return 0
-    fi
-    say 'building shake to find and glass: your password, once'
-    if (( ! DRY )); then hold_sudo; fi
-    # The headers first, and a rebuild of what is there when Hyprland has
-    # changed under it, even by a package rebuild of the same version.
-    act hyprpm update
-    plugin dynamic-cursors https://github.com/virtcode/hypr-dynamic-cursors
-    plugin hyprglass https://github.com/hyprnux/hyprglass
-    act hyprpm reload
-    # hyprpm keys its headers on Hyprland's commit alone, so a rebuild of the
-    # same version against new libraries keeps stale ones and every plugin is
-    # refused, while `reload` still reports success. Only the list says so.
-    if (( ! DRY )) && hyprctl plugin list 2>/dev/null | grep -q '^no plugins loaded'; then
-        act hyprpm update -f
-        act hyprpm reload
-    fi
-    release_sudo
-    act rm -f "$PLUGINS_PENDING"
+    section 'Niri integrations'
+    say 'Hyprland plugins are not loaded by Niri; no hyprpm build or compositor mutation is attempted.'
+    say 'Native replacements: Niri animations, gestures, blur and window rules.'
+    say 'Optional tools: kanshi (monitor profiles), miri (alternate layouts), niri-scratchpad-rs (scratchpads).'
+    say 'Shake-to-find and refractive hyprglass have no equivalent Niri implementation; they remain unsupported.'
+    say 'See docs/niri-compatibility.md for the compatibility map and project links.'
 }
 
 verb_install() {
@@ -1633,7 +1572,7 @@ parts() {
             case ${PARTS[i]%%:*} in
                 packages) note="$pacman from the repositories, $aur from the AUR" ;;
                 system)   note='sddm, unless this machine already has one' ;;
-                plugins)  note='shake to find · glass on the windows' ;;
+                plugins)  note='Niri-native features and optional tools' ;;
                 extras)   note='Nautilus, VSCodium, Vesktop, Spotify, GTK, your face, the camera, the boot splash' ;;
             esac
             if (( on[i] )); then box="$ACCENT◉$OFF"; else box="$FAINT○$OFF"; fi
