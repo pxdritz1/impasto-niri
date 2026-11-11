@@ -12,7 +12,6 @@ pragma Singleton
 import QtQml
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
 
 import "../theme"
 
@@ -1086,8 +1085,8 @@ Singleton {
             return true
         if (!SettingsService.spectrumOnEmpty)
             return false
-        const workspace = HyprlandService.activeOn(name)
-        return workspace > 0 && HyprlandService.occupiedIds.indexOf(workspace) >= 0
+        const workspace = NiriService.activeOn(name)
+        return workspace > 0 && NiriService.occupiedIds.indexOf(workspace) >= 0
     }
 
     // On the grid or on an edge.
@@ -1492,20 +1491,16 @@ Singleton {
     // that covers it and takes its clicks, and a fullscreen window covers the
     // surface itself.
     readonly property Connections compositor: Connections {
-        target: Hyprland
+        target: NiriService
 
-        function onRawEvent(event): void {
+        function onEventReceived(kind, data): void {
             if (!root.editing)
                 return
-            switch (event.name) {
-            case "workspacev2":
-            case "activespecialv2":
-            case "openwindow":
+            switch (kind) {
+            case "WorkspacesChanged":
+            case "WindowOpenedOrChanged":
+            case "WindowClosed":
                 root.edit(false)
-                break
-            case "fullscreen":
-                if (event.data === "1")
-                    root.edit(false)
                 break
             }
         }
