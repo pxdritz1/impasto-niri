@@ -1383,9 +1383,8 @@ Singleton {
     // only one is ever active at a time.
     //
     // The board the card is on does not change hands while it is true. The
-    // pointer itself cannot be held at the seam — Hyprland has no edge
-    // barrier to ask for, only the remote-capture protocol's — so crossing is
-    // made to mean nothing instead.
+    // pointer itself cannot be held at the seam by a compositor-independent
+    // edge barrier, so crossing is made to mean nothing instead.
     property bool inHand: false
 
 
