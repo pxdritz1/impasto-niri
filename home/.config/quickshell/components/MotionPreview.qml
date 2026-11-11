@@ -30,8 +30,9 @@ Item {
     readonly property var bezier: root.still ? [0, 0, 1, 1, 1, 1] : [
         root.preset.curve[0], root.preset.curve[1],
         root.preset.curve[2], root.preset.curve[3], 1, 1]
-    // Hyprland counts in deciseconds, so 2.6 is 260 ms. `slow` is the speed
-    // windowsIn actually runs at.
+    // Legacy preset durations are stored in deciseconds; convert to ms for
+    // this visual preview only. Niri's compositor animations are configured
+    // separately in KDL.
     readonly property int span: root.still ? 0 : root.preset.slow * 100
 
     implicitWidth: 92
