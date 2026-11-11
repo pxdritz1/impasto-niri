@@ -409,6 +409,15 @@ deploy() {
         if [[ $tree == home ]]; then unstow "$rel"; fi
         want=$(digest "$src")
         AFTER[$rel]=$want
+        # Never replace a pre-existing user Niri config on first install.
+        # Offer the starter as a sidecar so the user can merge it deliberately.
+        if [[ $tree == home && $rel == .config/niri/config.kdl && -e $dst && -z ${BEFORE[$rel]:-} ]]; then
+            if [[ ! -f $dst.new ]] || [[ $(digest "$dst.new") != "$want" ]]; then
+                put "$src" "$dst.new"
+                say "kept     $shown$rel — existing Niri config preserved; starter is beside it as .new"
+            fi
+            continue
+        fi
         if [[ $tree == home ]] && gone "$rel"; then
             put "$src" "$dst"; say "new      $shown$rel"; said=1
         elif [[ -L $dst ]]; then
