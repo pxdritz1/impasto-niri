@@ -49,7 +49,7 @@ Singleton {
         {
             id: "springy",
             label: "Bounce",
-            note: "Overshoots a little and settles back."
+            note: "Overshoots a little and settles back.",
             curve: [0.05, 0.9, 0.1, 1.15],
             slow: 3.2, medium: 2.0, fast: 1.4,
             windows: "popin 80%", workspaces: "slide"
