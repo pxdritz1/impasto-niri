@@ -542,7 +542,7 @@ Singleton {
         property bool dockShadow: false
         property bool widgetShadow: false
 
-        // Legacy Hyprglass profile field. Retained for compatibility, unused by Niri.
+        // Retained legacy glass profile field; unused by the Niri integration.
         property bool windowGlass: false
 
         // The island's and the bar's ground: "classic" solid black,
@@ -688,7 +688,7 @@ Singleton {
         // Named in Theme.easingCurves.
         property string motionCurve: "OutCubic"
 
-        // Legacy Hyprland animation preset. Retained for compatibility; Niri uses KDL.
+        // Retained legacy animation preset; Niri animation settings live in KDL.
         property string animationPreset: "macos"
 
         property string fontFamily: "Inter, Cantarell, SF Pro Text, sans-serif"
@@ -698,15 +698,15 @@ Singleton {
 
         // ── COMPOSITOR ──────────────────────────────────────────────────
         //
-        // Legacy Hyprland option map. Retained for profile migration; Niri does not consume it.
+        // Retained legacy compositor option map for profile migration; Niri does not consume it.
         property var compositor: ({})
 
-        // Legacy keyboard option map from the Hyprland port; retained only for migration.
+        // Retained legacy keyboard option map for profile migration.
         property var keyboard: ({})
 
         // ── DISPLAYS ────────────────────────────────────────────────────
         //
-        // Legacy Hyprland display profiles; Niri output settings are managed by KDL/Kanshi.
+        // Retained legacy display profiles; Niri output settings are managed by KDL/Kanshi.
         //
         //   <profile> primary   description of the screen the shell's
         //                       surfaces go on; "" means Quickshell's
@@ -721,10 +721,8 @@ Singleton {
 
         // ── KEYS ────────────────────────────────────────────────────────
         //
-        // A combination per bind in `hypr/keybinds.lua`, keyed by its
-        // description; "" leaves it unbound. Empty until the first change,
-        // then complete. `ShortcutService` writes it to keys.tsv, which the
-        // Lua config reads.
+        // Reserved for profile migration. Current Niri keybindings live in
+        // config.kdl and are edited with the optional NiriMod application.
         property var keys: ({})
 
         // Launcher sigil overrides, keyed by mode id; absent means the
@@ -870,14 +868,14 @@ Singleton {
         property bool nightLight: false
         property int nightTemperature: 4000
 
-        // Legacy Hyprland lid policy. Niri manages the internal output on lid events.
+        // Retained legacy lid policy; Niri manages the internal output on lid events.
         property string lidPolicy: "off"
 
-        // Legacy custom Hyprcursor color; Niri uses the XCursor theme in config.kdl.
+        // Niri uses the XCursor theme in config.kdl.
         property string cursorColor: "palette"
         property int cursorSize: 24
 
-        // Legacy Hyprland shake-to-find toggle; no equivalent Niri integration is available.
+        // Shake-to-find is not available through Niri integration.
         property bool shakeToFind: true
 
         // Translations live in `theme/Tr.qml`; missing strings fall back to

@@ -432,7 +432,7 @@ CAVA_THEME_FILE = os.path.join(CAVA_DIR, "themes", "velatura")
 CAVA_GRADIENT_DIM = 0.60
 
 # Stable path to the current wallpaper, for anything outside the shell that
-# wants it (hyprlock run by hand, for example).
+# wants it when a separate session locker requests it.
 CURRENT_WALLPAPER_LINK = os.path.join(STATE_DIR, "current-wallpaper")
 
 IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png", ".webp")

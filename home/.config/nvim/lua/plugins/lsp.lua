@@ -34,7 +34,7 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            -- · `hl` is Hyprland's Lua config global
+            -- · `hl` is a shell theme helper global
             vim.lsp.config("lua_ls", {
                 settings = {
                     Lua = {

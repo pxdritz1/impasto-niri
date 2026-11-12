@@ -13,7 +13,7 @@ SettingsSection {
     SettingGroup {
         title: Tr.t("Niri window management")
         note: Tr.t("The compositor owns the scrolling-column layout and window placement.")
-        hint: Tr.t("Niri has no Hyprland-style runtime option API. Persistent settings are edited in KDL and live-reloaded by Niri.")
+        hint: Tr.t("Niri settings are stored in KDL and reloaded by the compositor.")
 
         SettingRow {
             label: Tr.t("Compositor")
@@ -27,7 +27,7 @@ SettingsSection {
 
     SettingGroup {
         title: Tr.t("Native capabilities")
-        note: Tr.t("These features are provided by Niri itself, not by Hyprland plugins.")
+        note: Tr.t("These features are provided natively by Niri.")
         Repeater {
             model: [
                 { name: Tr.t("Scrolling-column layout"), detail: Tr.t("Native Niri layout") },
@@ -63,7 +63,7 @@ SettingsSection {
     }
 
     SettingGroup {
-        title: Tr.t("Not available as a Niri plugin")
+        title: Tr.t("Not available in Niri")
         note: Tr.t("No fake controls are shown for effects that Niri cannot provide.")
         SettingRow {
             label: Tr.t("Refractive glass")

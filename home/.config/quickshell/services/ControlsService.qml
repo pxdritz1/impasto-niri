@@ -364,7 +364,7 @@ Singleton {
             active: PickerService.picking
             available: PickerService.available
             closes: true
-            // hyprpicker freezes the screen as it is, so wait for the panel
+            // Niri captures the screen for colour picking, so wait for the panel
             // to close. The delay is passed by the caller because a keybind
             // with nothing open needs none.
             action: () => PickerService.pick(PickerService.settle)

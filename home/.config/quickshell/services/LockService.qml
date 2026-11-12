@@ -241,7 +241,7 @@ Singleton {
     }
 
     readonly property PamContext pam: PamContext {
-        // The same stack hyprlock's PAM file includes.
+        // The same system PAM stack used by the session login.
         config: "login"
 
         onCompleted: result => {

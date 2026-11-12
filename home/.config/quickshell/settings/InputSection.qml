@@ -42,7 +42,7 @@ SettingsSection {
         note: Tr.t("Cursor theme and size are configured by Niri and the XCursor theme environment.")
         SettingRow {
             label: Tr.t("Shake to find")
-            reading: Tr.t("Not supported by a Niri plugin/API")
+            reading: Tr.t("Not supported by Niri")
         }
     }
 }

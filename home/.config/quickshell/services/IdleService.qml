@@ -13,7 +13,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 
-// Idle lock, screen off and suspend, in place of hypridle.
+// Idle lock, screen off and suspend through Wayland idle protocols.
 //
 // Quickshell's `IdleMonitor` speaks `ext-idle-notify` directly, so timeouts
 // follow the settings live with no daemon to restart. A timeout of zero means

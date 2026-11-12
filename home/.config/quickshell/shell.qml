@@ -50,7 +50,7 @@ ShellRoot {
         void ScreenTimeService.away
         // Registers the polkit agent, so a request is answered from the start.
         void PolkitService.asking
-        // Probes for hyprpicker, so the first press is not the one that asks.
+        // Initializes the Niri colour picker before the first request.
         void PickerService.available
         // Starts the clipboard watcher.
         void ClipboardService.count

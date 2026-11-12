@@ -92,7 +92,7 @@ Item {
         anchors.bottom: chip.top
         anchors.bottomMargin: 10
         anchors.right: chip.right
-        // Wide enough for names like "Hyprland (uwsm-managed)".
+        // Wide enough for names like "Niri (uwsm-managed)".
         width: Math.max(236, chip.width + 44)
         height: list.height + 16
         radius: Theme.radiusLarge

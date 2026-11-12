@@ -232,7 +232,7 @@
       "Session · Session menu, from CTRL + ALT + Delete": "CTRL + ALT + Delete",
       "Session · Session menu, from the power button": "XF86PowerOff",
       "Session · Lock the screen": "SUPER + L",
-      "Session · Exit Hyprland": "SUPER + SHIFT + E",
+      "Session · Exit Niri": "SUPER + SHIFT + E",
       "Utilities · Turn the screen off or back on": "SUPER + SHIFT + D",
       "Utilities · Restart the shell": "SUPER + CTRL + R",
       "Shell · Open the launcher": "SUPER + Space",

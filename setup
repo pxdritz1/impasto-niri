@@ -134,7 +134,7 @@ Usage: ./setup <command> [options]
   sync        copy home/ into $HOME — how a change in the repository lands
   system      copy system/ into /, and switch the login screen on where no
               other display manager is (asks for a password)
-  plugins     show Niri-native replacements for the former Hyprland plugins
+  plugins     show available native Niri integrations
 
   defaults    what opens which file, and dark GTK with the velatura icons
   cursors     fetch the vector cursor and build it in the chosen colour
@@ -370,9 +370,6 @@ deploy() {
     read_manifest "$manifest"
     AFTER=()
     while IFS= read -r rel; do
-        # Hyprland configuration from the upstream shell is not part of the Niri port.
-        # Skip it so existing tracked files are retired by the manifest below.
-        [[ $tree == home && $rel == .config/hypr/* ]] && continue
         src=$REPO/$tree/$rel
         dst=$target/$rel
         if [[ $tree == home ]]; then unstow "$rel"; fi
@@ -807,11 +804,11 @@ omz() {
 # Niri integrations are external tools or native compositor features.
 verb_plugins() {
     section 'Niri integrations'
-    say 'Hyprland plugins are not loaded by Niri; no hyprpm build or compositor mutation is attempted.'
-    say 'Native replacements: Niri animations, gestures, blur and window rules.'
+    say 'Niri provides native workspace, animation, gesture, blur and window-rule interfaces.'
+    say 'Persistent compositor settings remain in ~/.config/niri/config.kdl.'
     say 'Optional tools: kanshi (monitor profiles), miri (alternate layouts), niri-scratchpad-rs (scratchpads).'
-    say 'Shake-to-find and refractive hyprglass have no equivalent Niri implementation; they remain unsupported.'
-    say 'See docs/niri-compatibility.md for the compatibility map and project links.'
+    say 'Refractive glass and shake-to-find cursor effects are not provided by Niri.'
+    say 'See docs/niri-compatibility.md for Niri capabilities and project links.'
 }
 
 verb_install() {
@@ -1049,7 +1046,7 @@ verb_cursors() {
         refuse 'fontconfig is not installed'
         return
     fi
-    say 'Niri uses standard XCursor themes; Hyprcursor generation is not used.'
+    say 'Niri uses standard XCursor themes.'
     say 'Install bibata-cursor-theme-bin, then set cursor.xcursor-theme and cursor.xcursor-size in ~/.config/niri/config.kdl.'
     say 'The starter config selects Bibata-Modern-Classic.'
 }

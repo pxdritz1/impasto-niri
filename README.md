@@ -1,4 +1,8 @@
 <p align="center">
+  <img src=".github/assets/velatura-logo.svg" alt="Velatura logo" width="112">
+</p>
+
+<p align="center">
   <b>A customizable Quickshell desktop shell built around Niri, with a dynamic island, desktop widgets and wallpaper-driven colours.</b><br>
   One black island that changes shape, a desk of widgets under the windows,<br>
   and every program around it repainted by whatever wallpaper is up.
@@ -166,33 +170,31 @@ it as `config.kdl.new`; merge the startup and keybinding examples manually.
 <summary><b>Components</b></summary>
 <br>
 
-| | | |
-|---|---|---|
-| 🪟 | Compositor | [Niri](https://github.com/niri-wm/niri) |
-| 🖱️ | Shake to find | Not available in Niri; no equivalent claimed |
-| 🫧 | Glass on the windows | Niri native blur; no refraction equivalent |
-| 🐚 | Desktop shell | [Quickshell](https://quickshell.org) |
-| 🖼️ | Wallpaper daemon | [awww](https://github.com/LGFae/swww) |
-| 🖥️ | Terminal | [kitty](https://sw.kovidgoyal.net/kitty/) |
-| ⌨️ | Interactive shell | [zsh](https://www.zsh.org) · [oh-my-zsh](https://ohmyz.sh) |
-| ❯ | Prompt | [starship](https://starship.rs) |
-| 🎨 | Greeting | [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
-| 📊 | System monitor | [btop](https://github.com/aristocratos/btop) |
-| 🎵 | Audio visualiser | [cava](https://github.com/karlstav/cava) |
-| 📁 | File manager | [yazi](https://yazi-rs.github.io) |
-| 🗂️ | File manager in a window | [Nautilus](https://apps.gnome.org/Nautilus/) |
-| ✏️ | Editor | [neovim](https://neovim.io) |
-| 📝 | Editor in a window | [VSCodium](https://vscodium.com) |
-| 🖼️ | Image viewer | [imv](https://sr.ht/~exec64/imv/) |
-| 🪄 | Annotator | [satty](https://github.com/gabm/Satty) |
-| 💬 | Chat | [Vesktop](https://github.com/Vencord/Vesktop) |
-| 🎧 | Player | [Spotify](https://www.spotify.com) · [spicetify](https://spicetify.app) |
-| 🌐 | Browser | [Zen](https://zen-browser.app) |
-| 🔆 | Monitor brightness | [ddcutil](https://www.ddcutil.com) |
-| 🔑 | Login screen | [SDDM](https://github.com/sddm/sddm) |
-| 🎨 | Boot splash | [Plymouth](https://gitlab.freedesktop.org/plymouth/plymouth) |
-| 👤 | Face unlock | [howdy-next](https://codeberg.org/nathawat/howdy-next) |
-| 📷 | Camera effects | [MediaPipe](https://ai.google.dev/edge/mediapipe) · [v4l2loopback](https://github.com/umlaeute/v4l2loopback) |
+| Component | Tool |
+|---|---|
+| Compositor | [Niri](https://github.com/niri-wm/niri) |
+| Desktop shell | [Quickshell](https://quickshell.org) |
+| Wallpaper daemon | [awww](https://github.com/LGFae/swww) |
+| Terminal | [kitty](https://sw.kovidgoyal.net/kitty/) |
+| Interactive shell | [zsh](https://www.zsh.org) · [oh-my-zsh](https://ohmyz.sh) |
+| Prompt | [starship](https://starship.rs) |
+| Greeting | [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
+| System monitor | [btop](https://github.com/aristocratos/btop) |
+| Audio visualiser | [cava](https://github.com/karlstav/cava) |
+| File manager | [yazi](https://yazi-rs.github.io) |
+| File manager in a window | [Nautilus](https://apps.gnome.org/Nautilus/) |
+| Editor | [neovim](https://neovim.io) |
+| Editor in a window | [VSCodium](https://vscodium.com) |
+| Image viewer | [imv](https://sr.ht/~exec64/imv/) |
+| Annotator | [satty](https://github.com/gabm/Satty) |
+| Chat | [Vesktop](https://github.com/Vencord/Vesktop) |
+| Player | [Spotify](https://www.spotify.com) · [spicetify](https://spicetify.app) |
+| Browser | [Zen](https://zen-browser.app) |
+| Monitor brightness | [ddcutil](https://www.ddcutil.com) |
+| Login screen | [SDDM](https://github.com/sddm/sddm) |
+| Boot splash | [Plymouth](https://gitlab.freedesktop.org/plymouth/plymouth) |
+| Face unlock | [howdy-next](https://codeberg.org/nathawat/howdy-next) |
+| Camera effects | [MediaPipe](https://ai.google.dev/edge/mediapipe) · [v4l2loopback](https://github.com/umlaeute/v4l2loopback) |
 
 </details>
 
@@ -214,13 +216,17 @@ knowing first:
 
 ## Credits
 
+<p align="center">
+  <img src=".github/assets/velatura-logo.svg" alt="Velatura" width="56">
+</p>
+
 These are worth your time whether or not you use this repository. No code was
 copied from any of them; what carried over from the shells are ideas — one file
 per island state, one transient signal for every ephemeral event, and input
 debounced to one frame.
 
-- [saneAspect](https://www.youtube.com/@saneAspect) — the Hyprland setups on
-  YouTube that started all this
+- [saneAspect](https://www.youtube.com/@saneAspect) — desktop setup videos on
+  YouTube that helped inspire the project
 - [Tide-island](https://github.com/enhaoswen/Tide-island) — the closest thing to
   a complete dynamic island for Niri
 - [ChillPill-Shell](https://github.com/LUCKYS1NGHH/ChillPill-Shell) — a dynamic
@@ -234,7 +240,7 @@ Velatura is an independent continuation and Niri-focused adaptation of ideas
 and code from [Impasto](https://github.com/andreumassanet/impasto), originally
 created by Andreu Massanet. See [CREDITS.md](CREDITS.md) for provenance.
 
-Built on [Quickshell](https://quickshell.org) and [Niri](https://github.com/niri-wm/niri). Niri configuration editing is delegated to [NiriMod](https://github.com/srinivasr/nirimod). See [Niri compatibility and plugin alternatives](docs/niri-compatibility.md).
+Built on [Quickshell](https://quickshell.org) and [Niri](https://github.com/niri-wm/niri). Niri configuration editing is delegated to [NiriMod](https://github.com/srinivasr/nirimod). See [Niri integration and capabilities](docs/niri-compatibility.md).
 The pointer is [Bibata](https://github.com/ful1e5/Bibata_Cursor), repainted;
 the folders are [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme),
 re-pointed; the type is [Inter](https://rsms.me/inter/) and

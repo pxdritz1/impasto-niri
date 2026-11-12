@@ -283,9 +283,12 @@ def capture_script():
 
 def focused_screen():
     try:
-        result = subprocess.run(["hyprctl", "activeworkspace", "-j"], capture_output=True,
-                                text=True, timeout=5)
-        return json.loads(result.stdout).get("monitor", "")
+        result = subprocess.run(["niri", "msg", "--json", "workspaces"], capture_output=True,
+                                text=True, timeout=5, check=True)
+        workspaces = json.loads(result.stdout)
+        focused = next((workspace for workspace in workspaces
+                        if workspace.get("is_focused")), None)
+        return focused.get("output", "") if focused else ""
     except (OSError, subprocess.SubprocessError, ValueError):
         return ""
 

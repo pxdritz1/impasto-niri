@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
   <defs>
     <linearGradient id="tile" x1="64" y1="5" x2="64" y2="123" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#3D4248"/>
-      <stop offset="1" stop-color="#1F2226"/>
+      <stop stop-color="#484238"/>
+      <stop offset="1" stop-color="#24211B"/>
     </linearGradient>
     <linearGradient id="glazeA" x1="27" y1="42" x2="102" y2="83" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#63C8F2"/>
-      <stop offset="1" stop-color="#83D4FB"/>
+      <stop stop-color="#E8C98B"/>
+      <stop offset="1" stop-color="#F5E2B8"/>
     </linearGradient>
     <linearGradient id="glazeB" x1="30" y1="70" x2="100" y2="48" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4DAFD9"/>
-      <stop offset="1" stop-color="#A1E2F8"/>
+      <stop stop-color="#C99B4F"/>
+      <stop offset="1" stop-color="#F1D18E"/>
     </linearGradient>
     <linearGradient id="glazeC" x1="40" y1="91" x2="91" y2="55" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8ADCF5"/>
-      <stop offset="1" stop-color="#4A9ECF"/>
+      <stop stop-color="#F3DCA9"/>
+      <stop offset="1" stop-color="#B98235"/>
     </linearGradient>
   </defs>
   <rect x="5" y="5" width="118" height="118" rx="27" fill="url(#tile)"/>
-  <path d="M25 73C37 49 53 35 72 34C86 33 98 41 104 52C89 48 78 52 67 64C54 78 42 88 25 89C22 84 22 78 25 73Z" fill="url(#glazeA)" opacity=".88"/>
-  <path d="M27 83C42 70 55 59 70 57C83 55 94 61 101 73C86 68 75 73 64 84C53 94 41 100 29 99C26 94 25 88 27 83Z" fill="url(#glazeB)" opacity=".72"/>
-  <path d="M39 48C50 37 62 29 76 29C86 29 94 34 99 42C86 39 77 43 68 52C59 62 50 68 38 69C35 62 35 55 39 48Z" fill="url(#glazeC)" opacity=".58"/>
-  <path d="M27 73C39 51 55 37 72 35" stroke="#D9F5FF" stroke-width="2.2" stroke-linecap="round" opacity=".48"/>
-  <path d="M31 86C45 74 57 64 70 61" stroke="#E8FAFF" stroke-width="1.8" stroke-linecap="round" opacity=".35"/>
+  <path d="M25 73C37 49 53 35 72 34C86 33 98 41 104 52C89 48 78 52 67 64C54 78 42 88 25 89C22 84 22 78 25 73Z" fill="url(#glazeA)" opacity=".9"/>
+  <path d="M27 83C42 70 55 59 70 57C83 55 94 61 101 73C86 68 75 73 64 84C53 94 41 100 29 99C26 94 25 88 27 83Z" fill="url(#glazeB)" opacity=".76"/>
+  <path d="M39 48C50 37 62 29 76 29C86 29 94 34 99 42C86 39 77 43 68 52C59 62 50 68 38 69C35 62 35 55 39 48Z" fill="url(#glazeC)" opacity=".64"/>
+  <path d="M27 73C39 51 55 37 72 35" stroke="#FFF7E8" stroke-width="2.2" stroke-linecap="round" opacity=".58"/>
+  <path d="M31 86C45 74 57 64 70 61" stroke="#FFF7E8" stroke-width="1.8" stroke-linecap="round" opacity=".42"/>
 </svg>

@@ -204,7 +204,7 @@ def search(term):
     taken = {row["name"] for row in repos}
     remote_rows = [row for row in (remote or []) if row["name"] not in taken]
 
-    # Match quality first, whichever the source, so `hyprland` ranks above
+    # Match quality first, whichever the source, so an exact package name ranks above
     # repository packages that merely contain it. Within a tier the
     # repositories lead, and AUR results follow by popularity.
     rows = sorted(repos + remote_rows, key=lambda row: (

@@ -23,8 +23,7 @@ import "../../components"
 //     occupied   solid but dim, or the number in full
 //     empty      dimmer still: a grey dot or bar, a hollow ring, a grey number
 //
-// Mirrors the workspaces Niri currently reports for this output. Unlike
-// Hyprland, Niri creates and removes ordinary workspaces dynamically; there
+// Mirrors the workspaces Niri currently reports for this output. Niri creates and removes ordinary workspaces dynamically; there
 // are no reserved empty slots. The focused pill slides between real entries.
 Rectangle {
     id: root

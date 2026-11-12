@@ -60,10 +60,10 @@ def runtime():
 def directory():
     """Where saved captures go.
 
-    $VELATURA_CAPTURES or $HYPRSHOT_DIR (both set in `env.lua`), then the XDG
+    $VELATURA_CAPTURES (set in `env.lua`), then the XDG
     pictures directory, then $HOME.
     """
-    for key in ("VELATURA_CAPTURES", "HYPRSHOT_DIR"):
+    for key in ("VELATURA_CAPTURES",):
         value = os.environ.get(key)
         if value:
             return Path(value).expanduser()

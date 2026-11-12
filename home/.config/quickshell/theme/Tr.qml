@@ -132,8 +132,8 @@ QtObject {
             "Keyboard": "Teclado",
             "Pointer": "Puntero",
             "Keys": "Atajos",
-            "Every keybinding, the shell's and Hyprland's.":
-                "Todos los atajos, los del shell y los de Hyprland.",
+            "Every keybinding, the shell's and Niri's.":
+                "Todos los atajos, los del shell y los de Niri.",
             "Session": "Sesión",
             "Lock screen": "Pantalla de bloqueo",
             "Lock": "Bloquear",
@@ -576,8 +576,8 @@ QtObject {
             "Game mode on": "Modo juego activado",
             "Game mode off": "Modo juego desactivado",
             "Everything still, for a game or a slow machine.": "Todo quieto, para jugar o en un equipo lento.",
-            "Stops the shell's animations, the spectrum and the pet, makes the island, the dock and the widgets solid without shadows, and turns off Hyprland's animations, blur, shadow and glass. The settings below are kept and come back when it is turned off.":
-                "Para las animaciones del shell, el espectro y la mascota, vuelve sólidos y sin sombra la isla, el dock y los widgets, y apaga las animaciones, el desenfoque, la sombra y el cristal de Hyprland. Los ajustes de abajo se conservan y vuelven al desactivarlo.",
+            "Stops the shell's animations, the spectrum and the pet, and makes the island, dock and widgets solid without shadows. Niri's compositor settings are left unchanged.":
+                "Detiene las animaciones del shell, el espectro y la mascota, y vuelve sólidos y sin sombra la isla, el dock y los widgets. La configuración del compositor Niri no cambia.",
             "Capture": "Capturar",
             "Annotate": "Anotar",
             "Read text": "Leer texto",
@@ -709,9 +709,9 @@ QtObject {
             "Lava lamp": "Lámpara de lava",
             "Critters": "Bichos",
 
-            "How Hyprland draws every window, this one included.":
-                "Cómo dibuja Hyprland cada ventana, esta incluida.",
-            "Dwindle splits the space each new window lands in, Master keeps one large window beside a stack, and Scrolling lays windows in a row wider than the screen. The preview below is live and at full size. The border stays at zero because gaps and rounding already separate windows; the inner gap applies to each side of a window, so two windows sit twice that apart.":
+            "How Niri arranges windows in scrolling columns.":
+                "Cómo organiza Niri las ventanas en columnas desplazables.",
+            "Niri arranges windows in scrolling columns. New windows join the focused column, and column width, gaps and borders are configured in KDL. The preview below illustrates the shell's spacing rather than changing compositor layout.":
                 "Dwindle parte el hueco donde cae cada ventana nueva, Master deja una ventana grande junto a una pila y Scrolling pone las ventanas en una fila más ancha que la pantalla. La vista previa de abajo es en vivo y a tamaño real. El borde se queda en cero porque los huecos y el redondeo ya separan las ventanas; el hueco interior se aplica a cada lado de una ventana, así que entre dos queda el doble.",
             "Window rounding": "Redondeo de ventanas",
             "Border width": "Grosor del borde",
@@ -725,8 +725,8 @@ QtObject {
             "Terminal": "Terminal",
             "size": "tamaño",
             "Glass": "Cristal",
-            "Needs the refraction plugin — run ./setup plugins":
-                "Necesita el plugin de refracción — ejecuta ./setup plugins",
+            "Not available in Niri; native background blur is the closest substitute":
+                "No está disponible en Niri; el desenfoque nativo es la alternativa más cercana",
             "Shadow": "Sombra",
             "Lifted off the wallpaper": "Despegadas del fondo",
             "Flat": "Planas",
@@ -749,8 +749,8 @@ QtObject {
             "Smooth": "Suave",
             "Snappy": "Ágil",
             "Springy": "Elástico",
-            "How Hyprland animates windows. Reapplied after every reload.":
-                "Cómo anima Hyprland las ventanas. Se reaplica tras cada recarga.",
+            "How Niri animates windows, as configured in KDL.":
+                "Cómo anima Niri las ventanas, según la configuración KDL.",
             "Preset": "Preajuste",
             "Glide": "Planeo",
             "Brisk": "Vivo",
@@ -762,7 +762,7 @@ QtObject {
                 "La mitad de distancia y de tiempo. Movimiento que registras más que miras.",
             "Long and soft, and the screen fades between workspaces rather than sliding.":
                 "Largo y suave, y la pantalla funde entre espacios en vez de deslizar.",
-            "Overshoots a little and settles back. The look most Hyprland presets are after.":
+            "Overshoots a little and settles back, like a spring.":
                 "Se pasa un poco y vuelve a asentarse. El aspecto que persiguen la mayoría de preajustes.",
             "Nothing moves. Windows and workspaces appear where they are going to be.":
                 "Nada se mueve. Ventanas y espacios aparecen donde van a estar.",
@@ -788,8 +788,8 @@ QtObject {
             "Kept against these screens and no others.":
                 "Guardada para estas pantallas y ninguna otra.",
             "Forget it": "Olvidarla",
-            "Hands these screens back to Hyprland's own placement":
-                "Devuelve estas pantallas a la colocación de Hyprland",
+            "Hands these screens back to Niri's configured placement":
+                "Devuelve estas pantallas a la disposición configurada en Niri",
             "Forget": "Olvidar",
             "Which screen": "Qué pantalla",
             "Editing": "Editando",
@@ -864,14 +864,14 @@ QtObject {
             "The cursor": "El cursor",
             "One vector shape, sharp at any size — Palette follows the wallpaper.":
                 "Una forma vectorial, nítida a cualquier tamaño — Paleta sigue al fondo.",
-            "Colour and size are applied with hyprctl setcursor, so every application updates at once and Palette follows wallpaper changes. Shake to find briefly enlarges the pointer when you shake the mouse; it needs the hypr-dynamic-cursors plugin (./setup plugins).":
-                "El color y el tamaño se aplican con hyprctl setcursor, así que todas las aplicaciones cambian a la vez y Paleta sigue los cambios de fondo. Agitar para encontrar agranda el puntero un momento al agitar el ratón; necesita el plugin hypr-dynamic-cursors (./setup plugins).",
+            "Niri reads the XCursor theme and size from config.kdl. Shake-to-find is not available through Niri.":
+                "Niri lee el tema y el tamaño XCursor desde config.kdl. Agitar para encontrar no está disponible en Niri.",
             "Cursor colour": "Color del cursor",
             "Cursor size": "Tamaño del cursor",
             "24 px — the default": "24 px — el valor por defecto",
             "Shake to find": "Agitar para encontrar",
-            "Needs the cursor plugin — run ./setup plugins":
-                "Necesita el plugin del cursor — ejecuta ./setup plugins",
+            "Not available through Niri":
+                "No está disponible en Niri",
             "Black": "Negro",
             "White": "Blanco",
             "Red": "Rojo",
@@ -886,13 +886,13 @@ QtObject {
             "The shell's own": "Los del shell",
             "Click a combination to change it. Every key here belongs to the profile in use.":
                 "Haz clic en una combinación para cambiarla. Cada tecla de aquí es del perfil en uso.",
-            "Each profile has its own complete set of keys. A combination already in use is allowed, since Hyprland fires both binds, but the row warns you before you apply it.":
-                "Cada perfil tiene su propio juego completo de teclas. Una combinación ya en uso se permite, porque Hyprland dispara los dos atajos, pero la fila te avisa antes de aplicarla.",
+            "Each profile has its own complete set of shell shortcuts. A combination already in use is allowed, but the row warns you before you apply it.":
+                "Cada perfil tiene su propio conjunto de atajos del shell. Se permite una combinación ya en uso, pero la fila te avisa antes de aplicarla.",
             "The compositor's": "Los del compositor",
             "Windows, workspaces, the media keys, the screen off — changed the same way, and kept in the same profile.":
                 "Ventanas, espacios, las teclas multimedia, apagar la pantalla — se cambian igual y se guardan en el mismo perfil.",
-            "The shell writes these to a file keybinds.lua reads, so applying a change reloads Hyprland. Mouse bindings are shown but cannot be rebound here.":
-                "El shell los escribe en un archivo que lee keybinds.lua, así que aplicar un cambio recarga Hyprland. Los atajos del ratón se muestran, pero no se pueden reasignar aquí.",
+            "Compositor keybindings live in Niri's KDL configuration and are edited with NiriMod. This page does not rewrite the KDL file.":
+                "Los atajos del compositor viven en la configuración KDL de Niri y se editan con NiriMod. Esta página no modifica el archivo KDL.",
             "Find a key or an action": "Busca una tecla o una acción",
             "No binding matches that": "Ningún atajo coincide",
             "Utilities": "Utilidades",
@@ -1082,13 +1082,13 @@ QtObject {
 
             "Only the profile in use. The others are left as they were.":
                 "Solo el perfil en uso. Los demás se quedan como estaban.",
-            "Reset returns every setting in this profile to its default, clears the compositor overrides and reloads Hyprland. Machine settings such as screens, name, picture and language are kept, and there is no undo.":
-                "Restablecer devuelve cada ajuste de este perfil a su valor por defecto, borra los cambios aplicados al compositor y recarga Hyprland. Los ajustes de la máquina, como las pantallas, el nombre, la foto y el idioma, se conservan, y no se puede deshacer.",
+            "Reset returns every shell setting in this profile to its default. Niri's KDL configuration is left untouched. Machine settings such as screens, name, picture and language are kept, and there is no undo.":
+                "Restablecer devuelve cada ajuste del shell en este perfil a su valor por defecto. La configuración KDL de Niri no cambia. Los ajustes de la máquina, como las pantallas, el nombre, la foto y el idioma, se conservan, y no se puede deshacer.",
             "Where the settings live": "Dónde viven los ajustes",
             "Reset this profile": "Restablecer este perfil",
             "Back to the defaults": "Volver a los valores por defecto",
-            "A Hyprland shell, and the desk around it":
-                "Un shell para Hyprland, y el escritorio alrededor",
+            "A Niri shell, and the desk around it":
+                "Un shell para Niri, y el escritorio alrededor",
 
             "A notch cuts the island into the top edge, and the bar's top margin no longer applies to it.":
                 "Una muesca encaja la isla en el borde superior, y el margen superior de la barra deja de aplicarse a ella.",
@@ -1100,14 +1100,14 @@ QtObject {
                 "Clásico es negro sólido, Cristal el fondo teñido del terminal sobre el fondo de pantalla desenfocado, y Líquido un panel esmerilado transparente que deja pasar los colores del fondo de pantalla. La isla siempre es como la barra.",
             "Classic is solid black, Glass the terminal's tinted ground over a blur of the wallpaper, and Liquid a clear frosted pane. Background sets how opaque the capsule is; lower it to let the blurred wallpaper through.":
                 "Clásico es negro sólido, Cristal el fondo teñido del terminal sobre el fondo de pantalla desenfocado, y Líquido un panel esmerilado transparente. Fondo ajusta la opacidad de la cápsula; bájalo para que se vea el fondo de pantalla desenfocado.",
-            "How Hyprland lays out, draws and animates windows.":
-                "Cómo Hyprland coloca, dibuja y anima las ventanas.",
+            "How Niri lays out and animates windows.":
+                "Cómo Niri organiza y anima las ventanas.",
             "How the bar is drawn round the island.":
                 "Cómo se dibuja la barra alrededor de la isla.",
             "How the top bar is drawn, what it carries and its workspaces.":
                 "Cómo se dibuja la barra superior, qué lleva y sus espacios de trabajo.",
-            "Inactive opacity fades the windows without focus. Blur shows behind anything translucent, such as the terminal. Refraction (a Hyprland plugin, tuned in look.lua) frosts and bends what is behind a window, like wet glass.":
-                "La opacidad inactiva atenúa las ventanas sin foco. El desenfoque se ve detrás de todo lo translúcido, como el terminal. La refracción (un plugin de Hyprland, ajustado en look.lua) esmerila y curva lo que hay detrás de una ventana, como cristal mojado.",
+            "Inactive opacity fades windows without focus. Niri's native background blur shows behind translucent surfaces on supported versions. Refractive distortion is not available through Niri.":
+                "La opacidad inactiva atenúa las ventanas sin foco. El desenfoque nativo de Niri se muestra detrás de superficies translúcidas en las versiones compatibles. La distorsión refractiva no está disponible en Niri.",
             "Look them up": "Buscarlas",
             "Looked up on lrclib.net by title and artist, which needs no account. They show in the island's glance and its media card, in the desktop's lyrics widget and on the lock screen when it is set to show them.":
                 "Se buscan en lrclib.net por título y artista, sin necesidad de cuenta. Aparecen en el vistazo de la isla y en su tarjeta de música, en el widget de letras del escritorio y en la pantalla de bloqueo cuando está configurada para mostrarlas.",

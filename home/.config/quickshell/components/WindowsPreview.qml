@@ -25,10 +25,9 @@ Item {
     property int gapsIn: 7
     property int gapsOut: 18
     property real inactiveOpacity: 1
-    // Niri's blur settings; zero is off. Approximated as size × 2^passes,
-    // with look.lua's two passes.
+    // Niri's background blur, approximated here as a two-pass preview.
     property int blur: 6
-    // The old hyprglass refraction effect is not available under Niri.
+    // Niri does not expose a refractive glass effect.
     property bool glassed: false
     property bool lifted: false
     property string wallpaper: ""
@@ -133,9 +132,9 @@ Item {
                 }
             }
 
-            // The old Hyprland theme set the glass blur below its (0.7 × 12 px vs
+            // The previous glass material used a lower blur amount (0.7 × 12 px vs
             // size 6 × 2 passes), so enabling glass sharpens the background.
-            // Saturation 0.9 in the plugin is an offset of -0.10 here.
+            // Saturation 0.9 in the earlier material is an offset of -0.10 here.
             MultiEffect {
                 anchors.fill: parent
                 source: throughGlass
@@ -146,7 +145,7 @@ Item {
             }
 
             // Fresnel rim and specular highlight, drawn under the terminal
-            // background as the old plugin did, so they show only through the
+            // background as the earlier material did, so they show only through the
             // window's translucency. Refraction and chromatic aberration are
             // not simulated.
             Rectangle {

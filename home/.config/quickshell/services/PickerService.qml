@@ -15,26 +15,25 @@ import Quickshell.Io
 
 import "../theme"
 
-// Picks a colour with hyprpicker, copies the hex to the clipboard without a
-// trailing newline and confirms it on the island. Used by the control centre
-// tile and the shell's shortcut.
+// Picks a colour with Niri's built-in IPC action, copies the hex to the
+// clipboard without a trailing newline and confirms it on the island.
 Singleton {
     id: root
 
     // Shared by the tile and the OSD.
     readonly property string icon: "󰈊"
 
-    // hyprpicker is optional; checked once so the tile can say it is missing.
+    // The Niri colour picker is checked once so the tile can report availability.
     property bool available: false
 
-    // hyprpicker screenshots whatever is on screen, so a caller closing a
+    // The colour picker captures the screen, so a caller closing a
     // panel waits for the island's morph first.
     readonly property int settle: Theme.durationIslandGone
 
     readonly property bool picking: root.picker.running || root.launch.running
 
     readonly property Process probe: Process {
-        command: ["sh", "-c", "command -v hyprpicker"]
+        command: ["sh", "-c", "command -v niri"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: root.available = text.trim() !== ""
@@ -43,7 +42,7 @@ Singleton {
 
     // `-f hex` is the default; explicit because took() depends on it.
     readonly property Process picker: Process {
-        command: ["hyprpicker", "-f", "hex"]
+        command: ["niri", "msg", "pick-color"]
         stdout: StdioCollector {
             onStreamFinished: root.took(text)
         }

@@ -300,9 +300,8 @@ QtObject {
     readonly property int barTopMargin: SettingsService.barMargin
     readonly property int capsuleSpacing: 8
 
-    // Exclusive zone: exactly what the bar paints. Hyprland adds `gaps_out`
-    // below it, so reserving more leaves a larger top gap than on the other
-    // edges.
+    // Exclusive zone: exactly what the bar paints. Niri reserves the exclusive zone directly, so reserving more
+    // leaves a larger top gap than on the other edges.
     readonly property int barReserve: root.barTopMargin + root.capsuleHeight
 
     // Where the bar's input region ends: 8 px of slack under the capsules.
@@ -310,7 +309,7 @@ QtObject {
 
     // ── DESKTOP GRID ────────────────────────────────────────────────────────
     //
-    // Widgets span whole cells. The gutter matches Hyprland's `gaps_out`.
+    // Widgets span whole cells. The gutter keeps the same visual spacing as the desktop layout.
     // A square is at least `desktopCell` and grows up to `desktopCellLargest`
     // so the board's margin is the same on all four sides
     // (`DesktopService.gridFor`). At the least, a 4 × 2 widget is 398 × 190,
@@ -422,7 +421,7 @@ QtObject {
     readonly property real dockMagnify: 1.7
     readonly property real dockReach: 2.5
 
-    // Matches Hyprland's `rounding`: widgets sit among windows.
+    // Matches the Niri desktop corner radius: widgets sit among windows.
     readonly property int desktopRadius: 22
     // The screen's own corners, when they are rounded: the same curve.
     readonly property int screenRadius: root.desktopRadius
@@ -475,7 +474,7 @@ QtObject {
 
     // ── SHADOW ──────────────────────────────────────────────────────────────
     //
-    // Shared by Hyprland's `decoration:shadow` (CompositorService) and the
+    // Shared by the desktop shadow and the
     // bar's own capsule shadow, so both sit at the same height. Only drawn
     // when the setting is on.
     readonly property int shadowRange: 14
@@ -483,7 +482,7 @@ QtObject {
     readonly property color shadowColor: "#000000"
 
     // Bar only. A Gaussian is at half strength on the edge of its source
-    // shape, while Hyprland's shadow is at full strength against the window;
+    // shape, while the desktop shadow is at full strength against the window;
     // blurring a slightly grown copy moves the half-way point outside the
     // capsule.
     readonly property int shadowSpread: 4

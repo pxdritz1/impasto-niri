@@ -68,7 +68,6 @@ bluez-utils                  # bluetoothctl, which switches it
 power-profiles-daemon        # the power profile
 upower                       # the battery
 wlsunset                     # the night light under Niri
-hyprpicker                   # wlroots-compatible Wayland colour picker
 pacman-contrib               # checkupdates, which counts the updates
 
 
