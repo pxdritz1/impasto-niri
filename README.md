@@ -89,11 +89,17 @@ monitor over DDC/CI.
 reach everything at once: the island and the widgets, the terminal, neovim,
 VSCodium, the GTK and Qt windows, Nautilus down to its folders, Vesktop, Zen
 and Spotify. Thirty-three paintings come with it, and a video can be the wallpaper
-too.
+too. When enabled in Settings → Appearance → Wallpaper, Matugen also receives
+the wallpaper palette through your existing templates; Velatura adds a
+Dank Calendar template without replacing your other Matugen configuration.
 
-**Any module can live on the wallpaper**, on a grid, in four shapes, drawn in
-one of three themes: *Modern*, *Analogue* or *Sticker*. Right-click the
-wallpaper to arrange it.
+**Any module can live on the wallpaper**, on a snap-to-cell grid, in four
+shapes, drawn in one of three themes: *Modern*, *Analogue* or *Sticker*.
+Right-click the wallpaper to arrange it: drag widgets between cells, resize
+them, move the module tray, and drop a widget back on the tray to remove it.
+The calendar can browse months, select any day, show synced events and tasks,
+and open Dank Calendar's event editor to add birthdays, holidays and other
+personal dates.
 
 ## Liquid glass
 
@@ -166,6 +172,13 @@ Nothing is linked: `setup` copies and keeps backups. If `~/.config/niri/config.k
 already exists on first install, it is preserved and the starter is written beside
 it as `config.kdl.new`; merge the startup and keybinding examples manually.
 
+Velatura checks who owns the wallpaper daemon before starting it. If Niri,
+a user systemd unit, or an existing `awww` process already manages it, the
+shell leaves it alone; otherwise, the shell starts `awww-daemon` and owns its
+lifetime, stopping it when the shell exits. Dank Calendar is optional; when
+installed, Velatura starts its hidden IPC daemon on demand and reads events
+through its public interface.
+
 <details>
 <summary><b>Components</b></summary>
 <br>
@@ -175,6 +188,7 @@ it as `config.kdl.new`; merge the startup and keybinding examples manually.
 | Compositor | [Niri](https://github.com/niri-wm/niri) |
 | Desktop shell | [Quickshell](https://quickshell.org) |
 | Wallpaper daemon | [awww](https://github.com/LGFae/swww) |
+| Calendar backend (optional) | [Dux / Dank Calendar](https://github.com/duxlabs-dev/dux-calendar) (`dcal`) |
 | Terminal | [kitty](https://sw.kovidgoyal.net/kitty/) |
 | Interactive shell | [zsh](https://www.zsh.org) · [oh-my-zsh](https://ohmyz.sh) |
 | Prompt | [starship](https://starship.rs) |
@@ -217,7 +231,7 @@ knowing first:
 ## Credits
 
 <p align="center">
-  <img src=".github/assets/velatura-logo.svg" alt="Velatura" width="56">
+  <img src=".github/assets/velatura-mark.svg" alt="Velatura mark" width="56">
 </p>
 
 These are worth your time whether or not you use this repository. No code was

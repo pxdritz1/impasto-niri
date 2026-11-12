@@ -162,6 +162,9 @@ def read(language):
 
 def main():
     language = sys.argv[1] if len(sys.argv) > 1 else "en"
+    # Settings may carry a full locale (pt-BR, en_US.UTF-8), while CLDR
+    # annotation filenames use the language subtag (pt, en, pt_PT).
+    language = language.split(".", 1)[0].replace("-", "_").split("_", 1)[0]
     try:
         emoji = read(language)
     except OSError as error:

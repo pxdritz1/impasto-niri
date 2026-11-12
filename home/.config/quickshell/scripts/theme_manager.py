@@ -3960,6 +3960,59 @@ def link_current_wallpaper(image_path):
         sys.stderr.write(f"Cannot update the current-wallpaper link: {error}\n")
 
 
+# ── AWWW LIFECYCLE ─────────────────────────────────────────────────────────
+#
+# The shell may own awww only when the session does not already manage it.
+# Niri spawn-at-startup and a user systemd unit take precedence; an already
+# running daemon is also left alone. The shell owns its child process directly
+# so Quickshell tears it down when the shell exits.
+def awww_is_externally_managed():
+    if shutil.which("systemctl"):
+        for scope in ([], ["--user"]):
+            for unit in ("awww.service", "awww-daemon.service"):
+                for verb in ("cat", "is-enabled", "is-active"):
+                    try:
+                        result = subprocess.run(
+                            ["systemctl", *scope, verb, unit],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                            timeout=2)
+                        if result.returncode == 0:
+                            return True
+                    except (OSError, subprocess.SubprocessError):
+                        pass
+
+    niri_dir = os.path.join(XDG_CONFIG_HOME, "niri")
+    try:
+        for current, _directories, files in os.walk(niri_dir):
+            for filename in files:
+                if not filename.endswith(".kdl"):
+                    continue
+                try:
+                    with open(os.path.join(current, filename), encoding="utf-8") as handle:
+                        config = handle.read()
+                    if re.search(r'(?m)^\s*spawn-at-startup\s+"(?:[^"\n]*/)?awww(?:-daemon)?"', config):
+                        return True
+                except OSError:
+                    continue
+    except OSError:
+        pass
+
+    try:
+        result = subprocess.run(["pgrep", "-x", "awww-daemon"],
+                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                timeout=2)
+        if result.returncode == 0:
+            return True
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return False
+
+
+def awww_guard_state():
+    return {"managed": awww_is_externally_managed(),
+            "available": shutil.which("awww-daemon") is not None}
+
+
 # ── MATUGEN ─────────────────────────────────────────────────────────────────
 #
 # With awww showing the wallpaper, matugen's templates (the niri include, the
@@ -3970,6 +4023,8 @@ def link_current_wallpaper(image_path):
 MATUGEN_CONFIG = os.path.join(XDG_CONFIG_HOME, "matugen", "config.toml")
 MATUGEN_STAMP = os.path.join(STATE_DIR, "matugen.stamp")
 MATUGEN_PID = os.path.join(STATE_DIR, "matugen.pid")
+MATUGEN_TEMPLATE = os.path.join(XDG_CONFIG_HOME, "matugen", "templates", "dankcalendar.json.template")
+MATUGEN_SETTINGS = os.path.join(STATE_DIR, "settings.json")
 
 
 def matugen_stamp(image_path):
@@ -3992,9 +4047,66 @@ def stop_matugen():
         pass
 
 
-def sync_matugen(image_path):
-    if not (shutil.which("matugen") and shutil.which("awww") and os.path.isfile(MATUGEN_CONFIG)):
+def matugen_enabled():
+    try:
+        with open(MATUGEN_SETTINGS, encoding="utf-8") as handle:
+            return json.load(handle).get("matugenEnabled", True) is not False
+    except (OSError, ValueError, AttributeError):
+        return True
+
+
+def set_dankcalendar_matugen(enabled):
+    """Select the generated palette without overriding a custom Dcal theme."""
+    settings_path = os.path.join(XDG_CONFIG_HOME, "dankcal", "ui-settings.json")
+    try:
+        with open(settings_path, encoding="utf-8") as handle:
+            settings = json.load(handle)
+        source = settings.get("colorSource", "auto")
+        if enabled and source in ("auto", "matugen"):
+            settings["colorSource"] = "matugen"
+        elif not enabled and source == "matugen":
+            settings["colorSource"] = "auto"
+        else:
+            return
+        with open(settings_path, "w", encoding="utf-8") as handle:
+            json.dump(settings, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+    except (OSError, ValueError, AttributeError):
+        pass
+
+
+def ensure_dankcalendar_template():
+    """Register the bundled Dux Calendar palette without replacing user config."""
+    if not os.path.isfile(MATUGEN_TEMPLATE):
         return
+    output = os.path.join(XDG_CONFIG_HOME, "dankcal", "matugen-theme.json")
+    os.makedirs(os.path.dirname(output), exist_ok=True)
+    try:
+        with open(MATUGEN_CONFIG, encoding="utf-8") as handle:
+            config = handle.read()
+        if "[templates.velatura_dankcalendar]" in config:
+            return
+        block = (
+            "\n[templates.velatura_dankcalendar]\n"
+            f'input_path = "{MATUGEN_TEMPLATE}"\n'
+            f'output_path = "{os.path.join(XDG_CONFIG_HOME, "dankcal", "matugen-theme.json")}"\n'
+        )
+        os.makedirs(os.path.dirname(MATUGEN_CONFIG), exist_ok=True)
+        with open(MATUGEN_CONFIG, "a", encoding="utf-8") as handle:
+            handle.write(block)
+        os.makedirs(os.path.join(XDG_CONFIG_HOME, "dankcal"), exist_ok=True)
+    except OSError as error:
+        sys.stderr.write(f"Cannot register Dank Calendar Matugen template: {error}\n")
+
+
+def sync_matugen(image_path):
+    enabled = matugen_enabled()
+    set_dankcalendar_matugen(enabled)
+    if not enabled:
+        return
+    if not (shutil.which("matugen") and os.path.isfile(MATUGEN_CONFIG)):
+        return
+    ensure_dankcalendar_template()
     stamp = matugen_stamp(image_path)
     if not stamp:
         return
@@ -4008,7 +4120,7 @@ def sync_matugen(image_path):
     stop_matugen()
     try:
         process = subprocess.Popen(
-            ["matugen", "image", image_path, "--mode", "dark", "--quiet"],
+            ["matugen", "image", image_path, "--mode", "dark", "--prefer", "saturation", "--quiet"],
             stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
             start_new_session=True)
         with open(MATUGEN_PID, "w", encoding="utf-8") as handle:
@@ -4142,6 +4254,12 @@ def main():
 
     action = sys.argv[1]
     argument = sys.argv[2] if len(sys.argv) >= 3 else None
+    if action == "awww-managed":
+        print(json.dumps(awww_guard_state()))
+        return
+    if action == "sync-matugen":
+        sync_matugen(get_current_wallpaper())
+        return
 
     if action == "list-wallpapers":
         print(json.dumps(list_wallpapers()))

@@ -111,6 +111,7 @@ Singleton {
     readonly property alias barSides: config.barSides
     readonly property alias wallpaperTransition: config.wallpaperTransition
     readonly property alias wallpaperDir: config.wallpaperDir
+    readonly property alias matugenEnabled: config.matugenEnabled
     readonly property alias greeting: config.greeting
     readonly property alias fontFamily: config.fontFamily
     readonly property alias fontMono: config.fontMono
@@ -563,6 +564,9 @@ Singleton {
 
         // Folder the wallpapers are listed from; empty is the data directory.
         property string wallpaperDir: ""
+
+        // Generate the external Matugen templates alongside Velatura's own palette.
+        property bool matugenEnabled: true
 
         // Row id from `ThemeService.greetings`; `random` is picked by `fa` on
         // each run.

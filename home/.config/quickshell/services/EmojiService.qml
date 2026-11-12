@@ -52,6 +52,8 @@ Singleton {
                 } catch (error) {
                     console.warn("Cannot parse the emoji list:", error)
                 }
+                if (root.emoji.length === 0)
+                    console.warn("Emoji data is missing. Install unicode-emoji and unicode-cldr-annotations.")
             }
         }
     }

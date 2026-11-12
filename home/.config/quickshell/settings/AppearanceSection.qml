@@ -69,6 +69,22 @@ SettingsSection {
             }
         }
 
+        SettingGroup {
+            title: Tr.t("Matugen")
+            note: Tr.t("Generate Matugen colours from the active wallpaper.")
+            hint: Tr.t("When enabled, Velatura runs Matugen for your configured templates and the Dank Calendar theme. Existing Matugen templates are preserved.")
+
+            SettingRow {
+                label: Tr.t("Use Matugen")
+                reading: SettingsService.matugenEnabled ? Tr.t("Enabled") : Tr.t("Disabled")
+
+                ToggleSwitch {
+                    checked: SettingsService.matugenEnabled
+                    onToggled: checked => SettingsService.set("matugenEnabled", checked)
+                }
+            }
+        }
+
         // Each tile loops its awww transition in miniature.
         SettingGroup {
             title: Tr.t("Transition")

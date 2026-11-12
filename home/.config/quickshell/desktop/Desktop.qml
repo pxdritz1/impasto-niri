@@ -41,7 +41,7 @@ PanelWindow {
     // screen it was entered from, the card is on the screen the pointer is
     // on, and the inspector and the picker are beside the widget they are
     // about, whichever screen that is on.
-    readonly property string screenName: root.screen?.name ?? ""
+    readonly property string screenName: root.screen?.name || MonitorService.effectivePrimaryName
     readonly property bool hosting: DesktopService.editingScreen === root.screenName
 
     // The card follows the pointer while arranging: crossing to another board
@@ -59,6 +59,7 @@ PanelWindow {
         && !DesktopService.inHand && DeckService.dragging === ""
 
     onClaimsChanged: if (root.claims) DesktopService.galleryScreen = root.screenName
+    onScreenNameChanged: DesktopService.setBoard(root.screenName, surface.width, surface.height)
 
     function about(key: string): bool {
         return key !== ""

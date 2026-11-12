@@ -24,9 +24,36 @@ import Quickshell.Io
 QtObject {
     id: root
 
+    // awww lifecycle is guarded: Niri/systemd and an existing daemon always win.
     signal applied(string path)
 
     readonly property string script: Quickshell.shellPath("scripts/theme_manager.py")
+
+    property bool awwwOwned: false
+
+    readonly property Process awwwGuard: Process {
+        command: [root.script, "awww-managed"]
+        running: true
+        stdout: StdioCollector {
+            onStreamFinished: {
+                try {
+                    const result = JSON.parse(text)
+                    if (result.managed !== true && result.available === true) {
+                        root.awwwOwned = true
+                        root.awwwDaemon.running = true
+                    }
+                } catch (error) {
+                    console.warn("Cannot determine who manages awww:", error)
+                }
+            }
+        }
+    }
+
+    // This Process is deliberately not detached: Quickshell owns its lifetime.
+    // If Niri or systemd already starts awww, the guard never starts it here.
+    readonly property Process awwwDaemon: Process {
+        command: ["awww-daemon"]
+    }
 
     property var wallpapers: []
     // `{ name, path, poster }`, from the `animated` folder beside the stills.
@@ -172,6 +199,17 @@ QtObject {
     readonly property Timer relist: Timer {
         interval: 500
         onTriggered: root.scan()
+    }
+
+    readonly property Process matugenProcess: Process {
+        command: [root.script, "sync-matugen"]
+    }
+
+    readonly property Connections matugenSetting: Connections {
+        target: SettingsService
+        function onMatugenEnabledChanged(): void {
+            root.matugenProcess.running = true
+        }
     }
 
     function parseJson(text: string): var {

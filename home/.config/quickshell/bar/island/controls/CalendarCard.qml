@@ -60,7 +60,11 @@ Card {
     readonly property bool showingThisMonth: root.offsetMonths === 0
 
     // Reset to the current month whenever the card is rebuilt.
-    Component.onCompleted: root.offsetMonths = 0
+    Component.onCompleted: {
+        root.offsetMonths = 0
+        CalendarService.refreshMonth(root.year, root.month)
+    }
+    onOffsetMonthsChanged: CalendarService.refreshMonth(root.year, root.month)
 
     // ── DAY ─────────────────────────────────────────────────────────────────
 
@@ -73,6 +77,7 @@ Card {
 
         readonly property var date: TasksService.dateOf(root.picked)
         readonly property var due: TasksService.on(root.picked)
+        readonly property var events: CalendarService.eventsOn(root.picked)
 
         RowLayout {
             Layout.fillWidth: true
@@ -99,12 +104,24 @@ Card {
             Text {
                 text: {
                     const n = dayPage.due.length
+                    const events = dayPage.events.length
                     const left = dayPage.due.filter(task => task.state !== "done").length
-                    return n === 0 ? "" : `${left} of ${n}`
+                    const bits = []
+                    if (events > 0) bits.push(`${events} ${events === 1 ? "event" : "events"}`)
+                    if (n > 0) bits.push(`${left}/${n}`)
+                    return bits.join(" · ")
                 }
                 font.family: Theme.fontMono
                 font.pixelSize: Theme.fontSizeLabel
                 color: Theme.textMuted
+            }
+
+            IconButton {
+                icon: "󰐕"
+                iconSize: 12
+                implicitWidth: 26
+                implicitHeight: 24
+                onClicked: CalendarService.newEvent(dayPage.date)
             }
         }
 
@@ -112,6 +129,56 @@ Card {
             Layout.fillWidth: true
             Layout.preferredHeight: 1
             color: Theme.hairline
+        }
+
+        Repeater {
+            model: dayPage.events
+
+            Rectangle {
+                required property var modelData
+                Layout.fillWidth: true
+                implicitHeight: 28
+                radius: Theme.radiusSmall
+                color: eventMouse.containsMouse ? Theme.surfaceHoverIn(QsWindow.window) : "transparent"
+
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.leftMargin: 8
+                    anchors.rightMargin: 8
+                    spacing: 7
+
+                    Rectangle {
+                        Layout.preferredWidth: 5
+                        Layout.preferredHeight: 5
+                        radius: 2.5
+                        color: Theme.yellow
+                    }
+
+                    Text {
+                        Layout.fillWidth: true
+                        text: modelData.summary || "Untitled event"
+                        elide: Text.ElideRight
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.text
+                    }
+
+                    Text {
+                        text: modelData.allDay ? "All day" : Qt.formatTime(new Date(modelData.start), SettingsService.clockFormat)
+                        font.family: Theme.fontMono
+                        font.pixelSize: Theme.fontSizeLabel
+                        color: Theme.textMuted
+                    }
+                }
+
+                MouseArea {
+                    id: eventMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: CalendarService.openEvent(parent.modelData)
+                }
+            }
         }
 
         Repeater {
@@ -197,6 +264,23 @@ Card {
                 implicitHeight: 22
                 onClicked: root.offsetMonths += 1
             }
+
+            IconButton {
+                icon: "󰐕"
+                iconSize: 12
+                implicitWidth: 24
+                implicitHeight: 22
+                onClicked: CalendarService.newEvent(root.picked !== ""
+                    ? TasksService.dateOf(root.picked) : new Date(root.year, root.month, 1))
+            }
+
+            IconButton {
+                icon: "󰃭"
+                iconSize: 12
+                implicitWidth: 24
+                implicitHeight: 22
+                onClicked: CalendarService.openCalendar()
+            }
         }
 
         GridLayout {
@@ -262,6 +346,7 @@ Card {
                         ? TasksService.dayKey(new Date(root.year, root.month, cell.day)) : ""
                     readonly property int tasks: cell.key !== "" ? TasksService.countOn(cell.key) : 0
                     readonly property int pending: cell.key !== "" ? TasksService.pendingOn(cell.key) : 0
+                    readonly property bool hasEvents: cell.key !== "" && CalendarService.hasEventsOn(cell.key)
 
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -297,22 +382,22 @@ Card {
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.bottom: parent.bottom
                             anchors.bottomMargin: 3
-                            visible: cell.tasks > 0
+                            visible: cell.tasks > 0 || cell.hasEvents
                             width: 3
                             height: 3
                             radius: 1.5
-                            color: cell.isToday ? Theme.accentText
-                                : (cell.pending > 0 ? Theme.accent : Theme.textMuted)
+                            color: cell.hasEvents ? Theme.yellow : (cell.isToday ? Theme.accentText
+                                : (cell.pending > 0 ? Theme.accent : Theme.textMuted))
                         }
 
-                        // Only days with tasks are clickable.
+                        // Every date in the displayed month can be selected.
                         HoverHandler {
-                            enabled: cell.tasks > 0
+                            enabled: cell.inMonth
                             cursorShape: Qt.PointingHandCursor
                         }
 
                         TapHandler {
-                            enabled: cell.tasks > 0
+                            enabled: cell.inMonth
                             gesturePolicy: TapHandler.ReleaseWithinBounds
                             onTapped: root.picked = cell.key
                         }

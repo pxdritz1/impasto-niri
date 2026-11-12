@@ -8,6 +8,7 @@
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 
 import "../../theme"
@@ -26,12 +27,20 @@ Item {
     }
 
     readonly property date today: root.clock.date
+    property int monthOffset: 0
+
+    readonly property date shown: new Date(root.today.getFullYear(), root.today.getMonth() + root.monthOffset, 1)
+    readonly property int year: root.shown.getFullYear()
+    readonly property int month: root.shown.getMonth()
+
+    Component.onCompleted: CalendarService.refreshMonth(root.year, root.month)
+    onMonthOffsetChanged: CalendarService.refreshMonth(root.year, root.month)
 
     // Weeks start on Monday. Cells outside the month stay blank so every date
     // keeps its weekday column.
     readonly property var cells: {
-        const year = root.today.getFullYear()
-        const month = root.today.getMonth()
+        const year = root.year
+        const month = root.month
         const shift = (new Date(year, month, 1).getDay() + 6) % 7
         const total = new Date(year, month + 1, 0).getDate()
         const list = []
@@ -65,13 +74,16 @@ Item {
             // the detail is rebuilt.
             property int picked: 0
 
-            readonly property int day: page.picked > 0 ? page.picked : root.today.getDate()
-            readonly property bool onToday: page.day === root.today.getDate()
+            readonly property int day: page.picked > 0 ? page.picked
+                : (root.monthOffset === 0 ? root.today.getDate() : 1)
+            readonly property bool onToday: root.monthOffset === 0
+                && page.day === root.today.getDate()
 
             function keyOf(date: int): string {
-                return TasksService.dayKey(
-                    new Date(root.today.getFullYear(), root.today.getMonth(), date))
+                return TasksService.dayKey(new Date(root.year, root.month, date))
             }
+
+            readonly property var events: CalendarService.eventsOn(page.keyOf(page.day))
 
             readonly property var due: TasksService.on(page.keyOf(page.day))
 
@@ -80,27 +92,50 @@ Item {
                 anchors.margins: 14
                 spacing: 6
 
-                Item {
+                RowLayout {
                     width: parent.width
-                    height: 18
+                    height: 22
+                    spacing: 3
 
                     Text {
-                        anchors.left: parent.left
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: Qt.formatDateTime(root.clock.date, "MMMM yyyy")
+                        Layout.fillWidth: true
+                        text: Qt.formatDate(root.shown, "MMMM yyyy")
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontSizeSmall
                         font.weight: Font.DemiBold
                         color: Theme.text
                     }
 
-                    Text {
-                        anchors.right: parent.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: Qt.formatDateTime(root.clock.date, "dddd d")
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.textMuted
+                    IconButton {
+                        icon: "󰁍"
+                        iconSize: 11
+                        implicitWidth: 22
+                        implicitHeight: 22
+                        onClicked: { root.monthOffset -= 1; page.picked = 0 }
+                    }
+
+                    IconButton {
+                        icon: "󰁔"
+                        iconSize: 11
+                        implicitWidth: 22
+                        implicitHeight: 22
+                        onClicked: { root.monthOffset += 1; page.picked = 0 }
+                    }
+
+                    IconButton {
+                        icon: "󰐕"
+                        iconSize: 12
+                        implicitWidth: 22
+                        implicitHeight: 22
+                        onClicked: CalendarService.newEvent(new Date(root.year, root.month, page.day))
+                    }
+
+                    IconButton {
+                        icon: "󰃭"
+                        iconSize: 12
+                        implicitWidth: 22
+                        implicitHeight: 22
+                        onClicked: CalendarService.openCalendar()
                     }
                 }
 
@@ -143,13 +178,14 @@ Item {
                             required property int modelData
 
                             readonly property bool today:
-                                cell.modelData === root.today.getDate()
+                                root.monthOffset === 0 && cell.modelData === root.today.getDate()
                             readonly property bool picked:
                                 cell.modelData > 0 && cell.modelData === page.day && !cell.today
                             readonly property string key:
                                 cell.modelData > 0 ? page.keyOf(cell.modelData) : ""
                             readonly property int tasks: cell.key !== "" ? TasksService.countOn(cell.key) : 0
                             readonly property int pending: cell.key !== "" ? TasksService.pendingOn(cell.key) : 0
+                            readonly property bool hasEvents: cell.key !== "" && CalendarService.hasEventsOn(cell.key)
 
                             width: month.cellWidth
                             height: month.cellHeight
@@ -184,12 +220,12 @@ Item {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.bottom: parent.bottom
                                 anchors.bottomMargin: 2
-                                visible: cell.tasks > 0
+                                visible: cell.tasks > 0 || cell.hasEvents
                                 width: 3
                                 height: 3
                                 radius: 1.5
-                                color: cell.today ? Theme.accentText
-                                    : (cell.pending > 0 ? Theme.accent : Theme.textMuted)
+                                color: cell.hasEvents ? Theme.yellow : (cell.today ? Theme.accentText
+                                    : (cell.pending > 0 ? Theme.accent : Theme.textMuted))
                             }
 
                             MouseArea {
@@ -218,19 +254,68 @@ Item {
                         width: parent.width
                         text: {
                             const name = page.onToday ? "Today"
-                                : Qt.formatDate(new Date(root.today.getFullYear(),
-                                    root.today.getMonth(), page.day), "dddd d")
+                                : Qt.formatDate(new Date(root.year, root.month, page.day), "dddd d")
                             const n = page.due.length
                             const left = page.due.filter(task => task.state !== "done").length
-                            if (n === 0)
-                                return `${name} · nothing due`
-                            return `${name} · ${left} of ${n} to do`
+                            const events = page.events.length
+                            if (n === 0 && events === 0)
+                                return `${name} · nothing scheduled`
+                            const bits = []
+                            if (events > 0) bits.push(`${events} ${events === 1 ? "event" : "events"}`)
+                            if (n > 0) bits.push(`${left} of ${n} tasks`)
+                            return `${name} · ${bits.join(" · ")}`
                         }
                         elide: Text.ElideRight
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontSizeLabel
                         font.weight: Font.DemiBold
                         color: Theme.textMuted
+                    }
+
+                    Repeater {
+                        model: page.events.slice(0, 2)
+
+                        Rectangle {
+                            id: eventRow
+                            required property var modelData
+                            width: parent.width
+                            height: 18
+                            radius: Theme.radiusSmall - 2
+                            color: eventMouse.containsMouse ? Theme.surfaceHoverIn(QsWindow.window) : "transparent"
+
+                            Row {
+                                anchors.fill: parent
+                                anchors.leftMargin: 4
+                                anchors.rightMargin: 4
+                                spacing: 6
+
+                                Rectangle {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 5
+                                    height: 5
+                                    radius: 2.5
+                                    color: Theme.yellow
+                                }
+
+                                Text {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: parent.width - 12
+                                    text: modelData.summary || "Untitled event"
+                                    elide: Text.ElideRight
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: Theme.fontSizeSmall
+                                    color: Theme.text
+                                }
+                            }
+
+                            MouseArea {
+                                id: eventMouse
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: CalendarService.openEvent(eventRow.modelData)
+                            }
+                        }
                     }
 
                     Repeater {

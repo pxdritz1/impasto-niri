@@ -258,7 +258,7 @@ Singleton {
     property var boards: ({})
 
     function setBoard(name: string, width: real, height: real): void {
-        if (name === "")
+        if (name === "" || width <= 0 || height <= 0)
             return
         const kept = root.boards[name]
         if (kept && kept.width === width && kept.height === height)
@@ -1471,9 +1471,10 @@ Singleton {
         root.menu = null
         root.typing = false
         root.picking = ""
-        if (on && name !== "") {
-            root.editingScreen = name
-            root.galleryScreen = name
+        if (on) {
+            const target = name !== "" ? name : MonitorService.effectivePrimaryName
+            root.editingScreen = target
+            root.galleryScreen = target
         }
         if (!on) {
             root.dragging = ""
