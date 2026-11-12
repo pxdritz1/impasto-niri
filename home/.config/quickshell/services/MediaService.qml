@@ -3,7 +3,7 @@
 // │   M E D I A   S E R V I C E                                              │
 // │   the player worth showing · mpris over d-bus                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

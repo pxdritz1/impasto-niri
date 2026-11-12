@@ -3,7 +3,7 @@
 // │   W   I   D   G   E   T                                                  │
 // │   one module on the wallpaper · one square of the grid                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

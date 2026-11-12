@@ -3,7 +3,7 @@
 // │   U S A G E   R I N G                                                    │
 // │   screen time · a ring split by group, the rest in grey                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

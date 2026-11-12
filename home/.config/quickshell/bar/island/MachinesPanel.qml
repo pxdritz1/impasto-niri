@@ -3,7 +3,7 @@
 // │   M A C H I N E S   P A N E L                                            │
 // │   virtual machines · the ones there are, and the catalogue               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

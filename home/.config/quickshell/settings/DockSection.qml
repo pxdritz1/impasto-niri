@@ -3,7 +3,7 @@
 // │   D O C K   S E C T I O N                                                │
 // │   dock · position, pinned apps and behaviour                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

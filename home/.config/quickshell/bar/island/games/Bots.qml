@@ -3,7 +3,7 @@
 // │   B O T S                                                                │
 // │   five lanes · a click or the lane's digit, and the low ones pay double  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 # │   C A V A                                                                │
 # │   audio visualiser · input, bars and theme                               │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -17,4 +17,4 @@
 # theme_manager.py writes it on every palette push and signals running cava
 # instances to reload.
 [color]
-theme = 'impasto'
+theme = 'velatura'

@@ -3,7 +3,7 @@
 // │   V M   S E R V I C E                                                    │
 // │   virtual machines · what there is, what runs, what is being fetched     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

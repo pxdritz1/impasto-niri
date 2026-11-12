@@ -3,7 +3,7 @@
 // │   C A P T U R E   S E R V I C E                                          │
 // │   screenshots · capture, crop and save                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

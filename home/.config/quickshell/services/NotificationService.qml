@@ -3,7 +3,7 @@
 // │   N O T I F I C A T I O N   S E R V I C E                                │
 // │   the shell is the notification daemon                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

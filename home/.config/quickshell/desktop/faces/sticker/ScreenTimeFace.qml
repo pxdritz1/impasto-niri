@@ -3,7 +3,7 @@
 // │   S C R E E N   T I M E   F A C E                                        │
 // │   sticker · today on a lobed sticker, filling to an average day          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

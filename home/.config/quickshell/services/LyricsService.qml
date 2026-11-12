@@ -3,7 +3,7 @@
 // │   L Y R I C S   S E R V I C E                                            │
 // │   the playing track's lyrics · the line being sung                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

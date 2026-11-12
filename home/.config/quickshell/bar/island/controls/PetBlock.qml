@@ -3,7 +3,7 @@
 // │   P E T   B L O C K                                                      │
 // │   pet block · feed and play                                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

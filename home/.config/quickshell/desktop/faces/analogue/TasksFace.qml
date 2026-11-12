@@ -3,7 +3,7 @@
 // │   T   A   S   K   S       F   A   C   E                                  │
 // │   tasks on a clipboard · the next few                                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

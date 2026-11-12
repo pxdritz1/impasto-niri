@@ -3,7 +3,7 @@
 // │   I S L A N D   S U M M A R Y                                            │
 // │   hover summary · one face, and a strip for the rest                     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

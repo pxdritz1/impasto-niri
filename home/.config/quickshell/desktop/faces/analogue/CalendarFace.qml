@@ -3,7 +3,7 @@
 // │   C   A   L   E   N   D   A   R       F   A   C   E                      │
 // │   wall calendar · day, week and month views                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

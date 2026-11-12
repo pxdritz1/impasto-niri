@@ -3,7 +3,7 @@
 // │   B   O   A   R   D                                                      │
 // │   singleton · the palette board, and where its paint sits                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -25,7 +25,7 @@ Singleton {
 
     // Read-only data, installed with the wallpapers.
     readonly property string directory:
-        `${Quickshell.env("XDG_DATA_HOME") || Quickshell.env("HOME") + "/.local/share"}/impasto`
+        `${Quickshell.env("XDG_DATA_HOME") || Quickshell.env("HOME") + "/.local/share"}/velatura`
     readonly property string board: `file://${root.directory}/palette-board.png`
 
     // In board coordinates (a square `canvas` on a side). Zero means not

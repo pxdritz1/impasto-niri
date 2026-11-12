@@ -3,7 +3,7 @@
 // │   I S L A N D   S T A T E                                                │
 // │   decides which layer the island is showing                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

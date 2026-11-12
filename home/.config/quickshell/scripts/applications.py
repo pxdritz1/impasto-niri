@@ -5,7 +5,7 @@
 # │   A P P L I C A T I O N S                                                │
 # │   desktop entry index for the launcher                                   │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

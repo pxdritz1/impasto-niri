@@ -3,7 +3,7 @@
 // │   M O D U L E                                                            │
 // │   maps a module id to its component                                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

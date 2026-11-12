@@ -3,7 +3,7 @@
 // │   N I G H T   L I G H T   D E T A I L                                    │
 // │   how warm the night light makes the screen                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

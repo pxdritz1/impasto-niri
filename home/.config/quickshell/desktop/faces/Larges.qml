@@ -3,7 +3,7 @@
 // │   L   A   R   G   E   S                                                  │
 // │   4×4 widget faces                                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -4,7 +4,7 @@
 # │   C L I P B O A R D                                                      │
 # │   clipboard history · watch, store and restore                           │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -298,7 +298,7 @@ def wipe():
 
 def watcher_pidfile():
     runtime = os.environ.get("XDG_RUNTIME_DIR") or "/tmp"
-    return Path(runtime) / "impasto-clipboard.pid"
+    return Path(runtime) / "velatura-clipboard.pid"
 
 
 def displace():

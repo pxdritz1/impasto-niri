@@ -3,7 +3,7 @@
 // │   T I M E R   S E R V I C E                                              │
 // │   one countdown, owned by the island                                     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

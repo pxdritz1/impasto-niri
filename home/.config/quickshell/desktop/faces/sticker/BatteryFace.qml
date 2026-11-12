@@ -3,7 +3,7 @@
 // │   B   A   T   T   E   R   Y       F   A   C   E                          │
 // │   the charge as a pill that fills · sticker                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

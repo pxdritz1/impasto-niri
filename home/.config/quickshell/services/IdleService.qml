@@ -3,7 +3,7 @@
 // │   I D L E   S E R V I C E                                                │
 // │   idle actions · lock, screen off and suspend timeouts                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

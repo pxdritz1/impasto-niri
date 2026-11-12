@@ -3,7 +3,7 @@
 // │   D O C K                                                                │
 // │   dock · pinned and running applications                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -194,7 +194,7 @@ PanelWindow {
     implicitWidth: root.screen.width
     implicitHeight: root.screen.height
 
-    WlrLayershell.namespace: "impasto-dock"
+    WlrLayershell.namespace: "velatura-dock"
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
     // It never reserves: windows pass under it, and the desktop keeps its

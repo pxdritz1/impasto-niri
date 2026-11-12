@@ -3,7 +3,7 @@
 // │   L I T   E D G E                                                        │
 // │   a glass edge lit from one side · full at two corners, faint at two     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

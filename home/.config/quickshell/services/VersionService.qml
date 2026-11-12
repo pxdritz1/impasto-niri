@@ -3,7 +3,7 @@
 // │   V E R S I O N   S E R V I C E                                          │
 // │   what is installed · and what the checkout it came from has waiting     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -32,7 +32,7 @@ Singleton {
     // last two only where the installer records them.
 
     readonly property FileView file: FileView {
-        path: `${Quickshell.env("XDG_STATE_HOME") || Quickshell.env("HOME") + "/.local/state"}/impasto/version`
+        path: `${Quickshell.env("XDG_STATE_HOME") || Quickshell.env("HOME") + "/.local/state"}/velatura/version`
         printErrors: false
         watchChanges: true
         onFileChanged: reload()
@@ -140,8 +140,8 @@ Singleton {
     function update(): void {
         if (root.repo === "")
             return
-        Quickshell.execDetached(["kitty", "--class", "impasto-update",
-                                 "--title", "impasto update",
+        Quickshell.execDetached(["kitty", "--class", "velatura-update",
+                                 "--title", "velatura update",
                                  "sh", "-c", PackagesService.holdScript, "sh",
                                  `${root.repo}/setup`, "update"])
     }
@@ -161,7 +161,7 @@ Singleton {
     property bool changing: false
 
     readonly property FileView manifest: FileView {
-        path: `${Quickshell.env("XDG_STATE_HOME") || Quickshell.env("HOME") + "/.local/state"}/impasto/home.manifest`
+        path: `${Quickshell.env("XDG_STATE_HOME") || Quickshell.env("HOME") + "/.local/state"}/velatura/home.manifest`
         printErrors: false
         watchChanges: true
         onFileChanged: {

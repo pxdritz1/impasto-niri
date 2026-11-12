@@ -3,7 +3,7 @@
 // │   L O C K   S E R V I C E                                                │
 // │   session lock state · background capture and authentication             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -270,7 +270,7 @@ Singleton {
 
     // ── FACE ────────────────────────────────────────────────────────────────
 
-    // A PAM service of its own, `impasto-face`, beside the password and never
+    // A PAM service of its own, `velatura-face`, beside the password and never
     // inside `login`: a face that is not recognised does not count against
     // the password's attempts, and the password never waits for the camera.
     // Ready where `./setup system` put the service and `./setup face` put howdy,
@@ -315,12 +315,12 @@ Singleton {
 
     readonly property Process faceCheck: Process {
         command: ["sh", "-c",
-            "test -f /etc/pam.d/impasto-face && test -f /usr/lib/security/pam_howdy.so"]
+            "test -f /etc/pam.d/velatura-face && test -f /usr/lib/security/pam_howdy.so"]
         onExited: code => root.facePam = code === 0
     }
 
     readonly property PamContext face: PamContext {
-        config: "impasto-face"
+        config: "velatura-face"
 
         onPamMessage: root.faceScanning = true
 

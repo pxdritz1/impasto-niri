@@ -5,7 +5,7 @@
 # │   T H E M E   M A N A G E R                                              │
 # │   wallpapers and adaptive palette · quickshell backend                   │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -46,11 +46,11 @@ DEFAULT_WALLPAPERS_DIR = os.path.join(XDG_DATA_HOME, "wallpapers")
 def wallpapers_dir():
     """The folder the stills are listed from.
 
-    `IMPASTO_WALLPAPERS` (set by the shell from its settings) wins, then the
+    `VELATURA_WALLPAPERS` (set by the shell from its settings) wins, then the
     settings file, so the command line agrees with the shell, then the data
     directory.
     """
-    chosen = os.environ.get("IMPASTO_WALLPAPERS", "")
+    chosen = os.environ.get("VELATURA_WALLPAPERS", "")
     if not chosen:
         try:
             with open(os.path.join(XDG_STATE_HOME, "quickshell", "settings.json"),
@@ -69,7 +69,7 @@ def animated_dir():
 
 # One frame of each video, for the palette and for everything that draws the
 # wallpaper as a picture (the lock, the overview, the arranging desk).
-POSTERS_DIR = os.path.join(XDG_CACHE_HOME, "impasto", "posters")
+POSTERS_DIR = os.path.join(XDG_CACHE_HOME, "velatura", "posters")
 STATE_DIR = os.path.join(XDG_STATE_HOME, "quickshell")
 STATE_FILE = os.path.join(STATE_DIR, "state.json")
 TERMINAL_PALETTE_FILE = os.path.join(STATE_DIR, "kitty-palette.conf")
@@ -128,7 +128,7 @@ DYNAMIC_COLORS_FILE = os.path.join(STATE_DIR, "dynamic-colors.json")
 # ignores absolute paths, so the theme is written there. ./setup never touches
 # files it did not install, so the two can share the directory.
 BTOP_DIR = os.path.join(XDG_CONFIG_HOME, "btop")
-BTOP_THEME_FILE = os.path.join(BTOP_DIR, "themes", "impasto.theme")
+BTOP_THEME_FILE = os.path.join(BTOP_DIR, "themes", "velatura.theme")
 
 # GTK reads gtk.css only from its own config directory.
 GTK3_DIR = os.path.join(XDG_CONFIG_HOME, "gtk-3.0")
@@ -157,13 +157,13 @@ GTK_LIGHT_ABOVE = 0.5
 # is touched (papirus-folders needs root for that). A theme of our own, rather
 # than overrides in a local Papirus-Dark/, can be deleted cleanly and never
 # shadows the package's files.
-ICON_THEME_NAME = "impasto"
+ICON_THEME_NAME = "velatura"
 ICON_THEME_DIR = os.path.join(XDG_DATA_HOME, "icons", ICON_THEME_NAME)
 ICON_INDEX_FILE = os.path.join(ICON_THEME_DIR, "index.theme")
 
 # Records the swatch last written, so a push that lands on the same one skips
 # rebuilding ~2000 symlinks.
-ICON_STAMP_FILE = os.path.join(ICON_THEME_DIR, "impasto.colour")
+ICON_STAMP_FILE = os.path.join(ICON_THEME_DIR, "velatura.colour")
 
 ICON_SOURCE_THEME = "Papirus-Dark"
 ICON_INHERITS = (ICON_SOURCE_THEME, "Adwaita", "hicolor")
@@ -201,7 +201,7 @@ ICON_GREY_BELOW = 0.15
 # enough. No class names, which Discord hashes per build.
 VESKTOP_DIR = os.path.join(XDG_CONFIG_HOME, "vesktop")
 VESKTOP_THEMES_DIR = os.path.join(VESKTOP_DIR, "themes")
-VESKTOP_THEME_FILE = os.path.join(VESKTOP_THEMES_DIR, "impasto.css")
+VESKTOP_THEME_FILE = os.path.join(VESKTOP_THEMES_DIR, "velatura.css")
 
 # Vencord's own settings, where a theme is ticked. Only `./setup vesktop`
 # writes it, once, with Vesktop closed; the push never does.
@@ -232,7 +232,7 @@ VESKTOP_STEPS = (100, 130, 160, 200, 230, 260, 300, 330, 360, 400, 430, 460,
 SPICETIFY_DIR = (os.environ.get("SPICETIFY_CONFIG")
                  or os.path.join(XDG_CONFIG_HOME, "spicetify"))
 SPICETIFY_CONFIG_FILE = os.path.join(SPICETIFY_DIR, "config-xpui.ini")
-SPICETIFY_THEME_DIR = os.path.join(SPICETIFY_DIR, "Themes", "impasto")
+SPICETIFY_THEME_DIR = os.path.join(SPICETIFY_DIR, "Themes", "velatura")
 SPICETIFY_COLORS_FILE = os.path.join(SPICETIFY_THEME_DIR, "color.ini")
 
 # Spotify has one ground with cards on it. The sidebar and player bar sit on
@@ -246,14 +246,14 @@ SPICETIFY_DISABLED = 0.45
 # VSCodium colour themes are extensions. The push writes a manifest and the
 # theme JSON into ~/.vscode-oss/extensions/ (VSCodium's dataFolderName), which
 # the editor loads on its next window without anything being installed.
-VSCODIUM_EXTENSION_DIR = os.path.expanduser("~/.vscode-oss/extensions/impasto")
+VSCODIUM_EXTENSION_DIR = os.path.expanduser("~/.vscode-oss/extensions/velatura")
 VSCODIUM_MANIFEST_FILE = os.path.join(VSCODIUM_EXTENSION_DIR, "package.json")
 VSCODIUM_THEME_FILE = os.path.join(VSCODIUM_EXTENSION_DIR, "themes",
-                                   "impasto-color-theme.json")
+                                   "velatura-color-theme.json")
 
 # The theme's name in the picker and in `workbench.colorTheme`. The push never
 # selects it, so a theme picked by hand stays picked.
-VSCODIUM_LABEL = "Impasto"
+VSCODIUM_LABEL = "Velatura"
 
 # Merged whole by `./setup vscodium`. The pushes only rewrite, in place, the
 # values that follow the palette and the font, and only where they are set.
@@ -294,7 +294,7 @@ VSCODIUM_ANSI = {
 # repository; changes made in the qt6ct GUI are overwritten on the next push.
 QT6CT_DIR = os.path.join(XDG_CONFIG_HOME, "qt6ct")
 QT6CT_CONFIG_FILE = os.path.join(QT6CT_DIR, "qt6ct.conf")
-QT6CT_COLORS_FILE = os.path.join(QT6CT_DIR, "colors", "impasto.conf")
+QT6CT_COLORS_FILE = os.path.join(QT6CT_DIR, "colors", "velatura.conf")
 
 # Fusion draws every widget from the palette; Kvantum would bring its own SVG
 # theme.
@@ -334,7 +334,7 @@ KDE_RAISED_SETS = ("Button", "Tooltip", "Header")
 
 # kdeglobals is merged through a parser that drops comments, so the scheme
 # name is the only marker of what wrote it.
-KDE_SCHEME_NAME = "Impasto"
+KDE_SCHEME_NAME = "Velatura"
 
 # How far ForegroundInactive on a selection fades towards the accent.
 KDE_SELECTION_QUIET = 0.35
@@ -383,7 +383,7 @@ SYNTAX_SCOPES = (
 # yazi resolves `[flavor] dark` by name to flavors/<name>.yazi/, which holds
 # the interface theme and a tmTheme for the preview pane.
 YAZI_DIR = os.path.join(XDG_CONFIG_HOME, "yazi")
-YAZI_FLAVOR_DIR = os.path.join(YAZI_DIR, "flavors", "impasto.yazi")
+YAZI_FLAVOR_DIR = os.path.join(YAZI_DIR, "flavors", "velatura.yazi")
 YAZI_FLAVOR_FILE = os.path.join(YAZI_FLAVOR_DIR, "flavor.toml")
 YAZI_TMTHEME_FILE = os.path.join(YAZI_FLAVOR_DIR, "tmtheme.xml")
 
@@ -402,7 +402,7 @@ YAZI_CAP_CLOSE = "\ue0b4"
 # neovim finds colourschemes on its runtimepath, which the config extends, so
 # this one stays in the state directory instead of ~/.config/nvim.
 NVIM_DIR = os.path.join(STATE_DIR, "nvim")
-NVIM_COLORS_FILE = os.path.join(NVIM_DIR, "colors", "impasto.lua")
+NVIM_COLORS_FILE = os.path.join(NVIM_DIR, "colors", "velatura.lua")
 
 # neovim's default server socket: $XDG_RUNTIME_DIR/nvim.<pid>.0.
 NVIM_SOCKETS = os.path.join(XDG_RUNTIME_DIR, "nvim.*.0")
@@ -425,7 +425,7 @@ IMV_OVERLAY_FONT = "monospace:11"
 # cava resolves `theme` by name inside themes/, and a running cava can be told
 # to reload it.
 CAVA_DIR = os.path.join(XDG_CONFIG_HOME, "cava")
-CAVA_THEME_FILE = os.path.join(CAVA_DIR, "themes", "impasto")
+CAVA_THEME_FILE = os.path.join(CAVA_DIR, "themes", "velatura")
 
 # The bars run from near the terminal ground up to the brightest accent,
 # across the accent/accentHover pair. No red: loudness is not a warning.
@@ -567,7 +567,7 @@ def poster_of(video):
 
 # The name the waiting shell runs under, so a video still waiting to start
 # is stopped with the ones already playing.
-MOTION_TAG = "impasto-motion"
+MOTION_TAG = "velatura-motion"
 
 
 def stop_motion():
@@ -926,7 +926,7 @@ def build_btop_theme(colors):
 
     lines = [
         "# GENERATED by scripts/theme_manager.py on every palette change.",
-        "# Read by btop as `color_theme = \"impasto\"`; edits here are lost at the",
+        "# Read by btop as `color_theme = \"velatura\"`; edits here are lost at the",
         "# next theme switch.",
         "#",
         "# btop wants forty-eight colours and a palette here carries thirteen.",
@@ -980,7 +980,7 @@ def build_cava_theme(colors):
     background = terminal_background(colors)
     lines = [
         "# GENERATED by scripts/theme_manager.py on every palette change.",
-        "# Read by cava as `theme = 'impasto'`; edits here are lost at the next",
+        "# Read by cava as `theme = 'velatura'`; edits here are lost at the next",
         "# theme switch, and a running cava is signalled to re-read it.",
         "#",
         "# Four stops in one family, bottom to top. The island draws the same",
@@ -1078,7 +1078,7 @@ def build_yazi_flavor(colors):
     caps = f'{{ open = "{YAZI_CAP_OPEN}", close = "{YAZI_CAP_CLOSE}" }}'
     return "\n".join([
         "# GENERATED by scripts/theme_manager.py on every palette change.",
-        "# Read by yazi as `[flavor] dark = \"impasto\"`; edits here are lost at",
+        "# Read by yazi as `[flavor] dark = \"velatura\"`; edits here are lost at",
         "# the next theme switch, and yazi has to be reopened to see it.",
         "#",
         "# Backgrounds are set only where something has to sit on one, so the",
@@ -1247,7 +1247,7 @@ def build_yazi_tmtheme(colors):
         "<!-- Read by yazi as the active flavour's tmTheme; edits here are lost. -->",
         '<plist version="1.0">',
         "<dict>",
-        "  <key>name</key><string>impasto</string>",
+        "  <key>name</key><string>velatura</string>",
         "  <key>settings</key>",
         "  <array>",
         "    <dict>",
@@ -1966,7 +1966,7 @@ def write_kde_colors(colors):
             parser.set(section, key, value)
 
     # Written to a temporary file and renamed, so it is never left truncated.
-    temporary = KDEGLOBALS_FILE + ".impasto"
+    temporary = KDEGLOBALS_FILE + ".velatura"
     try:
         with open(temporary, "w", encoding="utf-8") as handle:
             parser.write(handle, space_around_delimiters=False)
@@ -2220,10 +2220,10 @@ def build_vesktop_css(colors):
     # Vencord reads this header to list the theme.
     lines = [
         "/**",
-        " * @name impasto",
+        " * @name velatura",
         " * @description The desk's palette, written by theme_manager.py on",
         " *   every palette push. Edits here are lost at the next switch.",
-        " * @author impasto",
+        " * @author velatura",
         " */",
         "",
         # Also on the theme classes: Discord sets .theme-dark on a wrapper div,
@@ -2273,7 +2273,7 @@ def tick_vesktop_theme():
     if name in themes:
         return True
     settings["enabledThemes"] = themes + [name]
-    temporary = VESKTOP_SETTINGS_FILE + ".impasto"
+    temporary = VESKTOP_SETTINGS_FILE + ".velatura"
     try:
         os.makedirs(os.path.dirname(VESKTOP_SETTINGS_FILE), exist_ok=True)
         with open(temporary, "w", encoding="utf-8") as handle:
@@ -2379,7 +2379,7 @@ def refresh_spotify():
 
     `spicetify refresh` rewrites the stylesheets in Apps/xpui and nothing
     else: no re-patch and no restart, so a running client keeps its colours
-    until it next starts. Only when the impasto theme is the selected one and
+    until it next starts. Only when the velatura theme is the selected one and
     the client is patched and writable; the first patch is `./setup spotify`.
     Last in the push, since spicetify may ask the network for a new version.
     """
@@ -2393,7 +2393,7 @@ def refresh_spotify():
     if not parser.has_section("Setting"):
         return
     setting = parser["Setting"]
-    if setting.get("current_theme", "").strip() != "impasto":
+    if setting.get("current_theme", "").strip() != "velatura":
         return
     spotify = os.path.expandvars(setting.get("spotify_path", "").strip())
     xpui = os.path.join(spotify, "Apps", "xpui")
@@ -2746,7 +2746,7 @@ def build_nvim_colorscheme(colors):
         'if vim.fn.exists("syntax_on") == 1 then vim.cmd("syntax reset") end',
         "",
         "vim.o.termguicolors = true",
-        'vim.g.colors_name = "impasto"',
+        'vim.g.colors_name = "velatura"',
         "",
         "local hl = vim.api.nvim_set_hl",
         "",
@@ -2784,7 +2784,7 @@ def push_nvim_colorscheme(colors):
     for socket_path in sorted(glob.glob(NVIM_SOCKETS)):
         result = subprocess.run(
             [nvim, "--server", socket_path, "--remote-expr",
-             'luaeval("tostring(pcall(vim.cmd.colorscheme, \'impasto\'))")'],
+             'luaeval("tostring(pcall(vim.cmd.colorscheme, \'velatura\'))")'],
             capture_output=True, text=True, timeout=5)
         if result.returncode != 0:
             # A stale socket from a closed neovim; keep going.
@@ -2803,11 +2803,11 @@ def build_vscodium_manifest(colors):
                         colors.get("accent", "#0a84ff"))
     lit = luminance(*hex_to_rgb(ground)) > GTK_LIGHT_ABOVE
     manifest = {
-        "name": "impasto",
+        "name": "velatura",
         "displayName": VSCODIUM_LABEL,
         "description": "The wallpaper's palette. Generated; edits are lost.",
         "version": "1.0.0",
-        "publisher": "impasto",
+        "publisher": "velatura",
         "engines": {"vscode": "^1.0.0"},
         "categories": ["Themes"],
         "contributes": {
@@ -3429,7 +3429,7 @@ def update_vscodium_settings(values):
 
     for start, end, value in sorted(edits, reverse=True):
         text = text[:start] + value + text[end:]
-    temporary = VSCODIUM_SETTINGS_FILE + ".impasto"
+    temporary = VSCODIUM_SETTINGS_FILE + ".velatura"
     try:
         with open(temporary, "w", encoding="utf-8") as handle:
             handle.write(text)
@@ -3559,7 +3559,7 @@ def write_vscodium_settings(colors):
             return False
 
     settings.update(build_vscodium_settings(colors))
-    temporary = VSCODIUM_SETTINGS_FILE + ".impasto"
+    temporary = VSCODIUM_SETTINGS_FILE + ".velatura"
     try:
         os.makedirs(os.path.dirname(VSCODIUM_SETTINGS_FILE), exist_ok=True)
         with open(temporary, "w", encoding="utf-8") as handle:
@@ -3799,7 +3799,7 @@ def build_zen_css(colors):
 def build_zen_prefs():
     """user.js, written whole: Firefox never writes to it."""
     lines = [
-        "// Written by impasto. github.com/andreumassanet/impasto",
+        "// Written by velatura. github.com/pxdritz1/velatura",
         "// Read at startup and never written back, which is why it is here",
         "// and not in prefs.js.",
         "",

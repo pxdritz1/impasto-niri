@@ -3,7 +3,7 @@
 // │   P A D L O C K                                                          │
 // │   the lock's glyph · a shackle that lifts and swings open                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

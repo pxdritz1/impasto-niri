@@ -3,7 +3,7 @@
 // │   T   A   G                                                              │
 // │   a pill sticker with words on it                                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

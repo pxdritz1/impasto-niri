@@ -3,7 +3,7 @@
 // │   R E C O R D E R                                                        │
 // │   a strip-chart recorder · graph paper and the pen's trace               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

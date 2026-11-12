@@ -3,7 +3,7 @@
 // │   S P E C T R U M   F A C E                                              │
 // │   the sound bars as a widget on the grid                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

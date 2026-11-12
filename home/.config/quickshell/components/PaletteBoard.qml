@@ -3,7 +3,7 @@
 // │   P   A   L   E   T   T   E       B   O   A   R   D                      │
 // │   palette board · the project mark in the active colours                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

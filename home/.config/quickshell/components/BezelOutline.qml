@@ -3,7 +3,7 @@
 // │   B E Z E L   O U T L I N E                                              │
 // │   the bezel's edge · round the corners, under the band, round the drop   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

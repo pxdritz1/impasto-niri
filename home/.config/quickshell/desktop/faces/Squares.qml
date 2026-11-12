@@ -3,7 +3,7 @@
 // │   S   Q   U   A   R   E   S                                              │
 // │   2×2 widget faces                                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

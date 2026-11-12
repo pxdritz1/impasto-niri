@@ -3,7 +3,7 @@
 // │   M A R K E T S   M O D U L E                                            │
 // │   a watchlist · the first pair charted, the rest under it                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

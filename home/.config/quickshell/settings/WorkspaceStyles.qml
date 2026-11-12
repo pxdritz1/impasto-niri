@@ -3,7 +3,7 @@
 // │   W O R K S P A C E   S T Y L E S                                        │
 // │   the workspace strip's styles, each drawn as it would be on the bar     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

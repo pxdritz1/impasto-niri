@@ -3,7 +3,7 @@
 // │   A   R   C   S                                                          │
 // │   signal strength arcs                                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

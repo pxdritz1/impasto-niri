@@ -3,7 +3,7 @@
 // │   H E X T R I S                                                          │
 // │   six lanes · turn the hexagon under the falling slab, three clear       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

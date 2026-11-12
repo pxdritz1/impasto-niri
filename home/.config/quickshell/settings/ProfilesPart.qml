@@ -3,7 +3,7 @@
 // │   P R O F I L E S   P A R T                                              │
 // │   profiles · switch, rename, import and export                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

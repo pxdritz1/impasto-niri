@@ -5,7 +5,7 @@
 # │   L Y R I C S                                                            │
 # │   the playing track's lyrics · lrclib.net, cached                        │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -34,7 +34,7 @@ import urllib.request
 
 ENDPOINT = "https://lrclib.net/api"
 TIMEOUT = 8
-AGENT = "impasto (github.com/andreumassanet/impasto)"
+AGENT = "velatura (github.com/pxdritz1/velatura)"
 MISS_TTL = 7 * 24 * 3600
 # A busy lrclib is asked once more, this long after, before giving up.
 RETRY_AFTER = 2

@@ -3,7 +3,7 @@
 // │   S C R E E N   C O R N E R                                              │
 // │   one rounded corner of the screen · the square outside the curve        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

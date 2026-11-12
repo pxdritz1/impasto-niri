@@ -3,7 +3,7 @@
 // │   S E T T I N G   G R O U P                                              │
 // │   settings · a titled card of rows                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

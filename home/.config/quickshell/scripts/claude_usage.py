@@ -4,7 +4,7 @@
 # │   C L A U D E   U S A G E                                                │
 # │   tokens spent in the current block and this week                        │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

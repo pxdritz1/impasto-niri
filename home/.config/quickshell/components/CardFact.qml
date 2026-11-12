@@ -3,7 +3,7 @@
 // │   C A R D   F A C T                                                      │
 // │   one fact on a card · its name, then its value on the right             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

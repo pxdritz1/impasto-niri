@@ -1,15 +1,11 @@
 <p align="center">
-  <img src=".github/assets/banner.jpg" alt="impasto — the island, become the mark, over a painting of Mount Fuji" width="100%">
-</p>
-
-<p align="center">
-  <b>A Quickshell desktop shell being ported to Niri, whose colours come from a painting.</b><br>
+  <b>A customizable Quickshell desktop shell built around Niri, with a dynamic island, desktop widgets and wallpaper-driven colours.</b><br>
   One black island that changes shape, a desk of widgets under the windows,<br>
   and every program around it repainted by whatever wallpaper is up.
 </p>
 
 <p align="center">
-  <a href="https://github.com/andreumassanet/impasto/actions/workflows/check.yml"><img src="https://github.com/andreumassanet/impasto/actions/workflows/check.yml/badge.svg" alt="check"></a>
+  <a href="https://github.com/pxdritz1/velatura/actions/workflows/check.yml"><img src="https://github.com/pxdritz1/velatura/actions/workflows/check.yml/badge.svg" alt="check"></a>
   <img src="https://img.shields.io/badge/Arch_Linux-1793d1?style=flat-square&logo=archlinux&logoColor=white" alt="Arch Linux">
   <img src="https://img.shields.io/badge/Niri-KDL_config-58e1ff?style=flat-square" alt="Niri">
   <img src="https://img.shields.io/badge/Quickshell-0.3-000000?style=flat-square" alt="Quickshell">
@@ -22,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="https://andreumassanet.github.io/impasto-docs/"><b>Documentation</b></a> ·
+  <a href="docs/niri-compatibility.md"><b>Documentation</b></a> ·
   <a href="#the-island">The island</a> ·
   <a href="#the-bar">The bar</a> ·
   <a href="#the-desktop">The desktop</a> ·
@@ -31,13 +27,8 @@
   <a href="#keys">Keys</a>
 </p>
 
-<p align="center">
-  <img src=".github/assets/hero.jpg" alt="The desk: the island with a track playing, widgets down the right, a note deck on the left edge, a terminal with the lava lamp greeting, and the dock" width="100%">
-</p>
-
-The name is the technique the wallpapers are painted in: paint laid on thick
-enough to keep the mark of the brush. It is a shell first and a dotfiles
-repository second — `home/.config/quickshell` is most of the code, and the rest
+Velatura is a customizable desktop shell for Niri, built with Quickshell. It is
+a shell first and a dotfiles repository second — `home/.config/quickshell` is most of the code, and the rest
 of `home/` is the desk around it: the terminal, the prompt, two editors, two
 file managers, a browser, a chat client, the login screen. **Change the
 wallpaper and all of it follows.**
@@ -136,8 +127,8 @@ screen and the boot splash are the same design, before there is a session.
 Arch Linux with Niri and Quickshell, from a terminal or a console:
 
 ```bash
-git clone https://github.com/pxdritz1/impasto-niri.git ~/impasto-niri
-cd ~/impasto-niri
+git clone https://github.com/pxdritz1/velatura.git ~/velatura
+cd ~/velatura
 ./setup install
 ```
 
@@ -239,6 +230,10 @@ debounced to one frame.
 - [diegoMalagrida/dotfiles](https://github.com/diegoMalagrida/dotfiles) — an
   Arch Linux desk ready to install on a fresh system
 
+Velatura is an independent continuation and Niri-focused adaptation of ideas
+and code from [Impasto](https://github.com/andreumassanet/impasto), originally
+created by Andreu Massanet. See [CREDITS.md](CREDITS.md) for provenance.
+
 Built on [Quickshell](https://quickshell.org) and [Niri](https://github.com/niri-wm/niri). Niri configuration editing is delegated to [NiriMod](https://github.com/srinivasr/nirimod). See [Niri compatibility and plugin alternatives](docs/niri-compatibility.md).
 The pointer is [Bibata](https://github.com/ful1e5/Bibata_Cursor), repainted;
 the folders are [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme),
@@ -252,10 +247,10 @@ and [Rosé Pine](https://rosepinetheme.com).
 
 ## Star history
 
-<a href="https://star-history.com/#andreumassanet/impasto&Date">
+<a href="https://star-history.com/#pxdritz1/velatura&Date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=andreumassanet/impasto&type=Date&theme=dark">
-    <img src="https://api.star-history.com/svg?repos=andreumassanet/impasto&type=Date" alt="Star history of impasto" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=pxdritz1/velatura&type=Date&theme=dark">
+    <img src="https://api.star-history.com/svg?repos=pxdritz1/velatura&type=Date" alt="Velatura star history" width="100%">
   </picture>
 </a>
 

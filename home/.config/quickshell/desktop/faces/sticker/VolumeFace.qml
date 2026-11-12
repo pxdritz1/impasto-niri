@@ -3,7 +3,7 @@
 // │   V   O   L   U   M   E       F   A   C   E                              │
 // │   the output level on a four-lobed sticker                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

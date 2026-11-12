@@ -1,9 +1,9 @@
 // ╭──────────────────────────────────────────────────────────────────────────╮
 // │                                                                          │
 // │   C O M M A N D S                                                        │
-// │   the shell over ipc · what the impasto command calls                    │
+// │   the shell over ipc · what the velatura command calls                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -16,7 +16,7 @@ import Quickshell.Io
 import "./services"
 
 // One IPC target per noun, reached as `qs ipc call <target> <verb> <args>`
-// and, more kindly, as `impasto <target> <verb> <args>`. Every answer is a
+// and, more kindly, as `velatura <target> <verb> <args>`. Every answer is a
 // line of JSON: `{"ok": true, ...}` or `{"error": "..."}`, so a script or an
 // assistant can read what happened and go on. Arguments arrive as strings;
 // an optional one arrives empty.
@@ -540,7 +540,7 @@ Scope {
 
         function set(id: string): string {
             if (!ThemeService.availableThemes.some(entry => entry.id === id))
-                return root.fail(`not a palette: "${id}" (impasto theme list)`)
+                return root.fail(`not a palette: "${id}" (velatura theme list)`)
             ThemeService.setTheme(id)
             return root.ok({ palette: id })
         }

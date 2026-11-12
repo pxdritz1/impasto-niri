@@ -5,7 +5,7 @@
 # │   P R I V A C Y                                                          │
 # │   which programs have the camera open · on every open and close          │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

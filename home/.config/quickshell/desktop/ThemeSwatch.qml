@@ -3,7 +3,7 @@
 // │   T   H   E   M   E       S   W   A   T   C   H                          │
 // │   widget theme preview · a live clock in that theme                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

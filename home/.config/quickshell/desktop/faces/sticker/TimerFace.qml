@@ -3,7 +3,7 @@
 // │   T   I   M   E   R       F   A   C   E                                  │
 // │   the time left as a ring · sticker                                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

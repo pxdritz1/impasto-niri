@@ -3,7 +3,7 @@
 // │   S E T T I N G S   P A N E L                                            │
 // │   sections on the left, one page at a time on the right                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -147,7 +147,7 @@ Item {
     //
     // Where the help button takes each page, or one part of it, on the
     // documentation site. Keyed "section" or "section/part".
-    readonly property string guideRoot: "https://andreumassanet.github.io/impasto-docs/"
+    readonly property string guideRoot: "https://github.com/pxdritz1/velatura/tree/main/docs"
     readonly property var guides: ({
         "bar": "shell/bar/",
         "bar/layout": "shell/bar/#arranging",
@@ -314,7 +314,7 @@ Item {
 
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
-                            text: "impasto"
+                            text: "velatura"
                             font.family: Theme.fontSignature
                             font.pixelSize: 28
                             color: Theme.text

@@ -3,7 +3,7 @@
 // │   S   T   A   T   S       F   A   C   E                                  │
 // │   processor, memory and heat as three badges · sticker                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   L Y R I C S   F A C E                                                  │
 // │   the lyrics of what is playing, and nothing else                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

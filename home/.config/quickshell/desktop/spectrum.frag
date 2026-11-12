@@ -3,7 +3,7 @@
 // │   S P E C T R U M                                                        │
 // │   sound bars along one edge, drawn in one pass                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

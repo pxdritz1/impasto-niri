@@ -3,7 +3,7 @@
 // │   A   N   A   L   O   G   U   E                                          │
 // │   analogue widget theme · one drawn object per module                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

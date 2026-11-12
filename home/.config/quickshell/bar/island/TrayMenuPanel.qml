@@ -3,7 +3,7 @@
 // │   T R A Y   M E N U   P A N E L                                          │
 // │   a tray item's menu · drawn by the shell                                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

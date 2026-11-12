@@ -3,7 +3,7 @@
 // │   S E S S I O N   R I B B O N                                            │
 // │   screen time · the day's sessions in a line, in order                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

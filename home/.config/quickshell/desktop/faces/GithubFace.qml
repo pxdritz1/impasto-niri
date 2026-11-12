@@ -3,7 +3,7 @@
 // │   G   I   T   H   U   B       F   A   C   E                              │
 // │   the contribution wall on the wallpaper · modern                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

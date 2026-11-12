@@ -3,7 +3,7 @@
 // │   L O C K   M E D I A                                                    │
 // │   what is playing, on the lock · the cover, and the lyrics beside it     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

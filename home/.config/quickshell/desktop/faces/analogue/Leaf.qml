@@ -3,7 +3,7 @@
 // │   L   E   A   F                                                          │
 // │   calendar leaf drawing                                                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

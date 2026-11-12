@@ -3,7 +3,7 @@
 // │   C O N T R I B U T I O N   G R I D                                      │
 // │   github contribution grid                                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

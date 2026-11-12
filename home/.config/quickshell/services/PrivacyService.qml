@@ -3,7 +3,7 @@
 // │   P R I V A C Y   S E R V I C E                                          │
 // │   what is using the microphone, the camera and the screen                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   S E T T I N G S   S E R V I C E                                        │
 // │   user preferences · defaults here, overrides on disk                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -533,7 +533,7 @@ Singleton {
         // Every screen's four corners rounded off in black.
         property bool screenCorners: false
 
-        // Game mode affects Impasto's own surfaces and animations only.
+        // Game mode affects Velatura's own surfaces and animations only.
         property bool gameMode: false
 
         // Shell shadows under the bar, dock and desktop widgets.

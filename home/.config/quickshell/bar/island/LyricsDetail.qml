@@ -3,7 +3,7 @@
 // │   L Y R I C S   D E T A I L                                              │
 // │   the player opened out · the cover, and the lyrics beside it            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

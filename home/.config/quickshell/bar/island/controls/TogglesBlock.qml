@@ -3,7 +3,7 @@
 // │   T O G G L E S   B L O C K                                              │
 // │   quick toggles · paged when they do not fit                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

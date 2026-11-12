@@ -5,7 +5,7 @@
 # │   M A C H I N E                                                          │
 # │   hardware and os summary                                                │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

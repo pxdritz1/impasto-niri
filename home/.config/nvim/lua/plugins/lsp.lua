@@ -3,7 +3,7 @@
 -- │   L S P                                                                  │
 -- │   language servers · started only when installed                         │
 -- │                                                                          │
--- │   github.com/andreumassanet/impasto                                      │
+-- │   github.com/pxdritz1/velatura                                      │
 -- │                                                                          │
 -- ╰──────────────────────────────────────────────────────────────────────────╯
 

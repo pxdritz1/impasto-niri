@@ -3,7 +3,7 @@
 // │   B   L   U   E   T   O   O   T   H       F   A   C   E                  │
 // │   the rune on a sticker, with the devices counted                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

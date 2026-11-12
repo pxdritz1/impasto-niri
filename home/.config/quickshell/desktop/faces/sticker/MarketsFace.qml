@@ -3,7 +3,7 @@
 // │   M A R K E T S   F A C E                                                │
 // │   a watchlist · the day's move on a cookie, the price on a tag           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

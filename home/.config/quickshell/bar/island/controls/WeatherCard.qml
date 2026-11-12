@@ -3,7 +3,7 @@
 // │   W E A T H E R   C A R D                                                │
 // │   weather · now and the rest of the day                                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

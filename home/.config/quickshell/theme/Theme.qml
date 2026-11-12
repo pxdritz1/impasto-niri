@@ -3,7 +3,7 @@
 // │   T H E M E                                                              │
 // │   design tokens · consumed by every component                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -170,9 +170,9 @@ QtObject {
     // else's, so those ask for the picture meant for them.
     readonly property var appIconAliases: ({
         "vesktop": "Vesktop",
-        "org.gnome.Nautilus": "impasto-files",
-        "thunar": "impasto-files",
-        "org.xfce.thunar": "impasto-files"
+        "org.gnome.Nautilus": "velatura-files",
+        "thunar": "velatura-files",
+        "org.xfce.thunar": "velatura-files"
     })
 
     function appIcon(name: string): string {

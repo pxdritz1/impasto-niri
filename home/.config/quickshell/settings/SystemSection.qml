@@ -3,7 +3,7 @@
 // │   S Y S T E M   S E C T I O N                                            │
 // │   system · profiles, machine info and reset                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -137,7 +137,7 @@ SettingsSection {
         SettingGroup {
             title: Tr.t("Reset")
             note: Tr.t("Only the profile in use. The others are left as they were.")
-            hint: Tr.t("Reset returns Impasto preferences in this profile to their defaults. Niri's separate KDL configuration is left untouched. Machine settings such as screens, name, picture and language are kept, and there is no undo.")
+            hint: Tr.t("Reset returns Velatura preferences in this profile to their defaults. Niri's separate KDL configuration is left untouched. Machine settings such as screens, name, picture and language are kept, and there is no undo.")
 
             SettingRow {
                 label: Tr.t("Where the settings live")
@@ -258,7 +258,7 @@ SettingsSection {
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     topPadding: 6
-                    text: "impasto"
+                    text: "velatura"
                     font.family: Theme.fontSignature
                     font.pixelSize: 30
                     color: Theme.text
@@ -275,7 +275,7 @@ SettingsSection {
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     topPadding: 4
-                    text: "github.com/andreumassanet/impasto"
+                    text: "github.com/pxdritz1/velatura"
                     font.family: Theme.fontMono
                     font.pixelSize: Theme.fontSizeLabel
                     color: repoMouse.containsMouse ? Theme.accent : Theme.textMuted
@@ -289,7 +289,7 @@ SettingsSection {
                         hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor
                         onClicked: Qt.openUrlExternally(
-                            "https://github.com/andreumassanet/impasto")
+                            "https://github.com/pxdritz1/velatura")
                     }
                 }
             }
@@ -314,8 +314,8 @@ SettingsSection {
 
         SettingGroup {
             title: Tr.t("Updates")
-            note: Tr.t("impasto itself, not the packages it runs.")
-            hint: Tr.t("Update pulls the checkout impasto was installed from and runs the installer again in a terminal, where its questions and your password stay visible.")
+            note: Tr.t("velatura itself, not the packages it runs.")
+            hint: Tr.t("Update pulls the checkout velatura was installed from and runs the installer again in a terminal, where its questions and your password stay visible.")
 
             SettingRow {
                 label: Tr.t("Check for updates")
@@ -411,8 +411,8 @@ SettingsSection {
         // files are gathered by folder: forty wallpapers are one line.
         SettingGroup {
             title: Tr.t("Changed files")
-            note: Tr.t("impasto's own files, as you left them.")
-            hint: Tr.t("Updates leave a file you deleted deleted, and a file you edited as you edited it, with any newer version beside it as .new. Restore puts impasto's version back; yours, if there was one, is kept in ~/.local/state/impasto/backups.")
+            note: Tr.t("velatura's own files, as you left them.")
+            hint: Tr.t("Updates leave a file you deleted deleted, and a file you edited as you edited it, with any newer version beside it as .new. Restore puts velatura's version back; yours, if there was one, is kept in ~/.local/state/velatura/backups.")
 
             SettingRow {
                 label: Tr.t("Changed files")

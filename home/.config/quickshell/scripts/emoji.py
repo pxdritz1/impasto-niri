@@ -5,7 +5,7 @@
 # │   E M O J I                                                              │
 # │   emoji index for the launcher · read from the unicode data files        │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

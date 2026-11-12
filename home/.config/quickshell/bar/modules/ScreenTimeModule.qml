@@ -3,7 +3,7 @@
 // │   S C R E E N   T I M E   M O D U L E                                    │
 // │   screen time · today on the chip; the hours and the most used           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

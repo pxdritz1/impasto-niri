@@ -3,7 +3,7 @@
 // │   T O G G L E   S W I T C H                                              │
 // │   an on/off control for a settings row                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

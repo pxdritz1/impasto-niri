@@ -3,7 +3,7 @@
 // │   T R                                                                    │
 // │   singleton · what language the shell speaks                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -996,10 +996,10 @@ QtObject {
             "% in use": "% en uso",
             "since boot": "desde el arranque",
 
-            "impasto itself, not the packages it runs.":
-                "impasto en sí, no los paquetes que usa.",
-            "Update pulls the checkout impasto was installed from and runs the installer again in a terminal, where its questions and your password stay visible.":
-                "Actualizar descarga el repositorio del que se instaló impasto y vuelve a ejecutar el instalador en una terminal, donde se ven sus preguntas y tu contraseña.",
+            "velatura itself, not the packages it runs.":
+                "velatura en sí, no los paquetes que usa.",
+            "Update pulls the checkout velatura was installed from and runs the installer again in a terminal, where its questions and your password stay visible.":
+                "Actualizar descarga el repositorio del que se instaló velatura y vuelve a ejecutar el instalador en una terminal, donde se ven sus preguntas y tu contraseña.",
             "Check for updates": "Buscar actualizaciones",
             "Check": "Buscar",
             "Checking…": "Buscando…",
@@ -1019,10 +1019,10 @@ QtObject {
             "more": "más",
 
             "Changed files": "Archivos cambiados",
-            "impasto's own files, as you left them.":
-                "Los archivos de impasto, tal como los dejaste.",
-            "Updates leave a file you deleted deleted, and a file you edited as you edited it, with any newer version beside it as .new. Restore puts impasto's version back; yours, if there was one, is kept in ~/.local/state/impasto/backups.":
-                "Las actualizaciones no vuelven a poner un archivo que borraste, ni tocan uno que editaste: si hay una versión nueva, la dejan al lado como .new. Restaurar vuelve a poner la versión de impasto; la tuya, si la había, se guarda en ~/.local/state/impasto/backups.",
+            "velatura's own files, as you left them.":
+                "Los archivos de velatura, tal como los dejaste.",
+            "Updates leave a file you deleted deleted, and a file you edited as you edited it, with any newer version beside it as .new. Restore puts velatura's version back; yours, if there was one, is kept in ~/.local/state/velatura/backups.":
+                "Las actualizaciones no vuelven a poner un archivo que borraste, ni tocan uno que editaste: si hay una versión nueva, la dejan al lado como .new. Restaurar vuelve a poner la versión de velatura; la tuya, si la había, se guarda en ~/.local/state/velatura/backups.",
             "No checkout to restore from": "No hay repositorio del que restaurar",
             "Every file as installed": "Todo como se instaló",
             "file edited": "archivo editado",

@@ -3,7 +3,7 @@
 // │   A V A T A R                                                            │
 // │   a face, or the letters that stand in for one                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

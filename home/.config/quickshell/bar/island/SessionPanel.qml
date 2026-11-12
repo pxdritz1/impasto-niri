@@ -3,7 +3,7 @@
 // │   S E S S I O N   P A N E L                                              │
 // │   session menu · lock, suspend, log out, reboot, shut down               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

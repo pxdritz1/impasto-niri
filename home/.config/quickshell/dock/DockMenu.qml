@@ -3,7 +3,7 @@
 // │   D O C K   M E N U                                                      │
 // │   one application's windows · and what can be done to it                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

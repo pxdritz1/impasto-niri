@@ -3,7 +3,7 @@
 // │   D O C K   S E R V I C E                                                │
 // │   dock · pinned and running applications                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

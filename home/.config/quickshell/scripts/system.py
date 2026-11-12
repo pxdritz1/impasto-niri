@@ -5,7 +5,7 @@
 # │   S Y S T E M                                                            │
 # │   live system state · brightness, audio, radios                          │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   G   A   U   G   E                                                      │
 // │   needle gauge with a red zone                                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

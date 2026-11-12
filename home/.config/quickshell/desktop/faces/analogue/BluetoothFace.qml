@@ -3,7 +3,7 @@
 // │   B   L   U   E   T   O   O   T   H       F   A   C   E                  │
 // │   bluetooth symbol · lit while connected                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

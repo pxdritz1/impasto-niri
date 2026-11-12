@@ -3,7 +3,7 @@
 // │   V   O   L   U   M   E       F   A   C   E                              │
 // │   the volume as a knob · turned to the level, barred when muted          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

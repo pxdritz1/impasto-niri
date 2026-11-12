@@ -3,7 +3,7 @@
 // │   P E T   P A P E R                                                      │
 // │   the pet cut flat · two tones, a hard edge between them                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

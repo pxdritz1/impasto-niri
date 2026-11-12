@@ -3,7 +3,7 @@
 // │   C A R D   L E V E L                                                    │
 // │   one level on a card · its name, a line to drag, its value              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

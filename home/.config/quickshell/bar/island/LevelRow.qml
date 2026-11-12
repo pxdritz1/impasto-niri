@@ -3,7 +3,7 @@
 // │   L E V E L   R O W                                                      │
 // │   one level on a control-centre page · its name, then its bar            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

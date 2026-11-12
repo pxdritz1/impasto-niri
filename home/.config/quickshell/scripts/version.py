@@ -2,9 +2,9 @@
 # ╭──────────────────────────────────────────────────────────────────────────╮
 # │                                                                          │
 # │   V E R S I O N                                                          │
-# │   the checkout impasto was installed from · what it has waiting          │
+# │   the checkout velatura was installed from · what it has waiting          │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

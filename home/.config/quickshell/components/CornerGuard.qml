@@ -3,7 +3,7 @@
 // │   C O R N E R   G U A R D                                                │
 // │   a right click on a window's first pixel · taken, so Qt never sees it   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

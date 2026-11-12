@@ -3,7 +3,7 @@
 -- │   T R E E                                                                │
 -- │   nvim-tree · file explorer                                              │
 -- │                                                                          │
--- │   github.com/andreumassanet/impasto                                      │
+-- │   github.com/pxdritz1/velatura                                      │
 -- │                                                                          │
 -- ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   C A M E R A   P A N E L                                                │
 // │   camera effects · the picture calls see, its effect and its reactions   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -173,7 +173,7 @@ ColumnLayout {
                     CaptureSession {
                         camera: Camera {
                             cameraDevice: media.videoInputs.find(
-                                device => device.description === "impasto camera") ?? null
+                                device => device.description === "velatura camera") ?? null
                             active: cameraDevice !== null
                         }
                         videoOutput: output
@@ -453,7 +453,7 @@ ColumnLayout {
                 : CameraService.error !== "" ? CameraService.error
                 : CameraService.others.length > 0
                   ? `${Tr.t("In use by")} ${CameraService.others.map(name => name.charAt(0).toUpperCase() + name.slice(1)).join(", ")}`
-                : `${Tr.t("Pick")} “impasto camera” ${Tr.t("in any call")}`
+                : `${Tr.t("Pick")} “velatura camera” ${Tr.t("in any call")}`
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSizeSmall
             color: CameraService.error !== "" ? Theme.indicatorBad : Theme.textMuted

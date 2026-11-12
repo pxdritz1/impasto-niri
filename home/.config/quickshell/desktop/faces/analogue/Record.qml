@@ -3,7 +3,7 @@
 // │   R   E   C   O   R   D                                                  │
 // │   what is playing, as a record · it turns while it plays                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

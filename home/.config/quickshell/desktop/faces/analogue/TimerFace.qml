@@ -3,7 +3,7 @@
 // │   T   I   M   E   R       F   A   C   E                                  │
 // │   the countdown as an hourglass · what is left is above the neck         │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

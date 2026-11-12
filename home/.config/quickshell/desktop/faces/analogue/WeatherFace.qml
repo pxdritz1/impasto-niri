@@ -3,7 +3,7 @@
 // │   W   E   A   T   H   E   R       F   A   C   E                          │
 // │   the sky drawn, a thermometer beside it · the hours ahead as a curve    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

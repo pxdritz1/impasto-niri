@@ -3,7 +3,7 @@
 // │   T   H   E   R   M   O   M   E   T   E   R                              │
 // │   thermometer drawing                                                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

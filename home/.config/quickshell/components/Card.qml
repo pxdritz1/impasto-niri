@@ -3,7 +3,7 @@
 // │   C A R D                                                                │
 // │   the surface every control centre section sits on                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

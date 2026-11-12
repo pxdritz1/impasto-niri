@@ -3,7 +3,7 @@
 // │   P E T   P I X E L                                                      │
 // │   the pet as a sprite · sixteen cells across, lit from the left          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

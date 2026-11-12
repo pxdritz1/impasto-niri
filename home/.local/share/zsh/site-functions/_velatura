@@ -1,0 +1,20 @@
+#compdef velatura
+# ╭──────────────────────────────────────────────────────────────────────────╮
+# │                                                                          │
+# │   _ V E L A T U R A                                                        │
+# │   zsh completion · asks velatura itself what comes next                   │
+# │                                                                          │
+# │   github.com/pxdritz1/velatura                                      │
+# │                                                                          │
+# ╰──────────────────────────────────────────────────────────────────────────╯
+
+# The candidates come from `velatura complete`, which reads the command's own
+# table and, for keys, palettes and machines, the running shell; so this
+# never falls behind the command.
+local -a candidates
+candidates=(${(f)"$(velatura complete ${words[2,CURRENT-1]} 2>/dev/null)"})
+if [[ ${words[2]} == wallpaper && ${words[3]} == set ]]; then
+    _files
+elif (( ${#candidates} )); then
+    compadd -a candidates
+fi

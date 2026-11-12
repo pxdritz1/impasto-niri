@@ -3,7 +3,7 @@
 // │   C A R O U S E L   T I L E                                              │
 // │   carousel tile · position and scale from distance to centre             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

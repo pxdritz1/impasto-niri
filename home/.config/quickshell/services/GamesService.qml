@@ -3,7 +3,7 @@
 // │   G A M E S   S E R V I C E                                              │
 // │   arcade · game registry and best scores                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -4,7 +4,7 @@
 # │   U P D A T E S                                                          │
 # │   packages an upgrade would touch · counted, never installed             │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -106,7 +106,7 @@ def aur():
             query = urllib.parse.urlencode(
                 [("arg[]", name) for name in names[start:start + AUR_BATCH]])
             request = urllib.request.Request(f"{AUR_RPC}?{query}",
-                                             headers={"User-Agent": "impasto"})
+                                             headers={"User-Agent": "velatura"})
             with urllib.request.urlopen(request, timeout=AUR_TIMEOUT) as answer:
                 for row in json.load(answer).get("results", []):
                     remote[row.get("Name", "")] = row.get("Version", "")

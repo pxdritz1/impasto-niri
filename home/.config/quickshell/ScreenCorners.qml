@@ -3,7 +3,7 @@
 // │   S C R E E N   C O R N E R S                                            │
 // │   a rounded screen · black over the four corners, never in the way       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -46,7 +46,7 @@ Scope {
             screen: root.screen
             visible: !(corner.modelData.top && root.topCovered)
             WlrLayershell.layer: WlrLayer.Overlay
-            WlrLayershell.namespace: "impasto-corners"
+            WlrLayershell.namespace: "velatura-corners"
             exclusionMode: ExclusionMode.Ignore
             anchors {
                 top: corner.modelData.top

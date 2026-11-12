@@ -3,7 +3,7 @@
 // │   C H I P   F A C E                                                      │
 // │   module chip · symbol or ring, and its value                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

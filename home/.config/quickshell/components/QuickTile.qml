@@ -3,7 +3,7 @@
 // │   Q U I C K   T I L E                                                    │
 // │   a control centre toggle · icon, name and current state                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

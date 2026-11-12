@@ -3,7 +3,7 @@
 // │   S L I D E R   R O W                                                    │
 // │   a level control · icon, track and reading                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

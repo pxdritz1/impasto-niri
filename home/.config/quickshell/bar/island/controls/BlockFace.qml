@@ -3,7 +3,7 @@
 // │   B L O C K   F A C E                                                    │
 // │   maps a block id and size to its card                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -43,7 +43,7 @@ Item {
         weather: weatherBlock,
         calendar: calendarBlock,
         notifications: notificationsBlock,
-        impasto: impastoBlock,
+        velatura: velaturaBlock,
         pet: petBlock,
         clock: clockBlock,
         games: gamesBlock,
@@ -158,8 +158,8 @@ Item {
     }
 
     Component {
-        id: impastoBlock
-        ImpastoBlock {
+        id: velaturaBlock
+        VelaturaBlock {
             cols: root.shape.cols
             rows: root.shape.rows
         }

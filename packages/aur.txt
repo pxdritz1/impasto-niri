@@ -3,7 +3,7 @@
 # │   A U R                                                                  │
 # │   aur packages · installed with yay or paru                              │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

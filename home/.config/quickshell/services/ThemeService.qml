@@ -3,7 +3,7 @@
 // │   T H E M E   S E R V I C E                                              │
 // │   active palette · persistence and adaptive colours                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

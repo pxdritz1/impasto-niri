@@ -3,7 +3,7 @@
 -- │   G I T                                                                  │
 -- │   gitsigns · changes in the gutter                                       │
 -- │                                                                          │
--- │   github.com/andreumassanet/impasto                                      │
+-- │   github.com/pxdritz1/velatura                                      │
 -- │                                                                          │
 -- ╰──────────────────────────────────────────────────────────────────────────╯
 

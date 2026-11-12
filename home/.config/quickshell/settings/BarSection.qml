@@ -3,7 +3,7 @@
 // │   B A R   S E C T I O N                                                  │
 // │   bar · island, layout, workspaces and notifications                     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   K E P T   A P P L I C A T I O N S                                      │
 // │   pinned applications list · shared by dock and launcher                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

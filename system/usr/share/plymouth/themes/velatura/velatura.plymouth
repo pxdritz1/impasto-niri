@@ -1,0 +1,17 @@
+# ╭──────────────────────────────────────────────────────────────────────────╮
+# │                                                                          │
+# │   V E L A T U R A                                                          │
+# │   plymouth theme · the boot splash, before the login screen              │
+# │                                                                          │
+# │   github.com/pxdritz1/velatura                                      │
+# │                                                                          │
+# ╰──────────────────────────────────────────────────────────────────────────╯
+
+[Plymouth Theme]
+Name=velatura
+Description=The palette, painted while the machine starts
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/velatura
+ScriptFile=/usr/share/plymouth/themes/velatura/velatura.script

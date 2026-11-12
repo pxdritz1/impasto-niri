@@ -3,7 +3,7 @@
 // │   T A S K   R O W                                                        │
 // │   one task on one line · the tick, the words, the day                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

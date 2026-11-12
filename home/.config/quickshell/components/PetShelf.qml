@@ -3,7 +3,7 @@
 // │   P E T   S H E L F                                                      │
 // │   pet shelf · one slot per species                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

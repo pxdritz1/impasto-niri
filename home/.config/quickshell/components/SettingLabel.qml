@@ -3,7 +3,7 @@
 // │   S E T T I N G   L A B E L                                              │
 // │   settings · a row's name and reading                                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   P   H   O   T   O       F   A   C   E                                  │
 // │   a picture of your own on the wallpaper · modern                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

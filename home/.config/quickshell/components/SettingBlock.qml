@@ -3,7 +3,7 @@
 // │   S E T T I N G   B L O C K                                              │
 // │   settings · free content in a group                                     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

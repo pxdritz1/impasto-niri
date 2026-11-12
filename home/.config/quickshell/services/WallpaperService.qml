@@ -3,7 +3,7 @@
 // │   W A L L P A P E R   S E R V I C E                                      │
 // │   wallpaper listing and application                                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -47,7 +47,7 @@ QtObject {
 
     // Handed to the script, which also reads the settings file but may do so
     // before it has been written.
-    readonly property var scriptEnvironment: ({ "IMPASTO_WALLPAPERS": SettingsService.wallpaperDir })
+    readonly property var scriptEnvironment: ({ "VELATURA_WALLPAPERS": SettingsService.wallpaperDir })
 
     readonly property Process scanProcess: Process {
         command: [root.script, "list-wallpapers"]

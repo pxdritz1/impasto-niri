@@ -3,7 +3,7 @@
 // │   S E T T I N G   D I V I D E R                                          │
 // │   settings · the hairline between two rows                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

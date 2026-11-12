@@ -3,7 +3,7 @@
 // │   F I G U R E                                                            │
 // │   a value with its caption                                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

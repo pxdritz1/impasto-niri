@@ -3,7 +3,7 @@
 // │   C A M E R A   S E R V I C E                                            │
 // │   camera effects · the virtual camera, its effect and its reactions      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -16,7 +16,7 @@ import Quickshell.Io
 
 import "../theme"
 
-// `camera.py serve` keeps the "impasto camera" device listed for every
+// `camera.py serve` keeps the "velatura camera" device listed for every
 // program, and turns the webcam on only while one of them streams from it.
 // The effect, the reactions and the palette go to it through `configure`.
 Singleton {
@@ -82,7 +82,7 @@ Singleton {
     // The effect tiles are one sample portrait, a generated face, with each
     // effect laid on it; the mask is the person cut out, for the blur.
     readonly property string samples:
-        `${Quickshell.env("XDG_DATA_HOME") || Quickshell.env("HOME") + "/.local/share"}/impasto/camera`
+        `${Quickshell.env("XDG_DATA_HOME") || Quickshell.env("HOME") + "/.local/share"}/velatura/camera`
     readonly property string sample: `file://${root.samples}/sample.jpg`
     readonly property string sampleMask: `file://${root.samples}/sample-mask.png`
 

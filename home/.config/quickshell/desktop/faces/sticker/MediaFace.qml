@@ -3,7 +3,7 @@
 // │   M   E   D   I   A       F   A   C   E                                  │
 // │   the record as a round sticker, and its buttons                         │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

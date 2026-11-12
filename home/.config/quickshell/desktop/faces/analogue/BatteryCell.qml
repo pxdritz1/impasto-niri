@@ -3,7 +3,7 @@
 // │   B   A   T   T   E   R   Y       C   E   L   L                          │
 // │   battery cell drawing                                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

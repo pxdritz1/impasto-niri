@@ -3,7 +3,7 @@
 // │   N E T W O R K   M O D U L E                                            │
 // │   network · link status, radio switch when open                          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

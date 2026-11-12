@@ -3,7 +3,7 @@
 // │   F   A   D   E   R                                                      │
 // │   fader drawing for levels                                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

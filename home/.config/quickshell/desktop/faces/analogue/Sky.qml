@@ -3,7 +3,7 @@
 // │   S   K   Y                                                              │
 // │   the weather drawn · a sun, a moon, a cloud, and what falls out of it   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   T A S K S   B L O C K                                                  │
 // │   tasks block · the next open tasks                                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

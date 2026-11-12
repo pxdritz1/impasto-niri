@@ -3,7 +3,7 @@
 // │   P O L K I T   S E R V I C E                                            │
 // │   the session's authentication agent · asked on the island               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

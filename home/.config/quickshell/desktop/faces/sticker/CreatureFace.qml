@@ -3,7 +3,7 @@
 // │   C   R   E   A   T   U   R   E       F   A   C   E                      │
 // │   the pet on a disc · sticker                                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

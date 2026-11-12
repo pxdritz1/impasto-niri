@@ -3,7 +3,7 @@
 // │   C L I P B O A R D   S E R V I C E                                      │
 // │   clipboard history · watcher, list and restore                          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -4,7 +4,7 @@
 // │   edge notes · tab positions and contents                                │
 // │   hand                                                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

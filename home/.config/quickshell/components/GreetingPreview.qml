@@ -3,7 +3,7 @@
 // │   G R E E T I N G   P R E V I E W                                        │
 // │   animated preview of a greeting scene                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

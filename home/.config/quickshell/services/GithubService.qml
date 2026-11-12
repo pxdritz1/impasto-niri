@@ -3,7 +3,7 @@
 // │   G I T H U B   S E R V I C E                                            │
 // │   a year of green squares · from a public profile                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

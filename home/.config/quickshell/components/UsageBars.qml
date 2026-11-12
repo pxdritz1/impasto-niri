@@ -3,7 +3,7 @@
 // │   U S A G E   B A R S                                                    │
 // │   screen time · stacked bars, a shade of the accent per group            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

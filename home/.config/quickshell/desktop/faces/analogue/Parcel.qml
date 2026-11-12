@@ -3,7 +3,7 @@
 // │   P   A   R   C   E   L                                                  │
 // │   the updates as a parcel · the count written on the label               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

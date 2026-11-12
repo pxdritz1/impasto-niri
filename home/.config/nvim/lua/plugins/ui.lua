@@ -3,7 +3,7 @@
 -- │   U I                                                                    │
 -- │   lualine · status line                                                  │
 -- │                                                                          │
--- │   github.com/andreumassanet/impasto                                      │
+-- │   github.com/pxdritz1/velatura                                      │
 -- │                                                                          │
 -- ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   A U D I O   S E R V I C E                                              │
 // │   default sink volume and mute · reactive, via pipewire                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

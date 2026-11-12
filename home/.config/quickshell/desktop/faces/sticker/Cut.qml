@@ -3,7 +3,7 @@
 // │   C   U   T                                                              │
 // │   one sticker · a shape with a vinyl edge, tilted                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

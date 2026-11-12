@@ -3,7 +3,7 @@
 // │   C   A   L   E   N   D   A   R       F   A   C   E                      │
 // │   today as a sticker, the month on a sheet · sticker                     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

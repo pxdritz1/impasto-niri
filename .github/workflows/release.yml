@@ -21,4 +21,4 @@ jobs:
       - name: Publish the release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes --title "impasto ${GITHUB_REF_NAME#v}"
+        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes --title "velatura ${GITHUB_REF_NAME#v}"

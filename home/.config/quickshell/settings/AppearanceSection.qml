@@ -3,7 +3,7 @@
 // │   A P P E A R A N C E   S E C T I O N                                    │
 // │   appearance · palette, windows, fonts and motion                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -15,7 +15,7 @@ import "../services"
 import "../components"
 
 // The wallpaper and its palette, the terminal, type and the shell's motion.
-// Niri owns window rendering; this page controls Impasto's own appearance.
+// Niri owns window rendering; this page controls Velatura's own appearance.
 SettingsSection {
     id: root
 
@@ -212,7 +212,7 @@ SettingsSection {
         SettingGroup {
             title: Tr.t("Game mode")
             note: Tr.t("Everything still, for a game or a slow machine.")
-            hint: Tr.t("Stops Impasto's animations, spectrum and pet, and makes its surfaces solid. Niri's own animations and window effects are left unchanged.")
+            hint: Tr.t("Stops Velatura's animations, spectrum and pet, and makes its surfaces solid. Niri's own animations and window effects are left unchanged.")
 
             SettingRow {
                 label: Tr.t("Game mode")

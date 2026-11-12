@@ -3,7 +3,7 @@
 // │   B E Z E L   S H A P E                                                  │
 // │   the bezel's silhouette · band, screen corners and drop as one fill     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   B L U E T O O T H   M O D U L E                                        │
 // │   bluetooth · connected devices, radio switch when open                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

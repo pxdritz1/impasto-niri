@@ -3,7 +3,7 @@
 # │   Z S H R C                                                              │
 # │   interactive shell · plugins, path, prompt and tools                    │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -22,7 +22,7 @@ ZSH_THEME=""
 #   $ZSH/custom/plugins by ./setup
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
-# · completions shipped here (impasto's); oh-my-zsh runs compinit, so before it
+# · completions shipped here (velatura's); oh-my-zsh runs compinit, so before it
 fpath=("$HOME/.local/share/zsh/site-functions" $fpath)
 
 [[ -r $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh

@@ -3,7 +3,7 @@
 // │   I C O N   B U T T O N                                                  │
 // │   square icon action                                                     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

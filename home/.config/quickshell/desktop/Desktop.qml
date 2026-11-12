@@ -3,7 +3,7 @@
 // │   D   E   S   K   T   O   P                                              │
 // │   the layer under the windows · widgets on the wallpaper                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -73,9 +73,9 @@ PanelWindow {
         bottom: true
     }
 
-    // Namespace for layer rules, e.g. `layerrule = blur, impasto-desktop`. Not
+    // Namespace for layer rules, e.g. `layerrule = blur, velatura-desktop`. Not
     // set by default.
-    WlrLayershell.namespace: "impasto-desktop"
+    WlrLayershell.namespace: "velatura-desktop"
     // The widgets take the island's glass (`Theme.surfaceIn`).
     readonly property bool glassy: true
     readonly property string groundStyle: Theme.deskStyle
@@ -329,7 +329,7 @@ PanelWindow {
             bottom: true
         }
 
-        WlrLayershell.namespace: "impasto-desktop-backdrop"
+        WlrLayershell.namespace: "velatura-desktop-backdrop"
         WlrLayershell.layer: WlrLayer.Top
         WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
         exclusionMode: ExclusionMode.Ignore
@@ -409,7 +409,7 @@ PanelWindow {
                 bottom: true
             }
 
-            WlrLayershell.namespace: "impasto-desktop-menu"
+            WlrLayershell.namespace: "velatura-desktop-menu"
             WlrLayershell.layer: WlrLayer.Top
             WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
             exclusionMode: ExclusionMode.Ignore

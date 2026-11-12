@@ -5,7 +5,7 @@
 # │   M A R K E T S                                                          │
 # │   prices for a watchlist · coingecko and the ecb's rates                 │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   C A P T U R E   O V E R L A Y                                          │
 // │   capture overlay · selection drawn on a screenshot                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -46,7 +46,7 @@ PanelWindow {
 
     exclusionMode: ExclusionMode.Ignore
     WlrLayershell.layer: WlrLayer.Overlay
-    WlrLayershell.namespace: "impasto-capture"
+    WlrLayershell.namespace: "velatura-capture"
     // Exclusive, or hovering another window takes the keyboard back and Escape
     // stops working.
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive

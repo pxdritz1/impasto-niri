@@ -3,7 +3,7 @@
 // │   S E T T I N G   R O W                                                  │
 // │   one preference · its name, what it says now, and its control           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

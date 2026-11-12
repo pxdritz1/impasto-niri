@@ -5,7 +5,7 @@
 # │   S C R E E N T I M E                                                    │
 # │   screen time · the window in front, kept by the day                     │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

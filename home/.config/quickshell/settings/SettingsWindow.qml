@@ -3,7 +3,7 @@
 // │   S E T T I N G S   W I N D O W                                          │
 // │   settings window · a regular, movable window                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

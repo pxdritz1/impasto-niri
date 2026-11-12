@@ -3,7 +3,7 @@
 // │   D A Y   T A S K S                                                      │
 // │   one day's tasks                                                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

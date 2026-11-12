@@ -3,7 +3,7 @@
 // │   S P A R K L I N E                                                      │
 // │   a series over time · filled area and stroke                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

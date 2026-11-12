@@ -3,7 +3,7 @@
 // │   N E T W O R K   S E R V I C E                                          │
 // │   what we are connected to, and the wifi radio                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

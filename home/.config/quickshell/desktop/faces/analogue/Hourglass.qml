@@ -3,7 +3,7 @@
 // │   H   O   U   R   G   L   A   S   S                                      │
 // │   hourglass drawing for countdowns                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

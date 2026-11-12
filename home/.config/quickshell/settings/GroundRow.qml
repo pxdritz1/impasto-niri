@@ -3,7 +3,7 @@
 // │   G R O U N D   R O W                                                    │
 // │   settings · what one layer is made of, classic, glass or liquid         │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

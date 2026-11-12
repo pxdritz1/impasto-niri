@@ -3,7 +3,7 @@
 // │   I S L A N D   S E C T I O N                                            │
 // │   island · where it sits, the time, what runs beside it, notifications   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

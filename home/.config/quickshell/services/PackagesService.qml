@@ -3,7 +3,7 @@
 // │   P A C K A G E S   S E R V I C E                                        │
 // │   installed, pending, and found · pacman and the AUR, read here          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -237,7 +237,7 @@ Singleton {
     function open(command: var): void {
         if (root.terminal.running)
             return
-        root.terminal.command = ["kitty", "--class", "impasto-packages",
+        root.terminal.command = ["kitty", "--class", "velatura-packages",
                                  "--title", command.join(" "),
                                  "sh", "-c", root.holdScript, "sh"].concat(command)
         root.terminal.running = true

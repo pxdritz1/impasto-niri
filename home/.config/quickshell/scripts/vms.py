@@ -4,7 +4,7 @@
 # │   V M S                                                                  │
 # │   virtual machines · quickemu and quickget                               │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -26,7 +26,7 @@
     delete NAME                   the machine, its disk and its download
 
 A machine is `NAME.conf` beside a `NAME/` directory under
-$XDG_DATA_HOME/impasto/machines, as quickget writes them; the system, release
+$XDG_DATA_HOME/velatura/machines, as quickget writes them; the system, release
 and edition it came from are added to the configuration, where quickemu
 ignores them. Machines always boot headless with SPICE on, so a window can be
 opened, closed and opened again without stopping one. The QEMU monitor socket
@@ -46,8 +46,8 @@ from typing import NoReturn
 
 DATA = os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share")
 CACHE = os.environ.get("XDG_CACHE_HOME") or os.path.expanduser("~/.cache")
-HOME = os.path.join(DATA, "impasto", "machines")
-CATALOG = os.path.join(CACHE, "impasto", "vm-catalog.json")
+HOME = os.path.join(DATA, "velatura", "machines")
+CATALOG = os.path.join(CACHE, "velatura", "vm-catalog.json")
 
 # How old the cached catalogue may be before it is fetched again.
 CATALOG_AGE = 7 * 24 * 3600
@@ -214,10 +214,10 @@ def describe(name):
             started = 0
     return {
         "name": name,
-        "title": conf.get("impasto_title") or name,
-        "os": conf.get("impasto_os") or "",
-        "release": conf.get("impasto_release") or "",
-        "edition": conf.get("impasto_edition") or "",
+        "title": conf.get("velatura_title") or name,
+        "os": conf.get("velatura_os") or "",
+        "release": conf.get("velatura_release") or "",
+        "edition": conf.get("velatura_edition") or "",
         "guest": conf.get("guest_os", "linux"),
         "cores": conf.get("cpu_cores", ""),
         "ram": conf.get("ram", ""),
@@ -373,8 +373,8 @@ def cmd_create(args):
         fail(tail[-1] if tail else "quickget failed")
     name = new[0]
     path = os.path.join(HOME, f"{name}.conf")
-    changes = {"impasto_os": system, "impasto_release": release,
-               "impasto_edition": edition, "impasto_title": title or name}
+    changes = {"velatura_os": system, "velatura_release": release,
+               "velatura_edition": edition, "velatura_title": title or name}
     if cores.isdigit():
         changes["cpu_cores"] = cores
     if re.fullmatch(r"\d+", ram):

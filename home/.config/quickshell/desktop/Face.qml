@@ -3,7 +3,7 @@
 // │   F   A   C   E                                                          │
 // │   picks a widget face by module, family and theme                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

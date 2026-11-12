@@ -3,7 +3,7 @@
 // │   B   R   I   G   H   T   N   E   S   S       F   A   C   E              │
 // │   the backlight on a sun · sticker                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

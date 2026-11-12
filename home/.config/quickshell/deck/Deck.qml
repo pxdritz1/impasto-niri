@@ -3,7 +3,7 @@
 // │   D E C K                                                                │
 // │   notes on the screen edges · tabs that peek and drag                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -74,7 +74,7 @@ PanelWindow {
         bottom: true
     }
 
-    WlrLayershell.namespace: "impasto-deck"
+    WlrLayershell.namespace: "velatura-deck"
     WlrLayershell.layer: root.editing ? WlrLayer.Overlay : WlrLayer.Top
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 

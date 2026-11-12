@@ -3,7 +3,7 @@
 // │   C   L   A   U   D   E       F   A   C   E                              │
 // │   claude code usage as a fuel gauge                                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

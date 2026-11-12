@@ -3,7 +3,7 @@
 // │   A U T H   P A N E L                                                    │
 // │   a program asks for root · what it wants, and the password              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

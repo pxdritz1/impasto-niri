@@ -3,7 +3,7 @@
 // │   S E R V E R S   P A N E L                                              │
 // │   development servers · a row per port, opened, copied or stopped        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

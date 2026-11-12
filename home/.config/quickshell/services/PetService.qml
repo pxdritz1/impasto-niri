@@ -3,7 +3,7 @@
 // │   P E T   S E R V I C E                                                  │
 // │   a family of small creatures · one out, the rest on the shelf           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

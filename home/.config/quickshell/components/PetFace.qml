@@ -3,7 +3,7 @@
 // │   P E T   F A C E                                                        │
 // │   one creature, drawn · the style the setting names                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

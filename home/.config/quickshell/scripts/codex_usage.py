@@ -4,7 +4,7 @@
 # │   C O D E X   U S A G E                                                  │
 # │   the plan's limits from Codex's own session logs                        │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

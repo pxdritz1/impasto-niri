@@ -3,7 +3,7 @@
 // │   D A Y   D I A L                                                        │
 // │   screen time · the day on a 24 hour face, a session per arc             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

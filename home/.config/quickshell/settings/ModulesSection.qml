@@ -3,7 +3,7 @@
 // │   M O D U L E S   S E C T I O N                                          │
 // │   modules · what they know, wherever they are shown                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

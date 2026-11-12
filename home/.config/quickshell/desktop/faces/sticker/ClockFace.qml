@@ -3,7 +3,7 @@
 // │   C   L   O   C   K       F   A   C   E                                  │
 // │   the time as stickers · a lobed dial, or one per figure                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

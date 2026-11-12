@@ -3,7 +3,7 @@
 // │   M O T I O N   P R E V I E W                                            │
 // │   a window opening on one preset's curve                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

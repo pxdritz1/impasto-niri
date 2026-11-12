@@ -3,7 +3,7 @@
 // │   N O T I F I C A T I O N   L I S T                                      │
 // │   notification history                                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   U   P   D   A   T   E   S       F   A   C   E                          │
 // │   the pending updates as a parcel · the count on its label               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

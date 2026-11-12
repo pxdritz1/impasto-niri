@@ -3,7 +3,7 @@
 // │   I   N   S   P   E   C   T   O   R                                      │
 // │   widget inspector · per-widget appearance                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

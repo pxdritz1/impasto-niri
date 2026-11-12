@@ -3,7 +3,7 @@
 // │   D O C K   I T E M                                                      │
 // │   one application on the dock · its icon, its dot and its drag           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

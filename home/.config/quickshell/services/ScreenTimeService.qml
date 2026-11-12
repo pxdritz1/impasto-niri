@@ -3,7 +3,7 @@
 // │   S C R E E N   T I M E   S E R V I C E                                  │
 // │   screen time · what is in front, recorded, and read back by period      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

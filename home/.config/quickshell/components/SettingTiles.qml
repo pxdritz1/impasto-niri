@@ -3,7 +3,7 @@
 // │   S E T T I N G   T I L E S                                              │
 // │   settings choice as preview tiles                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -5,7 +5,7 @@
 # │   S T A T S                                                              │
 # │   one snapshot of what the machine is doing                              │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

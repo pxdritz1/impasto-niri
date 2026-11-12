@@ -3,7 +3,7 @@
 -- │   L A Z Y                                                                │
 -- │   plugin manager · bootstrapped on first run                             │
 -- │                                                                          │
--- │   github.com/andreumassanet/impasto                                      │
+-- │   github.com/pxdritz1/velatura                                      │
 -- │                                                                          │
 -- ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -37,7 +37,7 @@ require("lazy").setup({
     lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
 
     -- · use ours during install instead of lazy.nvim's own
-    install = { colorscheme = { "impasto", "default" } },
+    install = { colorscheme = { "velatura", "default" } },
 
     ui = { border = "rounded" },
 
@@ -48,7 +48,7 @@ require("lazy").setup({
     performance = {
         rtp = {
             -- · lazy.nvim resets the runtimepath, dropping the directory
-            --   theme.lua added; without this, later `:colorscheme impasto`
+            --   theme.lua added; without this, later `:colorscheme velatura`
             --   calls (live repaints) fail with E185.
             paths = { require("modules.theme").dir },
 

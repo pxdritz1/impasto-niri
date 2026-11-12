@@ -3,7 +3,7 @@
 // │   W E A T H E R   M O D U L E                                            │
 // │   weather · condition icon, hourly forecast when open                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

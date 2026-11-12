@@ -3,7 +3,7 @@
 // │   W I N D O W S   P R E V I E W                                          │
 // │   two tiled windows, drawn at the numbers the sliders hold               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

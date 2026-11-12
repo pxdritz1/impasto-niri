@@ -3,7 +3,7 @@
 // │   P O P   M E N U                                                        │
 // │   context menu · opened at the click position                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

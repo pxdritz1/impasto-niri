@@ -4,11 +4,11 @@
 # │   C A M E R A . P Y                                                      │
 # │   camera effects · the webcam, filtered, into a virtual camera           │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
-"""Feed the "impasto camera" loopback device with the webcam, filtered.
+"""Feed the "velatura camera" loopback device with the webcam, filtered.
 
 Usage: camera.py status
        camera.py configure <json>
@@ -28,7 +28,7 @@ something streams it runs `run` as a child, which captures, applies the
 chosen effect and the hand-gesture reactions, and writes the frames.
 
 Both print JSON lines on stdout. The effect, the reactions and the palette
-are read from $XDG_RUNTIME_DIR/impasto-camera/config.json, which
+are read from $XDG_RUNTIME_DIR/velatura-camera/config.json, which
 `configure` writes for the shell.
 """
 
@@ -48,14 +48,14 @@ import time
 import zipfile
 from pathlib import Path
 
-LABEL = "impasto camera"
+LABEL = "velatura camera"
 WIDTH, HEIGHT, FPS = 1280, 720, 30
 
-RUNTIME = Path(os.environ.get("XDG_RUNTIME_DIR") or "/tmp") / "impasto-camera"
+RUNTIME = Path(os.environ.get("XDG_RUNTIME_DIR") or "/tmp") / "velatura-camera"
 CONFIG = RUNTIME / "config.json"
 PIDFILE = RUNTIME / "serve.pid"
 SNAP = RUNTIME / "snap.request"
-MODELS = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local/share") / "impasto/camera"
+MODELS = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local/share") / "velatura/camera"
 EMOJI_FONT = "/usr/share/fonts/noto/NotoColorEmoji.ttf"
 MODEL_FILES = ["face_landmarker.task", "gesture_recognizer.task", "selfie_segmenter.tflite"]
 
@@ -206,10 +206,10 @@ def configure(text):
 
 
 def photos(quietly):
-    """Where the photos go: $IMPASTO_CAMERA (set in `env.lua`), else what
+    """Where the photos go: $VELATURA_CAMERA (set in `env.lua`), else what
     `env.lua` would set: XDG_CAMERA_DIR from user-dirs.dirs, or Camera in the
     XDG pictures directory, as GNOME's camera does."""
-    value = os.environ.get("IMPASTO_CAMERA")
+    value = os.environ.get("VELATURA_CAMERA")
     if value:
         return Path(value).expanduser()
     if shutil.which("xdg-user-dir"):
@@ -243,7 +243,7 @@ def snap():
     folder = photos(quietly)
     try:
         folder.mkdir(parents=True, exist_ok=True)
-        saved = folder / f"{stamp}_impasto.png"
+        saved = folder / f"{stamp}_velatura.png"
         shutil.move(str(taken), saved)
     except OSError as error:
         taken.unlink(missing_ok=True)

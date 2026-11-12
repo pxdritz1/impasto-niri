@@ -3,7 +3,7 @@
 // │   S   P   R   E   A   D                                                  │
 // │   layout for sticker faces · the sticker, then its tag                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

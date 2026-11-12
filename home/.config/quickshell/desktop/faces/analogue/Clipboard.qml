@@ -3,7 +3,7 @@
 // │   C   L   I   P   B   O   A   R   D                                      │
 // │   clipboard drawing for the tasks face                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

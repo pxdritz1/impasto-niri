@@ -3,7 +3,7 @@
 // │   A P P E A R A N C E   P A N E L                                        │
 // │   animated wallpaper, wallpaper and palette picker                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -5,7 +5,7 @@
 # │   A C C O U N T                                                          │
 # │   the account's name and picture · read and change them                  │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -13,7 +13,7 @@
 
 The name is the GECOS field, changed through AccountsService, which lets the
 active user change their own without a password. The picture is the first
-conventional path that exists, and is changed through /usr/lib/impasto/avatar
+conventional path that exists, and is changed through /usr/lib/velatura/avatar
 under pkexec: the picture is read and made square here, as the user, and only
 the PNG that comes out reaches the helper.
 
@@ -29,8 +29,8 @@ import pwd
 import subprocess
 import sys
 
-HELPER = "/usr/lib/impasto/avatar"
-POLICY = "/usr/share/polkit-1/actions/org.impasto.avatar.policy"
+HELPER = "/usr/lib/velatura/avatar"
+POLICY = "/usr/share/polkit-1/actions/org.velatura.avatar.policy"
 
 # The picture both screens get: square, and small enough for a login screen.
 SIDE = 256
@@ -39,7 +39,7 @@ SIDE = 256
 # a 0700 $HOME, so it is the only location the lock screen and the login screen
 # can share. The rest are fallbacks for a machine without `./setup system`.
 AVATARS = (
-    "/var/lib/impasto/faces/{user}.face.icon",
+    "/var/lib/velatura/faces/{user}.face.icon",
     "~/.face",
     "~/.face.icon",
     "/var/lib/AccountsService/icons/{user}",

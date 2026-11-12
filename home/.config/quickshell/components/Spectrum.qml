@@ -3,7 +3,7 @@
 // │   S P E C T R U M                                                        │
 // │   audio spectrum bars                                                    │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

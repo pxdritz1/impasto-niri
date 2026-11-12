@@ -3,7 +3,7 @@
 // │   B O A R D   P A N E L                                                  │
 // │   task board · three lanes and the task editor                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

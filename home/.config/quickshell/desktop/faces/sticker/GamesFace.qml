@@ -3,7 +3,7 @@
 // │   G   A   M   E   S       F   A   C   E                                  │
 // │   the arcade on a sticker, with play beside it                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

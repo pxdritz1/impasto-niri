@@ -3,7 +3,7 @@
 // │   F L I P   C A R D                                                      │
 // │   one card of the flip clock · halves that fold over a hinge             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

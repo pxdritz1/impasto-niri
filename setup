@@ -4,7 +4,7 @@
 # │   S E T U P                                                              │
 # │   the installer · packages, the files, the system, the plugins           │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -14,14 +14,14 @@
 set -euo pipefail
 
 REPO=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-STATE=${XDG_STATE_HOME:-$HOME/.local/state}/impasto
+STATE=${XDG_STATE_HOME:-$HOME/.local/state}/velatura
 BACKUPS=$STATE/backups/$(date +%Y%m%d-%H%M%S)
 APPLIED=$STATE/applied
 THEME_MANAGER=$REPO/home/.config/quickshell/scripts/theme_manager.py
 
 # Where `system/` lands. Only a test points it anywhere but `/`, and a root
 # this user can write to is written without sudo.
-ROOT=${IMPASTO_ROOT:-/}
+ROOT=${VELATURA_ROOT:-/}
 ROOT=${ROOT%/}
 
 DRY=0
@@ -77,30 +77,11 @@ else
     TEXT= MUTED= FAINT= ACCENT= WARN= OFF= BOLD=
 fi
 
-# The wordmark, four rows of half blocks, one field per letter. The colour
-# runs left to right across it, the way paint comes off a loaded brush.
-MARK=(
-    '██  |██▄    ▄██  |███████▄  | ▄█████▄   |▄███████  |████████  |▄███████▄'
-    '██  |██▀█▄▄█▀██  |██    ██  |██     ██  |██▄▄▄▄▄   |   ██     |██     ██'
-    '██  |██  ▀▀  ██  |███████▀  |█████████  | ▀▀▀▀▀██  |   ██     |██     ██'
-    '██  |██      ██  |██        |██     ██  |███████▀  |   ██     |▀███████▀'
-)
-if (( TRUECOLOUR )); then
-    MARK_PAINT=($'\e[38;2;142;102;42m' $'\e[38;2;159;112;45m' $'\e[38;2;181;126;49m'
-                $'\e[38;2;203;140;53m' $'\e[38;2;217;154;64m' $'\e[38;2;228;167;76m'
-                $'\e[38;2;240;179;87m')
-else
-    MARK_PAINT=("$ACCENT" "$ACCENT" "$ACCENT" "$ACCENT" "$ACCENT" "$ACCENT" "$ACCENT")
-fi
-
-# Columns to draw in: what the terminal has, and never past the width of this
-# file's own header boxes. Nought where the output is not a terminal, where a
-# rule is short.
+# Columns to draw in: the terminal's own width, never wider than this header.
 width() {
     local size
     if (( ! ATTY )); then printf 0; return 0; fi
     size=$(stty size 2>/dev/null </dev/tty) || size=
-    # shellcheck disable=SC2086
     set -- $size
     if [[ ${2:-} =~ ^[0-9]+$ ]] && (( $2 > 8 )); then
         if (( $2 < 76 )); then printf '%s' "$2"; else printf 76; fi
@@ -109,7 +90,7 @@ width() {
     fi
 }
 
-# How long the install took, for the line that closes it.
+# How long the install took.
 elapsed() {
     if (( SECONDS >= 60 )); then printf '%dm %02ds' $(( SECONDS / 60 )) $(( SECONDS % 60 ))
     else printf '%ds' "$SECONDS"; fi
@@ -121,25 +102,14 @@ dashes() {
     printf '%s' "$out"
 }
 
+# Plain text project heading; no logo or wordmark for now.
 mark() {
-    local row letters line i
-    # The wordmark is 66 columns wide, and a narrower terminal gets the name
-    # spaced out instead of a wrapped drawing.
-    if (( $(width) < 70 )); then
-        printf '  %s%sI M P A S T O%s\n' "$BOLD" "$ACCENT" "$OFF"
-        return 0
-    fi
-    for row in "${MARK[@]}"; do
-        IFS='|' read -ra letters <<< "$row"
-        line=
-        for i in "${!letters[@]}"; do line+="${MARK_PAINT[i]}${letters[i]}"; done
-        printf '  %s%s\n' "$line" "$OFF"
-    done
+    printf '  %sVelatura%s\n' "$BOLD" "$OFF"
 }
 
 # The opening screen. Printed once, and only for a person: a log, a pipe and
 # the `--noconfirm` of an unattended install get the plain lines alone.
-BANNERED=${IMPASTO_RELAUNCHED:-0}
+BANNERED=${VELATURA_RELAUNCHED:-0}
 banner() {
     if (( ! COLOUR || BANNERED )); then return 0; fi
     BANNERED=1
@@ -166,7 +136,7 @@ Usage: ./setup <command> [options]
               other display manager is (asks for a password)
   plugins     show Niri-native replacements for the former Hyprland plugins
 
-  defaults    what opens which file, and dark GTK with the impasto icons
+  defaults    what opens which file, and dark GTK with the velatura icons
   cursors     fetch the vector cursor and build it in the chosen colour
   spotify     patch Spotify so it takes the palette (needs spicetify)
   vscodium    install the editor's extensions and merge its settings
@@ -203,7 +173,7 @@ Options:
 What lands in $HOME and / is a copy. A file edited in place is kept, and the
 repository's version is written beside it as <name>.new; a file deleted here
 stays deleted until --restore; whatever was in the way the first time is moved
-to ~/.local/state/impasto/backups.
+to ~/.local/state/velatura/backups.
 EOF
 }
 
@@ -329,8 +299,8 @@ write_manifest() {
 # must never read half a file.
 put() {
     local src=$1 dst=$2
-    act $SUDO install -D -m "$(stat -c %a "$src")" "$src" "$dst.impasto-new"
-    act $SUDO mv -f "$dst.impasto-new" "$dst"
+    act $SUDO install -D -m "$(stat -c %a "$src")" "$src" "$dst.velatura-new"
+    act $SUDO mv -f "$dst.velatura-new" "$dst"
 }
 
 # Moves whatever was in the way into the backups. Files under / are copied
@@ -470,12 +440,12 @@ deploy() {
 
 # First-run assets, written only when missing so the shell's own output wins:
 # the greeting scenes (rendered once in a fixed palette) and a minimal
-# `impasto` icon theme, because GTK falls back to hicolor, with no icons, when
+# `velatura` icon theme, because GTK falls back to hicolor, with no icons, when
 # settings.ini names a theme that does not exist. The stamp marks the
 # directory as the palette push's to replace.
 seed() {
     local state=${XDG_STATE_HOME:-$HOME/.local/state}/quickshell
-    local icons=${XDG_DATA_HOME:-$HOME/.local/share}/icons/impasto
+    local icons=${XDG_DATA_HOME:-$HOME/.local/share}/icons/velatura
     if [[ ! -e $state/greeting.gif || ! -f $state/greeting ]]; then
         if ! command -v magick >/dev/null && ! command -v convert >/dev/null; then
             say "skipped  the greeting's scenes — ImageMagick is not installed"
@@ -488,12 +458,12 @@ seed() {
     if [[ ! -f $icons/index.theme ]]; then
         act mkdir -p "$icons"
         if (( ! DRY )); then
-            printf '%s\n' '[Icon Theme]' 'Name=impasto' 'Inherits=Papirus-Dark,Adwaita,hicolor' \
+            printf '%s\n' '[Icon Theme]' 'Name=velatura' 'Inherits=Papirus-Dark,Adwaita,hicolor' \
                 'Example=folder' 'Directories=' > "$icons/index.theme"
         fi
-        say "seeded   the impasto icon theme"
+        say "seeded   the velatura icon theme"
     fi
-    if [[ -d $icons ]]; then act touch "$icons/impasto.colour"; fi
+    if [[ -d $icons ]]; then act touch "$icons/velatura.colour"; fi
 }
 
 # Quickshell reloads itself when one of its files changes, and a reload that
@@ -694,7 +664,7 @@ verb_watch() {
     say 'watching home/ — Ctrl+C to stop'
     QUIET=1
     while inotifywait -qq -r -e close_write,create,delete,move \
-        --exclude '/(\.git|__pycache__)/|\.impasto-new$|\.sw[po]$|~$' "$REPO/home"; do
+        --exclude '/(\.git|__pycache__)/|\.velatura-new$|\.sw[po]$|~$' "$REPO/home"; do
         LOOKED=() GONE=()
         deploy home "$HOME" "$STATE/home.manifest" '~/'
         reload_shell
@@ -711,7 +681,7 @@ verb_system() {
     if [[ -n $SUDO ]] && (( ! DRY )); then sudo -v; fi
     deploy system "$ROOT" "$STATE/system.manifest" '/'
     # User pictures for the greeter and the lock screen. Never removed.
-    act $SUDO install -d -m 755 "$ROOT/var/lib/impasto/faces"
+    act $SUDO install -d -m 755 "$ROOT/var/lib/velatura/faces"
     display_manager
     i2c_dev
     SUDO=
@@ -886,7 +856,7 @@ verb_update() {
         if [[ $arg == update ]]; then arg=install; fi
         args+=("$arg")
     done
-    IMPASTO_RELAUNCHED=1 exec "$REPO/setup" "${args[@]}"
+    VELATURA_RELAUNCHED=1 exec "$REPO/setup" "${args[@]}"
 }
 
 # Removes every installed file that is unedited; edited files are listed and
@@ -952,12 +922,12 @@ verb_uninstall() {
     if [[ -d $STATE/backups ]]; then act find "$STATE/backups" -depth -type d -empty -delete; fi
     # The camera effects' module options, written by its verb rather than
     # carried, since they name a module only that verb installs.
-    if [[ -f /etc/modprobe.d/impasto-camera.conf || -f /etc/modules-load.d/impasto-camera.conf ]]; then
-        act sudo rm -f /etc/modprobe.d/impasto-camera.conf /etc/modules-load.d/impasto-camera.conf
+    if [[ -f /etc/modprobe.d/velatura-camera.conf || -f /etc/modules-load.d/velatura-camera.conf ]]; then
+        act sudo rm -f /etc/modprobe.d/velatura-camera.conf /etc/modules-load.d/velatura-camera.conf
     fi
     # The boot splash: its files went with system/, but the theme stays chosen
     # and the initramfs and grub.cfg already built still carry it.
-    if command -v plymouth-set-default-theme >/dev/null && [[ $(plymouth-set-default-theme) == impasto ]]; then
+    if command -v plymouth-set-default-theme >/dev/null && [[ $(plymouth-set-default-theme) == velatura ]]; then
         act sudo plymouth-set-default-theme --reset
         act sudo mkinitcpio -P >/dev/null || say 'the initramfs did not rebuild: sudo mkinitcpio -P'
         if [[ -f /boot/grub/grub.cfg ]] && command -v grub-mkconfig >/dev/null; then
@@ -1062,14 +1032,14 @@ verb_defaults() {
         say "${words[0]}  ${words[*]:1}"
     done
     act gsettings set org.gnome.desktop.interface color-scheme prefer-dark \
-        && act gsettings set org.gnome.desktop.interface icon-theme impasto \
+        && act gsettings set org.gnome.desktop.interface icon-theme velatura \
         || refuse 'gsettings failed' || return
     # gsettings succeeds without saving anything when there is no session bus,
     # so the value is read back.
-    if (( ! DRY )) && [[ $(gsettings get org.gnome.desktop.interface icon-theme) != "'impasto'" ]]; then
+    if (( ! DRY )) && [[ $(gsettings get org.gnome.desktop.interface icon-theme) != "'velatura'" ]]; then
         refuse 'the GTK settings did not persist: run it inside the session' || return
     fi
-    say 'dark GTK, impasto icons'
+    say 'dark GTK, velatura icons'
     stamp defaults
 }
 
@@ -1094,7 +1064,7 @@ verb_spotify() {
     command -v spicetify >/dev/null || refuse 'spicetify is not installed' || return
     [[ -f $config/spotify/prefs ]] \
         || refuse 'open Spotify once first: spicetify needs the settings it writes' || return
-    [[ -f $config/spicetify/Themes/impasto/color.ini ]] \
+    [[ -f $config/spicetify/Themes/velatura/color.ini ]] \
         || refuse 'no palette for Spotify yet: the shell writes one when it next themes the desk' || return
     if [[ -n $SOFT ]] && pgrep -x spotify >/dev/null; then
         refuse 'close Spotify first: patching it restarts it' || return
@@ -1110,7 +1080,7 @@ verb_spotify() {
     # The package manager updates spicetify, and the palette push runs
     # `spicetify refresh`, which would otherwise ask GitHub each time.
     if ! applied spotify; then
-        act spicetify config current_theme impasto color_scheme base check_spicetify_update 0 >/dev/null \
+        act spicetify config current_theme velatura color_scheme base check_spicetify_update 0 >/dev/null \
             || refuse 'spicetify could not select the theme' || return
     fi
     act spicetify apply >/dev/null 2>&1 || act spicetify backup apply || refuse 'spicetify failed' || return
@@ -1193,7 +1163,7 @@ ir_camera() {
 }
 
 # Face unlock for the lock screen: howdy-next on the infrared camera, asked
-# through the lock's own PAM service, system/etc/pam.d/impasto-face. Not in
+# through the lock's own PAM service, system/etc/pam.d/velatura-face. Not in
 # packages/, since it brings opencv and only a machine with an infrared camera
 # can use it. Enrolling needs somebody in front of the camera, so an install
 # that cannot ask leaves it for this verb.
@@ -1207,7 +1177,7 @@ verb_face() {
         if [[ -n $SOFT ]]; then say 'skipped  no infrared camera'; return 0; fi
         fail 'no infrared camera: face unlock needs one'
     fi
-    [[ -f /etc/pam.d/impasto-face ]] \
+    [[ -f /etc/pam.d/velatura-face ]] \
         || refuse "the lock screen's PAM service is not installed (./setup system)" || return
     # Built without its test suite: one test races the compare process against
     # the password prompt and fails under a parallel build, and passes alone.
@@ -1242,7 +1212,7 @@ colour_camera() {
     local dev formats
     for dev in /dev/video*; do
         [[ -c $dev ]] || continue
-        [[ $(cat "/sys/class/video4linux/${dev##*/}/name" 2>/dev/null) == 'impasto camera' ]] && continue
+        [[ $(cat "/sys/class/video4linux/${dev##*/}/name" 2>/dev/null) == 'velatura camera' ]] && continue
         formats=$(v4l2-ctl -d "$dev" --list-formats 2>/dev/null) || continue
         grep -q "Video Capture" <<<"$formats" || continue
         grep -o "'[A-Z0-9 ]\{4\}'" <<<"$formats" | grep -qv "'GREY'" || continue
@@ -1260,7 +1230,7 @@ CAMERA_FILES=(
 )
 
 # Camera effects: the webcam, filtered by camera.py, into a v4l2loopback
-# device every call program lists as "impasto camera". Not in packages/: the
+# device every call program lists as "velatura camera". Not in packages/: the
 # module is built for the running kernel and MediaPipe brings opencv, so only
 # a machine with a camera gets them. The models come from Google's own
 # storage, once, into the data directory.
@@ -1287,17 +1257,17 @@ verb_camera() {
     fi
     # exclusive_caps: listed as a camera only while something writes to it,
     # which camera.py does from the moment the shell starts it.
-    act sudo install -Dm644 /dev/stdin /etc/modprobe.d/impasto-camera.conf <<<'options v4l2loopback video_nr=10 card_label="impasto camera" exclusive_caps=1' \
-        && act sudo install -Dm644 /dev/stdin /etc/modules-load.d/impasto-camera.conf <<<'v4l2loopback' \
+    act sudo install -Dm644 /dev/stdin /etc/modprobe.d/velatura-camera.conf <<<'options v4l2loopback video_nr=10 card_label="velatura camera" exclusive_caps=1' \
+        && act sudo install -Dm644 /dev/stdin /etc/modules-load.d/velatura-camera.conf <<<'v4l2loopback' \
         || refuse 'the module options were not written' || return
-    if (( ! DRY )) && ! grep -qx 'impasto camera' /sys/class/video4linux/*/name 2>/dev/null; then
+    if (( ! DRY )) && ! grep -qx 'velatura camera' /sys/class/video4linux/*/name 2>/dev/null; then
         if [[ -d /sys/module/v4l2loopback ]]; then
             say 'note     v4l2loopback is already loaded with other options; the camera appears after a reboot'
         else
             act sudo modprobe v4l2loopback || say 'note     the module did not load now; it loads with the next boot'
         fi
     fi
-    local dir=${XDG_DATA_HOME:-$HOME/.local/share}/impasto/camera file
+    local dir=${XDG_DATA_HOME:-$HOME/.local/share}/velatura/camera file
     act mkdir -p "$dir"
     for file in "${CAMERA_FILES[@]}"; do
         [[ -s $dir/${file##*/} ]] && continue
@@ -1307,7 +1277,7 @@ verb_camera() {
     done
     say "models   $dir"
     stamp camera
-    say 'ok · SUPER + SHIFT + W, and pick "impasto camera" in any call'
+    say 'ok · SUPER + SHIFT + W, and pick "velatura camera" in any call'
 }
 
 # Adds `splash` to a file of kernel command lines, on the lines that $2
@@ -1332,17 +1302,17 @@ verb_splash() {
     [[ -z $ROOT ]] || refuse 'the boot splash is set up on the machine itself, not in a chroot' || return
     command -v plymouth-set-default-theme >/dev/null || refuse 'plymouth is not installed (package: plymouth)' || return
     command -v mkinitcpio >/dev/null || refuse 'the initramfs is not built by mkinitcpio' || return
-    [[ -f /usr/share/plymouth/themes/impasto/impasto.plymouth && -f /etc/mkinitcpio.conf.d/impasto.conf ]] \
+    [[ -f /usr/share/plymouth/themes/velatura/velatura.plymouth && -f /etc/mkinitcpio.conf.d/velatura.conf ]] \
         || refuse 'the theme is not installed (./setup system)' || return
     if (( DRY )); then
         say 'would choose the theme, add splash to the kernel command line and rebuild the initramfs'
         return 0
     fi
     sudo -v
-    if [[ $(plymouth-set-default-theme) != impasto ]]; then
-        act sudo plymouth-set-default-theme impasto || refuse 'the theme could not be chosen' || return
+    if [[ $(plymouth-set-default-theme) != velatura ]]; then
+        act sudo plymouth-set-default-theme velatura || refuse 'the theme could not be chosen' || return
     fi
-    say 'theme    impasto'
+    say 'theme    velatura'
     local loader= esp entry root config
     if [[ -f /etc/default/grub ]] && command -v grub-mkconfig >/dev/null; then
         loader=grub
@@ -1651,6 +1621,30 @@ interactive() {
 
 # ── MAIN ────────────────────────────────────────────────────────────────────
 
+# Preserve data from installations made under the previous Impasto name.
+# Copy missing entries when both namespaces exist; never overwrite user data.
+migrate_legacy_path() {
+    local old=$1 new=$2
+    [[ -e $old || -L $old ]] || return 0
+    if [[ ! -e $new && ! -L $new ]]; then
+        act mkdir -p "$(dirname "$new")"
+        act mv "$old" "$new"
+        say "migrated $old → $new"
+    elif [[ -d $old && -d $new ]]; then
+        act cp -a -n "$old/." "$new/"
+        say "merged   $old → $new (existing files kept)"
+    else
+        say "kept     $old — $new already exists"
+    fi
+}
+
+migrate_legacy_paths() {
+    (( DRY )) && return 0
+    migrate_legacy_path "${XDG_STATE_HOME:-$HOME/.local/state}/impasto" "$STATE"
+    migrate_legacy_path "${XDG_DATA_HOME:-$HOME/.local/share}/impasto" "${XDG_DATA_HOME:-$HOME/.local/share}/velatura"
+    migrate_legacy_path "${XDG_DATA_HOME:-$HOME/.local/share}/icons/impasto" "${XDG_DATA_HOME:-$HOME/.local/share}/icons/velatura"
+}
+
 main() {
     ARGS=("$@")
     local verb=
@@ -1678,8 +1672,9 @@ main() {
         ''|yay|paru) ;;
         *) fail '--aur-helper takes yay or paru' ;;
     esac
+    case $verb in install|update|sync) migrate_legacy_paths ;; esac
     case $verb in install|update|uninstall) banner ;; esac
-    if (( DRY )) && [[ -z ${IMPASTO_RELAUNCHED:-} ]]; then
+    if (( DRY )) && [[ -z ${VELATURA_RELAUNCHED:-} ]]; then
         printf '  %sdry run — nothing on this machine is changed%s\n' "$MUTED" "$OFF"
     fi
 

@@ -3,7 +3,7 @@
 -- │   T H E M E                                                              │
 -- │   colourscheme · generated from the active palette                       │
 -- │                                                                          │
--- │   github.com/andreumassanet/impasto                                      │
+-- │   github.com/pxdritz1/velatura                                      │
 -- │                                                                          │
 -- ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -25,7 +25,7 @@ vim.opt.runtimepath:append(M.dir)
 -- ── COLORSCHEME ─────────────────────────────────────────────────────────────
 
 -- · absent until the shell's first palette push
-pcall(vim.cmd.colorscheme, "impasto")
+pcall(vim.cmd.colorscheme, "velatura")
 
 
 -- ── TRANSPARENCY ────────────────────────────────────────────────────────────
@@ -50,7 +50,7 @@ local function clear_grounds()
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
-    group = vim.api.nvim_create_augroup("impasto_ground", { clear = true }),
+    group = vim.api.nvim_create_augroup("velatura_ground", { clear = true }),
     callback = clear_grounds,
 })
 

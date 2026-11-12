@@ -3,7 +3,7 @@
 // │   P R O F I L E   S E R V I C E                                          │
 // │   profiles · switch, rename, import and export                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -212,7 +212,7 @@ Singleton {
     //
     // A plain JSON file:
     //
-    //   impasto    the format, `format` — a number, and the file's mark
+    //   velatura    the format, `format` — a number, and the file's mark
     //   name       what it was called
     //   wallpaper  the picture, with the home directory written as `~`
     //   palette    "adaptive", or a palette id from `Palettes`
@@ -244,7 +244,7 @@ Singleton {
             return
         const file = /\.json$/i.test(path) ? path : `${path}.json`
         const document = {
-            impasto: root.format,
+            velatura: root.format,
             name: found.name,
             wallpaper: root.tilde(root.wallpaperOf(id)),
             palette: root.paletteOf(id),
@@ -287,11 +287,11 @@ Singleton {
     function receive(text: string, path: string): void {
         const document = root.parse(text)
         if (document === null) {
-            OsdService.requested("󰀦", "Not an impasto profile", -1)
+            OsdService.requested("󰀦", "Not an velatura profile", -1)
             return
         }
-        if (document.impasto > root.format) {
-            OsdService.requested("󰀦", "Made by a newer impasto", -1)
+        if (document.velatura > root.format) {
+            OsdService.requested("󰀦", "Made by a newer velatura", -1)
             return
         }
 
@@ -318,7 +318,7 @@ Singleton {
             return null
         }
         const given = document ? document.settings : null
-        if (!document || typeof document !== "object" || typeof document.impasto !== "number"
+        if (!document || typeof document !== "object" || typeof document.velatura !== "number"
                 || !given || typeof given !== "object" || Array.isArray(given))
             return null
         return document
@@ -347,7 +347,7 @@ Singleton {
     // stays deleted and a new one arrives with an update. A fresh install
     // switches to the first. They are also what the Import dialog opens.
     readonly property string shippedDirectory:
-        `${Quickshell.env("XDG_DATA_HOME") || root.home + "/.local/share"}/impasto/profiles`
+        `${Quickshell.env("XDG_DATA_HOME") || root.home + "/.local/share"}/velatura/profiles`
 
     // File name without `.json` → document, as read. The name sorts them, so
     // they arrive in the order their files are numbered.
@@ -377,7 +377,7 @@ Singleton {
 
             onLoaded: {
                 const document = root.parse(text())
-                if (document !== null && document.impasto <= root.format) {
+                if (document !== null && document.velatura <= root.format) {
                     const next = Object.assign({}, root.shipped)
                     next[fileBaseName] = document
                     root.shipped = next

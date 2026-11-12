@@ -3,7 +3,7 @@
 // │   C A R O U S E L                                                        │
 // │   horizontal carousel · the centred tile enlarged                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -1,4 +1,4 @@
-// Catalogue of Impasto shell actions. Niri keybindings remain KDL-owned;
+// Catalogue of Velatura shell actions. Niri keybindings remain KDL-owned;
 // the settings UI delegates editing to the optional NiriMod application.
 pragma Singleton
 

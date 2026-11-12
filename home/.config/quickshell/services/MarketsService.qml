@@ -3,7 +3,7 @@
 // │   M A R K E T S   S E R V I C E                                          │
 // │   a watchlist of prices · coins and currencies                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

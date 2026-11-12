@@ -5,7 +5,7 @@
 # │   F O N T S                                                              │
 # │   installed typefaces, split into monospace and the rest                 │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

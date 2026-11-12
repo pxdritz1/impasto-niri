@@ -3,7 +3,7 @@
 // │   G A M E   B O A R D                                                    │
 // │   loads a game by id and gives it the keyboard                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

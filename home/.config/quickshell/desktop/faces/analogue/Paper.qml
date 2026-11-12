@@ -3,7 +3,7 @@
 // │   P   A   P   E   R                                                      │
 // │   paper background tinted from the text colour                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

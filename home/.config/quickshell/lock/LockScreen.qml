@@ -3,7 +3,7 @@
 // │   L O C K   S C R E E N                                                  │
 // │   session lock · one surface per screen                                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

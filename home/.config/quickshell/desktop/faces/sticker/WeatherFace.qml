@@ -3,7 +3,7 @@
 // │   W   E   A   T   H   E   R       F   A   C   E                          │
 // │   the sky as a sticker · sun, night or cloud                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

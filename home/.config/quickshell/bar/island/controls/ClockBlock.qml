@@ -3,7 +3,7 @@
 // │   C L O C K   B L O C K                                                  │
 // │   clock block · the time, and the date when there is room                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

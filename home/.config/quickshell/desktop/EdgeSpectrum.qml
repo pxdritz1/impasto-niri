@@ -3,7 +3,7 @@
 // │   E D G E   S P E C T R U M                                              │
 // │   sound bars along a whole screen edge · under the windows               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

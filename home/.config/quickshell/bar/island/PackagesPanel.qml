@@ -3,7 +3,7 @@
 // │   P A C K A G E S   P A N E L                                            │
 // │   package browser · updates, installed and search                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

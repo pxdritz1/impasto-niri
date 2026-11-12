@@ -11,8 +11,8 @@ SettingsSection {
     property string tab: ""
 
     SettingGroup {
-        title: Tr.t("Impasto shortcuts")
-        note: Tr.t("Shell actions are provided by Impasto. Their compositor key combinations are configured in Niri.")
+        title: Tr.t("Velatura shortcuts")
+        note: Tr.t("Shell actions are provided by Velatura. Their compositor key combinations are configured in Niri.")
         hint: Tr.t("The shell does not claim a shortcut is active unless it can read it from the user's Niri configuration.")
 
         Repeater {

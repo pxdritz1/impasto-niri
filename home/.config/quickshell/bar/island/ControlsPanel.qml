@@ -3,7 +3,7 @@
 // │   C O N T R O L S   P A N E L                                            │
 // │   control centre · shortcut row and block grid                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   M I N I   2 0 4 8                                                      │
 // │   four by four · arrows or WASD, and a full board is the end             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

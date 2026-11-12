@@ -3,7 +3,7 @@
 // │   G L A S S   S H E E N                                                  │
 // │   the light in a glass ground · its thick edge, and the top lit          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

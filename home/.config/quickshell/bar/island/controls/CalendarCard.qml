@@ -3,7 +3,7 @@
 // │   C A L E N D A R   C A R D                                              │
 // │   the current month, with today marked                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

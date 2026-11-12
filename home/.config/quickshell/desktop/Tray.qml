@@ -3,7 +3,7 @@
 // │   T   R   A   Y                                                          │
 // │   widget tray · drag modules onto the grid                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   K   N   O   B                                                          │
 // │   rotary knob drawing for levels                                         │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

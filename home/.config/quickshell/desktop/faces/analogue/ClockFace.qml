@@ -3,7 +3,7 @@
 // │   C   L   O   C   K       F   A   C   E                                  │
 // │   a dial at every size · numerals and a date window at 4×4               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

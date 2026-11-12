@@ -3,7 +3,7 @@
 // │   S C R E E N   T I M E   F A C E                                        │
 // │   analogue · the day on a 24 hour dial                                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

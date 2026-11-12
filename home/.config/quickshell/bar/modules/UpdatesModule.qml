@@ -3,7 +3,7 @@
 // │   U P D A T E S   M O D U L E                                            │
 // │   updates · pending count, installed in a terminal                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

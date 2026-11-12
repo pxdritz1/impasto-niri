@@ -3,7 +3,7 @@
 // │   S T I C K Y                                                            │
 // │   one note as paper · the title, the body in handwriting, the colour     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

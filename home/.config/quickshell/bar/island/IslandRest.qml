@@ -3,7 +3,7 @@
 // │   I S L A N D   R E S T                                                  │
 // │   resting island · the clock and running activities                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   O S D   S E R V I C E                                                  │
 // │   turns system changes into one transient island event                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

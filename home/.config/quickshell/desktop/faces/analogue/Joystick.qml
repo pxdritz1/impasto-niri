@@ -3,7 +3,7 @@
 // │   J   O   Y   S   T   I   C   K                                          │
 // │   joystick drawing                                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   S P A C E                                                              │
 // │   five by four · left and right, space to fire, three lives              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

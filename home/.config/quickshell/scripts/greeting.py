@@ -5,7 +5,7 @@
 # │   G R E E T I N G                                                        │
 # │   animated fastfetch logo · four scenes in the active palette            │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 

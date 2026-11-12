@@ -3,7 +3,7 @@
 // │   C O N T R O L S   T R A Y                                              │
 // │   block tray · shown while arranging the control centre                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -47,7 +47,7 @@ EditTray {
         toggles: "controls", volume: "controls", brightness: "controls", media: "controls",
         appearance: "controls", session: "controls", shortcuts: "controls",
         clock: "glance", calendar: "glance", weather: "glance", notifications: "glance",
-        notes: "personal", tasks: "personal", pet: "personal", games: "personal", impasto: "personal"
+        notes: "personal", tasks: "personal", pet: "personal", games: "personal", velatura: "personal"
     })
 
     entries: ControlsService.catalogue.map(entry => {

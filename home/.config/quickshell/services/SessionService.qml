@@ -3,7 +3,7 @@
 // │   S E S S I O N   S E R V I C E                                          │
 // │   lock, suspend, log out, reboot, shut down                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -72,7 +72,7 @@ Singleton {
     // shell.
     readonly property Process sleepHold: Process {
         command: ["systemd-inhibit", "--what=sleep", "--mode=delay",
-            "--who=impasto", "--why=Locking the screen first", "cat"]
+            "--who=velatura", "--why=Locking the screen first", "cat"]
         stdinEnabled: true
         running: true
     }

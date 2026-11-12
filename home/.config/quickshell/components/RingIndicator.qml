@@ -3,7 +3,7 @@
 // │   R I N G   I N D I C A T O R                                            │
 // │   a circular gauge · track, sweep and whatever sits inside               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

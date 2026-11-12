@@ -3,7 +3,7 @@
 // │   R   I   N   G                                                          │
 // │   a round-capped arc over its track                                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

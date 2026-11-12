@@ -3,7 +3,7 @@
 // │   T E T R I S                                                            │
 // │   ten by twenty · arrows or WASD, space drops                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

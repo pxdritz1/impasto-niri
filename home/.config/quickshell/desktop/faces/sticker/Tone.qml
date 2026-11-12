@@ -3,7 +3,7 @@
 // │   T   O   N   E                                                          │
 // │   a palette hue as a sticker wears it · fill and print                   │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

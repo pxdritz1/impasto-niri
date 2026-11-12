@@ -3,7 +3,7 @@
 // │   L A U N C H E R   S E C T I O N                                        │
 // │   launcher · results, prefixes and clipboard                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

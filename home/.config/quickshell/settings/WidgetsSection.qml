@@ -3,7 +3,7 @@
 // │   W I D G E T S   S E C T I O N                                          │
 // │   desktop · arranging, the widgets' look, and when they leave            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

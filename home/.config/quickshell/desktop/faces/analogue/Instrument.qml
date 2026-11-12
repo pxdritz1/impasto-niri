@@ -3,7 +3,7 @@
 // │   I   N   S   T   R   U   M   E   N   T                                  │
 // │   layout for analogue faces · drawing, then text                         │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

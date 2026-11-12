@@ -3,7 +3,7 @@
 // │   D   O   T                                                              │
 // │   a round sticker with a glyph · a button                                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

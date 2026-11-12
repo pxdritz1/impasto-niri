@@ -3,7 +3,7 @@
 // │   B   A   T   T   E   R   Y       F   A   C   E                          │
 // │   the charge as a cell that fills · red when it is running low           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

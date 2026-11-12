@@ -3,7 +3,7 @@
 // │   F A C E   S E R V I C E                                                │
 // │   face unlock · what the machine has, the faces kept, add and try        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -15,10 +15,10 @@ import Quickshell.Io
 import Quickshell.Services.Pam
 
 // howdy keeps its models where only root reads them, so the faces are listed,
-// added and removed through /usr/lib/impasto/face under pkexec: listing asks
+// added and removed through /usr/lib/velatura/face under pkexec: listing asks
 // nothing of the active user, adding or removing asks for their password.
 // Trying a face needs no root at all — it is the lock screen's own PAM
-// conversation, `impasto-face`, run here.
+// conversation, `velatura-face`, run here.
 Singleton {
     id: root
 
@@ -40,9 +40,9 @@ Singleton {
             "camera=0; for d in /dev/video*; do [ -c \"$d\" ] || continue; "
             + "v4l2-ctl -d \"$d\" --list-formats 2>/dev/null | grep -q \"'GREY'\" && camera=1 && break; done; "
             + "installed=0; command -v howdy >/dev/null && installed=1; "
-            + "wired=0; test -x /usr/lib/impasto/face "
-            + "&& test -f /usr/share/polkit-1/actions/org.impasto.face.policy "
-            + "&& test -f /etc/pam.d/impasto-face && test -f /usr/lib/security/pam_howdy.so && wired=1; "
+            + "wired=0; test -x /usr/lib/velatura/face "
+            + "&& test -f /usr/share/polkit-1/actions/org.velatura.face.policy "
+            + "&& test -f /etc/pam.d/velatura-face && test -f /usr/lib/security/pam_howdy.so && wired=1; "
             + "echo $camera $installed $wired"]
         stdout: StdioCollector {
             onStreamFinished: {
@@ -72,8 +72,8 @@ Singleton {
     function install(verb: string): void {
         if (VersionService.repo === "" || root.installer.running)
             return
-        root.installer.command = ["kitty", "--class", "impasto-update",
-                                  "--title", `impasto ${verb}`,
+        root.installer.command = ["kitty", "--class", "velatura-update",
+                                  "--title", `velatura ${verb}`,
                                   "sh", "-c", PackagesService.holdScript, "sh",
                                   `${VersionService.repo}/setup`, verb]
         root.installer.running = true
@@ -91,7 +91,7 @@ Singleton {
     property var heard: []
 
     readonly property Process lister: Process {
-        command: ["pkexec", "/usr/lib/impasto/face", "list"]
+        command: ["pkexec", "/usr/lib/velatura/face", "list"]
         stdout: StdioCollector {
             onStreamFinished: root.heard = text.split("\n").filter(line => /^\d+,/.test(line)).map(root.parse)
         }
@@ -164,7 +164,7 @@ Singleton {
         root.outcome = ""
         root.complaint = ""
         root.busy = "adding"
-        root.changer.command = ["pkexec", "/usr/lib/impasto/face", "add"]
+        root.changer.command = ["pkexec", "/usr/lib/velatura/face", "add"]
         root.changer.running = true
     }
 
@@ -172,7 +172,7 @@ Singleton {
         if (!root.ready || root.busy !== "")
             return
         root.busy = "removing"
-        root.changer.command = ["pkexec", "/usr/lib/impasto/face", "remove", String(id)]
+        root.changer.command = ["pkexec", "/usr/lib/velatura/face", "remove", String(id)]
         root.changer.running = true
     }
 
@@ -182,7 +182,7 @@ Singleton {
     property string trial: ""
 
     readonly property PamContext tryout: PamContext {
-        config: "impasto-face"
+        config: "velatura-face"
 
         onPamMessage: root.trial = "looking"
         onCompleted: result => root.trial = result === PamResult.Success ? "matched" : "missed"

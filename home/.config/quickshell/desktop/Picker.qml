@@ -3,7 +3,7 @@
 // │   P   I   C   K   E   R                                                  │
 // │   a picture off the disk, chosen on the desk                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

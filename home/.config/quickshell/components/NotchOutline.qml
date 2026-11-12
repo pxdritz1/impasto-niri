@@ -3,7 +3,7 @@
 // │   N O T C H   O U T L I N E                                              │
 // │   the hairline round an attached island · open along the screen edge     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

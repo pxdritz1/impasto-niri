@@ -4,7 +4,7 @@
 # │   P A C K A G E S                                                        │
 # │   package queries · pacman and the aur, read only                        │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -143,7 +143,7 @@ def repositories(term, into):
 
 
 def fetch(url):
-    request = urllib.request.Request(url, headers={"User-Agent": "impasto"})
+    request = urllib.request.Request(url, headers={"User-Agent": "velatura"})
     with urllib.request.urlopen(request, timeout=AUR_TIMEOUT) as response:
         return json.load(response)
 

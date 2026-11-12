@@ -3,7 +3,7 @@
 # │   S T A R S H I P                                                        │
 # │   the prompt · two capsules on the left, state on the right              │
 # │                                                                          │
-# │   github.com/andreumassanet/impasto                                      │
+# │   github.com/pxdritz1/velatura                                      │
 # │                                                                          │
 # ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -41,7 +41,7 @@ format = "[$path]($style) "
 truncation_length = 3
 truncation_symbol = "…/"
 
-# Otherwise the repository root itself is shown as `…/impasto`.
+# Otherwise the repository root itself is shown as `…/velatura`.
 truncate_to_repo = false
 
 [character]

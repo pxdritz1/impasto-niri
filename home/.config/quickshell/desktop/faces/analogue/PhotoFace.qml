@@ -3,7 +3,7 @@
 // │   P   H   O   T   O       F   A   C   E                                  │
 // │   an instant print, or a strip of film · analogue                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

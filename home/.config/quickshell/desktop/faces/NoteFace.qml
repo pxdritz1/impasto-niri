@@ -3,7 +3,7 @@
 // │   N   O   T   E       F   A   C   E                                      │
 // │   a note as a desktop widget                                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

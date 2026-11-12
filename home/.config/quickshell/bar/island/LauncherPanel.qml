@@ -3,7 +3,7 @@
 // │   L A U N C H E R   P A N E L                                            │
 // │   launcher · apps, calculator, windows, timer, clipboard, emoji          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

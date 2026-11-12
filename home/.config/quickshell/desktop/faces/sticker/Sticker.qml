@@ -3,7 +3,7 @@
 // │   S   T   I   C   K   E   R                                              │
 // │   sticker widget theme · coloured die-cut stickers per module            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

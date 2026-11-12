@@ -3,7 +3,7 @@
 // │   T I M E R   M O D U L E                                                │
 // │   countdown timer · set, pause and cancel                                │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

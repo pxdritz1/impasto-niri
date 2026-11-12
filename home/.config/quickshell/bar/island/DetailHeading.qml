@@ -3,7 +3,7 @@
 // │   D E T A I L   H E A D I N G                                            │
 // │   a control-centre page's title · back, name and what it is set to       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

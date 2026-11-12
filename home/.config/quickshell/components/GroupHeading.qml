@@ -3,7 +3,7 @@
 // │   G R O U P   H E A D I N G                                              │
 // │   settings group heading · with optional details                         │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

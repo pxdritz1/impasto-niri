@@ -3,7 +3,7 @@
 // │   C   L   A   U   D   E       F   A   C   E                              │
 // │   the block left as a ring round the mark · sticker                      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

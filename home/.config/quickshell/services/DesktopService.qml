@@ -3,7 +3,7 @@
 // │   D   E   S   K   T   O   P       S   E   R   V   I   C   E              │
 // │   desktop widgets and their grid positions                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

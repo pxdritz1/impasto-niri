@@ -3,7 +3,7 @@
 // │   C   O   D   E   X       F   A   C   E                                  │
 // │   codex usage as a fuel gauge                                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

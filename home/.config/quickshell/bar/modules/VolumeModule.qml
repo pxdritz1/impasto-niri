@@ -3,7 +3,7 @@
 // │   V O L U M E   M O D U L E                                              │
 // │   volume · sink level ring, slider when open                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

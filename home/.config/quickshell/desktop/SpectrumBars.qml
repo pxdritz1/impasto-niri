@@ -3,7 +3,7 @@
 // │   S P E C T R U M   B A R S                                              │
 // │   sound bars rising from one edge of a box                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

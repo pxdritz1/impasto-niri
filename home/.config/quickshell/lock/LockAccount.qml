@@ -3,7 +3,7 @@
 // │   L O C K   A C C O U N T                                                │
 // │   the account pill · picture and name, then the password field           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

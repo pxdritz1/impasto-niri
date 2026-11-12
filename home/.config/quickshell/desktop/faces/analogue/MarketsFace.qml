@@ -3,7 +3,7 @@
 // │   M A R K E T S   F A C E                                                │
 // │   a watchlist · the first pair on a chart recorder                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

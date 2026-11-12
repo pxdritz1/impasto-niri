@@ -3,7 +3,7 @@
 // │   D A Y   P I C K E R                                                    │
 // │   month grid date picker                                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

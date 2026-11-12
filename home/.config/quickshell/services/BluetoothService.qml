@@ -3,7 +3,7 @@
 // │   B L U E T O O T H   S E R V I C E                                      │
 // │   adapter state and what is connected to it                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

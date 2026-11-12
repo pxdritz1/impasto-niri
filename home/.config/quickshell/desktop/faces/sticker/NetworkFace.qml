@@ -3,7 +3,7 @@
 // │   N   E   T   W   O   R   K       F   A   C   E                          │
 // │   the connection on a disc · sticker                                     │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

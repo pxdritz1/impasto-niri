@@ -3,7 +3,7 @@
 // │   G A M E S   P A N E L                                                  │
 // │   arcade · the game shelf and the running game                           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

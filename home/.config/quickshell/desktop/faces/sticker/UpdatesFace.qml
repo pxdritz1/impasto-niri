@@ -3,7 +3,7 @@
 // │   U   P   D   A   T   E   S       F   A   C   E                          │
 // │   pending updates on a soft square · sticker                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

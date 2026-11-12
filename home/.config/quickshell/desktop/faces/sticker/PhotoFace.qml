@@ -3,7 +3,7 @@
 // │   P   H   O   T   O       F   A   C   E                                  │
 // │   the picture cut out as a sticker                                       │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

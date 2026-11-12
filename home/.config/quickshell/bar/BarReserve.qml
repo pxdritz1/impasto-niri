@@ -3,7 +3,7 @@
 // │   B A R   R E S E R V E                                                  │
 // │   the space the bar keeps · held by the screen, not by the bar           │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

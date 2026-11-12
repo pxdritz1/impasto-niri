@@ -3,7 +3,7 @@
 // │   G   A   M   E   S       F   A   C   E                                  │
 // │   arcade as a joystick · best score and play                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   W E A T H E R   S E R V I C E                                          │
 // │   weather · current conditions and forecast                              │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

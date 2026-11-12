@@ -3,7 +3,7 @@
 // │   L O C K   C L O C K                                                    │
 // │   the lock's clock · stacked, inline or flip, the date above it          │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   C A V A   S E R V I C E                                                │
 // │   audio spectrum from cava                                               │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   N E T W O R K   D E T A I L                                            │
 // │   wifi networks in range                                                 │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

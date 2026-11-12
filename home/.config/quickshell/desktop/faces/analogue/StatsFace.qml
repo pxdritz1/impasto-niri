@@ -3,7 +3,7 @@
 // │   S   T   A   T   S       F   A   C   E                                  │
 // │   the load as needle gauges · the last minutes as traces under them      │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

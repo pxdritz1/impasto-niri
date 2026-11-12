@@ -3,7 +3,7 @@
 // │   S H E L L                                                              │
 // │   quickshell entry point · windows and top-level wiring                  │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -359,7 +359,7 @@ ShellRoot {
 
     // ── IPC ─────────────────────────────────────────────────────────────────
     //
-    // Everything the impasto command and `qs ipc call` can reach. Every
+    // Everything the velatura command and `qs ipc call` can reach. Every
     // palette push hangs off WallpaperService.applied, which only fires
     // inside this process, so the file manager's "Set as Wallpaper" comes in
     // here too:

@@ -3,7 +3,7 @@
 // │   G A M E S   M O D U L E                                                │
 // │   arcade · best scores when open                                         │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

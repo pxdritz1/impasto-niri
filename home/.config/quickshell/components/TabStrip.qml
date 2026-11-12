@@ -3,7 +3,7 @@
 // │   T A B   S T R I P                                                      │
 // │   tabs within a settings page                                            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

@@ -3,7 +3,7 @@
 // │   S C R E E N   T I M E   P A N E L                                      │
 // │   screen time · a day, a week or a month of what was in front            │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

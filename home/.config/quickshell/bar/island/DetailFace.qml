@@ -3,7 +3,7 @@
 // │   D E T A I L   F A C E                                                  │
 // │   a module's expanded view · its card or its menu                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

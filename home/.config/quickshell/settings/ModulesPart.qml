@@ -3,7 +3,7 @@
 // │   M O D U L E S   P A R T                                                │
 // │   module chips · appearance and bar contents                             │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 

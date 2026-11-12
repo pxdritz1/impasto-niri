@@ -3,7 +3,7 @@
 // │   M E D I A   C A R D                                                    │
 // │   the player, with room for artwork and transport                        │
 // │                                                                          │
-// │   github.com/andreumassanet/impasto                                      │
+// │   github.com/pxdritz1/velatura                                      │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
