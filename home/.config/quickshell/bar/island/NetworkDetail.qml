@@ -32,6 +32,20 @@ ColumnLayout {
 
     Component.onCompleted: NetworkService.scan(false)
 
+    Connections {
+        target: NetworkService
+        function onConnectionFinished(ssid, success): void {
+            if (success) {
+                if (root.expanded === ssid)
+                    root.expanded = ""
+            } else {
+                // Includes saved networks whose stored credentials stopped
+                // working: reveal the password field for an immediate retry.
+                root.expanded = ssid
+            }
+        }
+    }
+
     // The heading a module's card has (`ModuleCard`), with the back arrow in
     // front of it when there is somewhere to go back to.
     RowLayout {
@@ -148,7 +162,7 @@ ColumnLayout {
             readonly property bool busy: NetworkService.busySsid === entry.modelData.ssid
 
             width: ListView.view.width
-            height: entry.open ? 88 : 48
+            height: entry.open ? (NetworkService.lastError !== "" && root.expanded === entry.modelData.ssid ? 106 : 88) : 48
             radius: Theme.radiusMedium
             color: entry.modelData.active || entryMouse.containsMouse || entry.open
                 ? Theme.surfaceHoverIn(QsWindow.window) : Theme.surfaceIn(QsWindow.window)
@@ -255,12 +269,12 @@ ColumnLayout {
                             selectedTextColor: Theme.accentText
                             selectByMouse: true
 
-                            onVisibleChanged: if (visible) password.forceActiveFocus()
-
-                            onAccepted: {
-                                NetworkService.connect(entry.modelData.ssid, password.text)
-                                root.expanded = ""
+                            onVisibleChanged: if (visible) {
+                                password.text = ""
+                                password.forceActiveFocus()
                             }
+
+                            onAccepted: NetworkService.connect(entry.modelData.ssid, password.text)
                             Keys.onEscapePressed: root.expanded = ""
 
                             Text {
@@ -276,18 +290,28 @@ ColumnLayout {
                     PillButton {
                         text: "Connect"
                         active: true
-                        onClicked: {
-                            NetworkService.connect(entry.modelData.ssid, password.text)
-                            root.expanded = ""
-                        }
+                        onClicked: NetworkService.connect(entry.modelData.ssid, password.text)
                     }
+                }
+
+                Text {
+                    Layout.fillWidth: true
+                    visible: entry.open && root.expanded === entry.modelData.ssid
+                        && NetworkService.lastError !== ""
+                    text: NetworkService.lastError
+                    wrapMode: Text.Wrap
+                    maximumLineCount: 2
+                    elide: Text.ElideRight
+                    font.family: Theme.fontFamily
+                    font.pixelSize: 9
+                    color: Theme.indicatorBad
                 }
             }
 
             MouseArea {
                 id: entryMouse
                 anchors.fill: parent
-                anchors.bottomMargin: entry.open ? 44 : 0
+                anchors.bottomMargin: entry.open ? 60 : 0
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
@@ -297,6 +321,7 @@ ColumnLayout {
                         NetworkService.connect(entry.modelData.ssid)
                     } else {
                         root.expanded = entry.open ? "" : entry.modelData.ssid
+                        NetworkService.lastError = ""
                     }
                 }
             }

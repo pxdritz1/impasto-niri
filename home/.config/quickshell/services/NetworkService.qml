@@ -128,6 +128,10 @@ Singleton {
     property var networks: []
     property bool scanning: false
     property string busySsid: ""
+    property string lastError: ""
+    property string pendingAction: ""
+
+    signal connectionFinished(string ssid, bool success)
 
     readonly property string script: Quickshell.shellPath("scripts/network.py")
 
@@ -154,8 +158,26 @@ Singleton {
     }
 
     readonly property Process connectProcess: Process {
-        onExited: {
+        stderr: StdioCollector {
+            onStreamFinished: {
+                const message = text.trim()
+                if (message !== "")
+                    root.lastError = message
+            }
+        }
+        onExited: (exitCode, exitStatus) => {
+            const finishedSsid = root.busySsid
+            const action = root.pendingAction
+            const success = exitCode === 0
             root.busySsid = ""
+            if (success) {
+                root.lastError = ""
+            } else if (action === "connect" && root.lastError === "") {
+                root.lastError = "Could not connect. Check the password and try again."
+            }
+            if (action === "connect")
+                root.connectionFinished(finishedSsid, success)
+            root.pendingAction = ""
             root.refresh()
             root.scan(false)
         }
@@ -172,6 +194,8 @@ Singleton {
     }
 
     function connect(ssid: string, password = ""): void {
+        root.lastError = ""
+        root.pendingAction = "connect"
         root.busySsid = ssid
         root.connectProcess.command = password === ""
             ? [root.script, "connect", ssid]
@@ -180,12 +204,16 @@ Singleton {
     }
 
     function disconnect(ssid: string): void {
+        root.pendingAction = "disconnect"
+        root.lastError = ""
         root.busySsid = ssid
         root.connectProcess.command = [root.script, "disconnect", ssid]
         root.connectProcess.running = true
     }
 
     function forget(ssid: string): void {
+        root.pendingAction = "forget"
+        root.lastError = ""
         root.busySsid = ssid
         root.connectProcess.command = [root.script, "forget", ssid]
         root.connectProcess.running = true

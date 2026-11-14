@@ -45,6 +45,7 @@ QtObject {
     }
 
     readonly property color island: "#000000"
+    property color matugenBackground: "#0c0c0c"
     readonly property color islandGround: root.groundOf(root.surfaceStyle)
 
     // The terminal's ground: `TERMINAL_TINT` and kitty's `background_opacity`.
@@ -61,7 +62,9 @@ QtObject {
 
     // Any style's ground and rim, for a picture of one that is not chosen.
     function groundOf(style: string): color {
-        return style === "liquid" ? root.liquidGround
+        return style === "matugen" ? Qt.rgba(root.matugenBackground.r,
+            root.matugenBackground.g, root.matugenBackground.b, 0.96)
+            : style === "liquid" ? root.liquidGround
             : style === "glass" ? root.terminalGround : root.island
     }
 
@@ -282,6 +285,7 @@ QtObject {
 
     readonly property int paletteTransition: 260
 
+    Behavior on matugenBackground { ColorAnimation { duration: root.paletteTransition } }
     Behavior on background   { ColorAnimation { duration: root.paletteTransition } }
     Behavior on surface      { ColorAnimation { duration: root.paletteTransition } }
     Behavior on surfaceHover { ColorAnimation { duration: root.paletteTransition } }

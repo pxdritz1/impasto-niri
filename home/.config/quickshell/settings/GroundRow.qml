@@ -25,10 +25,12 @@ SettingRow {
     // drawn as the bar's, so it reads as the bar's.
     readonly property string stored: SettingsService[root.key] === ""
         ? SettingsService.surfaceStyle : SettingsService[root.key]
-    readonly property string value: Theme.seeThrough(root.stored) ? root.stored : "classic"
+    readonly property string value: root.stored === "matugen" && root.key !== "terminalGround"
+        ? "matugen" : Theme.seeThrough(root.stored) ? root.stored : "classic"
 
     label: Tr.t("Ground")
-    reading: root.value === "liquid" ? Tr.t("Clear frosted glass, lit at the edge")
+    reading: root.value === "matugen" ? Tr.t("Matugen wallpaper background")
+        : root.value === "liquid" ? Tr.t("Clear frosted glass, lit at the edge")
         : root.value === "glass" ? Tr.t("The terminal's glass, over a blur")
         : Tr.t("Solid black")
 
@@ -37,7 +39,8 @@ SettingRow {
             { id: "classic", label: Tr.t("Classic") },
             { id: "glass", label: Tr.t("Glass") },
             { id: "liquid", label: Tr.t("Liquid") }
-        ]
+        ].concat(root.key !== "terminalGround"
+            ? [{ id: "matugen", label: Tr.t("Matugen") }] : [])
         current: root.value
         onSelected: id => SettingsService.set(root.key, id)
     }

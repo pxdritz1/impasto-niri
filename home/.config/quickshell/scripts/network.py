@@ -33,7 +33,26 @@ def nmcli(*arguments, timeout=25):
     except (OSError, subprocess.SubprocessError) as error:
         sys.stderr.write(f"nmcli failed: {error}\n")
         return None
-    return result if result.returncode == 0 else None
+    if result.returncode != 0:
+        message = (result.stderr or result.stdout or "").strip()
+        if message:
+            # Keep nmcli's implementation details out of the UI. Its raw
+            # diagnostics remain useful in logs, but not beside a password box.
+            lowered = message.lower()
+            if any(term in lowered for term in (
+                "802-11-wireless-security.psk",
+                "secrets were required",
+                "password",
+                "passwd-file",
+                "authentication",
+            )):
+                sys.stderr.write("Não foi possível autenticar. Confira a senha e tente novamente.\n")
+            else:
+                sys.stderr.write("Não foi possível conectar a esta rede. Tente novamente.\n")
+        else:
+            sys.stderr.write("Não foi possível conectar a esta rede. Tente novamente.\n")
+        return None
+    return result
 
 
 def split_terse(line):
